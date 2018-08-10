@@ -1,13 +1,20 @@
 <template>
   <div id="app">
    <router-view></router-view>
+
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'app'
+  name: 'app',
+  mounted () {
+    this.$fetch('/')
+      .then((response) => {
+        console.log(response)
+      })
+  }
 
 }
 </script>

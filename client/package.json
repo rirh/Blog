@@ -9,6 +9,7 @@
     "elint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "three": "^0.95.0",
     "vue": "^2.5.17"
   },
