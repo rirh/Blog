@@ -1,5 +1,5 @@
 {
-  "name": "client_v2",
+  "name": "client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "elint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "iview": "^3.0.0",
     "three": "^0.95.0",
     "vue": "^2.5.17"
   },
@@ -17,6 +17,8 @@
     "@vue/cli-plugin-babel": "^3.0.0-rc.11",
     "@vue/cli-plugin-eslint": "^3.0.0-rc.11",
     "@vue/cli-service": "^3.0.0-rc.11",
+    "axios": "^0.18.0",
+    "babel-plugin-import": "^1.8.0",
     "eslint": "^5.3.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -24,6 +26,8 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0-beta.2",
+    "iview-loader": "^1.2.1",
+    "js-cookie": "^2.2.0",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17"
   },

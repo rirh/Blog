@@ -1,7 +1,14 @@
 import home from '@/views/home/pages'
+import navigation from '@/views/navigation/pages'
 export var route = [
   {
     path: '/',
+    name: 'index',
     component: home
-  } // No props, no nothing
+  },
+  {
+    path: '/navigation',
+    name: 'navigation',
+    component: navigation
+  }
 ]

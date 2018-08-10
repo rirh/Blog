@@ -1,7 +1,6 @@
 <template>
   <div id="app">
    <router-view></router-view>
-
   </div>
 </template>
 
@@ -10,10 +9,15 @@
 export default {
   name: 'app',
   mounted () {
-    this.$fetch('/')
-      .then((response) => {
-        console.log(response)
-      })
+
+  },
+  methods: {
+    testHttp () {
+      this.$fetch('/')
+        .then((response) => {
+          console.log(response)
+        })
+    }
   }
 
 }

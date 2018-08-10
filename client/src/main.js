@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { routers } from './router'
-// import axios from 'axios'
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
 import {
   post,
   fetch,
   patch,
   put
 } from './http'
+Vue.use(iView)
 // 定义全局变量
 Vue.prototype.$post = post
 Vue.prototype.$fetch = fetch
