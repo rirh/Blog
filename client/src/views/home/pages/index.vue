@@ -5,7 +5,7 @@
         <!-- <Menu mode="horizontal" theme="dark" active-name="1">  -->
         <!-- <Menu mode="horizontal" theme="primary" active-name="1"> -->
         <MenuItem name="1">
-          <router-link tag="span" to="/">
+          <router-link tag="span" to="/index">
           <Icon type="ios-home-outline" />首页</router-link>
         </MenuItem>
         <MenuItem name="2">
@@ -60,9 +60,4 @@ export default {
 
 <style>
 @import "./index.less";
-
-.affix-header{
-  background-color: rgba(0,0,0,0.5);/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
-}
-
 </style>

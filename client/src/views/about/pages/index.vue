@@ -1,28 +1,42 @@
 <template>
-<div id="about-layout">
+<vue-swiper indicators @slide-change="slideChange">
+    <vue-swiper-slide>Page 1</vue-swiper-slide>
+    <vue-swiper-slide>Page 2</vue-swiper-slide>
+    <vue-swiper-slide>Page 3</vue-swiper-slide>
+</vue-swiper>
 
-</div>
 </template>
 
 <script>
+import VueSwiper from 'vue-light-swiper'
 export default {
+
   name: 'name',
-  data: function () {
+  components: {
+    vueSwiper: VueSwiper.vueSwiper,
+    vueSwiperSlide: VueSwiper.vueSwiperSlide
+  },
+
+  data () {
     return {}
   },
-  methods: {}
+  mounted () {
+    console.log(VueSwiper)
+  },
+
+  methods: {
+    slideChange (index, oldIndex) {
+      console.log('showIndexChange:', index, oldIndex)
+    },
+    goBack () {
+      this.$router.push({
+        name: 'index'
+      })
+    }
+  }
 }
 </script>
 
 <style scoped>
-#about-layout{
-position: absolute;
-height: 100%;
-width: 100%;
-top: 0;
-left: 0;
-background: url('../../../assets/img/header-background.jpg');
-background-size: 100% 100%;
-background-repeat:no-repeat;
-}
+@import "./index.less";
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-   <router-view></router-view>
+   <router-view class="router-layout"></router-view>
   </div>
 </template>
 
@@ -9,7 +9,6 @@
 export default {
   name: 'app',
   mounted () {
-
   },
   methods: {
     testHttp () {
@@ -27,6 +26,14 @@ export default {
 *{
   margin: 0;
   padding:0;
+}
+#app{
+  height: 100%;
+  width: 100%;
+}
+.router-layout{
+  height:100%;
+  width: 100%
 }
 
 </style>

@@ -89,12 +89,12 @@ export default {
         .load(
           [
             // '../../../../assets/img/nx.jpg',
-            'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/nx.jpg',
-            'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/px.jpg',
-            'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/py.jpg',
-            'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/ny.jpg',
-            'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/nz.jpg',
-            'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/pz.jpg'
+            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/nx.jpg',
+            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/px.jpg',
+            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/py.jpg',
+            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/ny.jpg',
+            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/nz.jpg',
+            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/pz.jpg'
           ])
       //   scene.background.image = document.querySelectorAll('#box img')
       //     .setPath('../../../../assets/img/')
