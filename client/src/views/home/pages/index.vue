@@ -1,37 +1,39 @@
 <template>
   <div id="app">
     <Affix class="affix-header">
-        <Menu mode="horizontal" theme="dark" active-name="1">
+         <Menu mode="horizontal" theme="light" active-name="1">
+        <!-- <Menu mode="horizontal" theme="dark" active-name="1">  -->
+        <!-- <Menu mode="horizontal" theme="primary" active-name="1"> -->
         <MenuItem name="1">
-        <Icon type="ios-home-outline" />
-           首页
+          <router-link tag="span" to="/">
+          <Icon type="ios-home-outline" />首页</router-link>
         </MenuItem>
         <MenuItem name="2">
-            <Icon type="ios-people" />
+            <Icon type="ios-stats" />
             用户管理
         </MenuItem>
         <Submenu name="3">
             <template slot="title">
-                <Icon type="ios-stats" />
-                统计分析
+                <Icon type= "ios-people" />
+                友情链接
             </template>
-            <MenuGroup title="使用">
-                <MenuItem name="3-1">新增和启动</MenuItem>
-                <MenuItem name="3-2">活跃分析</MenuItem>
-                <MenuItem name="3-3">时段分析</MenuItem>
+            <MenuGroup title="css">
+                <MenuItem name="3-1"><a target="_blank" href="http://www.css88.com/">CSS88</a></MenuItem>
             </MenuGroup>
-            <MenuGroup title="留存">
-                <MenuItem name="3-4">用户留存</MenuItem>
-                <MenuItem name="3-5">流失用户</MenuItem>
+            <MenuGroup title="博客">
+                 <MenuItem name="3-2"><a target="_blank" href="https://www.zhangxinxu.com/">张鑫旭博客</a></MenuItem>
+                <MenuItem name="3-4"><a target="_blank" href="http://www.ruanyifeng.com">阮一峰博客</a></MenuItem>
+                <MenuItem name="3-5"><a target="_blank" href="http://www.w3cplus.com/">大漠博客</a></MenuItem>
             </MenuGroup>
         </Submenu>
         <MenuItem name="4">
-            <Icon type="ios-construct" />
-            综合设置
+            <router-link tag="span" to="/about">
+             <Icon type="ios-construct" />
+            关于</router-link>
         </MenuItem>
     </Menu>
     </Affix>
-
+    <router-view></router-view>
   </div>
 </template>
 
@@ -42,9 +44,7 @@ export default {
   name: 'index',
   data: function () {
     return {
-      tabs: [
-        {name: '首页', lable: '首页'}
-      ]
+
     }
   },
 
@@ -59,9 +59,9 @@ export default {
 </script>
 
 <style>
+@import "./index.less";
 
 .affix-header{
-
   background-color: rgba(0,0,0,0.5);/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
 }
 

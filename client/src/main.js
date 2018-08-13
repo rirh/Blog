@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { routers } from './router'
+import {
+  routers
+} from './router'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
 import {

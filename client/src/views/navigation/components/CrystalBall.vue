@@ -91,8 +91,8 @@ export default {
             // '../../../../assets/img/nx.jpg',
             'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/nx.jpg',
             'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/px.jpg',
-            'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/ny.jpg',
             'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/py.jpg',
+            'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/ny.jpg',
             'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/nz.jpg',
             'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/cube/Park3Med/pz.jpg'
           ])
