@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
+
+// require styles
 import {
   routers
 } from './router'
-import iView from 'iview'
-import 'iview/dist/styles/iview.css'
 import {
   post,
   fetch,
