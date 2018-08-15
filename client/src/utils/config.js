@@ -1,5 +1,5 @@
 // api地址
-const host = 'http://localhost:8080'
+const host = 'http://localhost:3000'
 // 默认日历为距离当前时间一周的时间
 const WEEK = 7
 // 默认分页数据长度
@@ -15,7 +15,7 @@ const PARAMETER = null
 // 默认js-cookie保存时间为一年
 const COOKIEVALID = 365
 
-module.export = {
+export {
   host,
   WEEK,
   PAGESIZE,

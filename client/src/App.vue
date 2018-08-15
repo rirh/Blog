@@ -5,37 +5,38 @@
 </template>
 
 <script>
-
 export default {
   name: 'app',
-  mounted () {
-  },
+  mounted () {},
   methods: {
     testHttp () {
-      this.$fetch('/')
-        .then((response) => {
-          console.log(response)
-        })
+      this.$fetch('/').then(response => {
+        console.log(response)
+      })
     }
   }
-
 }
 </script>
 
 <style>
-*{
+* {
   margin: 0;
-  padding:0;
+  padding: 0;
 }
-html,body,#app{
-   height: 100%;
+html,
+body,
+#app {
+   position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.router-layout {
+  height: 100%;
   width: 100%;
-
+  overflow: auto;
 }
-
-.router-layout{
-  height:100%;
-  width: 100%
-}
-
 </style>
