@@ -5,9 +5,18 @@
 </template>
 
 <script>
+import {init} from '@/actions'
+
 export default {
   name: 'app',
-  mounted () {},
+  mounted () {
+    init()
+      .then(
+        response => {
+          console.log(response)
+        }
+      )
+  },
   methods: {
     testHttp () {
       this.$fetch('/').then(response => {

@@ -2,7 +2,7 @@
 <template>
 <div class="swiper-container-layout">
       <Icon class="user-layout" style="color:#999" type="md-arrow-round-back" size='46' @click="goBack" />
-
+      <Icon class="menu-layout" :type="menu?'md-menu':'md-close'" size='46' @click="openMenu"/>
    <!-- <Avatar class="user-layout" icon="ios-person" size="large"   src="https://i.loli.net/2017/08/21/599a521472424.jpg"/> -->
 
 <div class="swiper-container">
@@ -25,6 +25,7 @@ import index from '@/views/about/pages/index-slide'
 export default {
   data () {
     return {
+      menu: true,
       listImg: [
         {url: 'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/src/assets/img/header-background.jpg'},
         {url: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534224056715&di=b08756b62f56cf623198510e37bcd139&imgtype=0&src=http%3A%2F%2Fimg17.3lian.com%2Fd%2Ffile%2F201702%2F07%2F423129bac96daaa0cb7575c4a701158a.jpg'},
@@ -60,6 +61,9 @@ export default {
       this.$router.push({
         name: 'index'
       })
+    },
+    openMenu () {
+      this.menu = !this.menu
     }
   }
 }
@@ -103,12 +107,18 @@ export default {
 }
 .user-layout{
   position: absolute;
-  top:50px;
-  left: 50px;
+  top:4%;
+  left: 3%;
+  z-index: 2;
+}
+.menu-layout{
+  position: absolute;
+  top:4%;
+  right: 3%;
   z-index: 2;
 }
 .user-layout:hover{
-  color: #fff!important
+  color: #333!important
 }
 
 </style>

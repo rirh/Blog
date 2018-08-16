@@ -1,14 +1,16 @@
-const {
-  MONGODBADRESS,
-  DBNAME
-} = require('../config.js')
-// 连接mongodb数据库
-// mongoose.Promise = global.Promise; //不加这句会报错
+// 数据库配置文件
+const {MONGODBADRESS, DBNAME} = require('../config.js')
+/**
+ *
+ * Mongoose类 对数据库增删改查操作
+ *
+ */
 module.exports = class Mongoose {
   constructor (options) {
     this.url = MONGODBADRESS
     this.mongoose = options.mongoose
   }
+  // 数据库创建链接
   init () {
     return new Promise((resolve, reject) => {
       this.mongoose.connect(this.url)
@@ -22,8 +24,12 @@ module.exports = class Mongoose {
         })
     })
   }
+  /**
+   *
+   * @param {创建的集合名称} name
+   */
   createCollection (name) {
-    this.init()
+    return this.init()
       .then((db) => {
         var dbase = db.db(DBNAME)
         dbase.createCollection(name, function (err, res) {
@@ -36,8 +42,12 @@ module.exports = class Mongoose {
         console.log(`error:${err}`)
       })
   }
+  /**
+   *
+   * @param {删除的集合名称} name
+   */
   dropCollection (name) {
-    this.init()
+    return this.init()
       .then(db => {
         var dbo = db.db(DBNAME)
         // 删除 集合
@@ -48,8 +58,13 @@ module.exports = class Mongoose {
         })
       })
   }
+  /**
+   *
+   * @param {插入的集合名称} name
+   * @param {插入的数据} data
+   */
   insert (name, data) {
-    this.init()
+    return this.init()
       .then((db) => {
         var dbo = db.db(DBNAME)
         if (Array.isArray(data)) {
@@ -67,18 +82,23 @@ module.exports = class Mongoose {
         }
       })
   }
-  delete (name, data) {
-    this.init()
+  /**
+ *
+ * @param {删除的集合名称} name
+ * @param {删除的条件} where
+ */
+  delete (name, where) {
+    return this.init()
       .then((db) => {
         var dbo = db.db(DBNAME)
-        if (Array.isArray(data)) {
-          dbo.collection(name).deleteMany(data, function (err, res) {
+        if (Array.isArray(where)) {
+          dbo.collection(name).deleteMany(where, function (err, res) {
             if (err) throw err
             console.log(res.result.n + ' 条文档被删除')
             db.close()
           })
         } else {
-          dbo.collection(name).deleteOne(data, function (err, res) {
+          dbo.collection(name).deleteOne(where, function (err, res) {
             if (err) throw err
             console.log('文档删除成功')
             db.close()
@@ -86,8 +106,14 @@ module.exports = class Mongoose {
         }
       })
   }
+  /**
+   *
+   * @param {更新数据库的名称} name
+   * @param {更新的条件} where
+   * @param {更新后的数据} update
+   */
   update (name, where, update) {
-    this.init()
+    return this.init()
       .then((db) => {
         var dbo = db.db(DBNAME)
         if (Array.isArray(update)) {
@@ -105,8 +131,13 @@ module.exports = class Mongoose {
         }
       })
   }
-  find (dbname, where) {
-    if (!dbname) {
+  /**
+   *
+   * @param {查询集合的名字} name
+   * @param {查询条件} where
+   */
+  find (name, where) {
+    if (!name) {
       console.error(`错误!查询方法需要传入数据库名称`)
       return
     }
@@ -115,7 +146,7 @@ module.exports = class Mongoose {
       this.init()
         .then(db => {
           var dbo = db.db(DBNAME)
-          dbo.collection(dbname).find(where).toArray(function (err, res) { // 返回集合中所有数据
+          dbo.collection(name).find(where).toArray(function (err, res) { // 返回集合中所有数据
             if (res) {
               resolve(res)
             } else {

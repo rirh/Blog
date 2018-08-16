@@ -1,1 +1,6 @@
-export { getHome } from './home'
+export
+{
+  getHome,
+  init
+}
+  from './home'

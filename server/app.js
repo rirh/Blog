@@ -62,6 +62,7 @@ let routes = new Route({app})
 
 routes.goHome()
 routes.getImage()
+routes.getInit()
 
 app.listen(PORT, () => {
   console.log(`server on ${PORT}`)

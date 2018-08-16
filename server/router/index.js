@@ -1,25 +1,22 @@
 var fs = require('fs')
-var {enHanceBody} = require('../helper/index.js')
-var mongoose = require('mongodb').MongoClient
-var Mongoose = require('../helper/mongoose.js')
-let Mongo = new Mongoose({mongoose})
 
-// const {
-//   MONGODBADRESS
-// } = require('../config.js')
+var {home} = require('./home.js')
+var {resume} = require('./resume.js')
+var {init} = require('./Initialization.js')
+
 module.exports = class router {
   constructor (options) {
     this.app = options.app
-    this.mongoose = mongoose
+  }
+  // 获取首页数据
+  getInit () {
+    return this.app.get('/init', init)
   }
   goHome () {
-    return this.app.get('/home', (req, res) => {
-      Mongo.find('home')
-        .then(data => {
-          console.log(data)
-          res.send(enHanceBody(data[0]))
-        })
-    })
+    return this.app.get('/home', home)
+  }
+  getResume () {
+    return this.app.get('/resume', resume)
   }
   getImage () {
     return this.app.get('/image', (req, res) => {

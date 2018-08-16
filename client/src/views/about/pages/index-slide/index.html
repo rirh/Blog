@@ -1,146 +1,157 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+
+    <meta charset="utf-8">
+
+    <title>CSS3隐藏悬浮网站左侧标签式导航栏代码 </title>
+
+
     <style type="text/css">
+        a:link,
+        a:hover,
+        a:visited,
+        a:active {
+            color: #fff;
+            text-decoration: none;
+        }
+
         body {
+            height: 100%;
+            width: 100%;
             margin: 0;
+            padding: 0;
+
+            background: #fff;
         }
 
-        .promo {
-            width: 100%;
-            height: 630px;
-            border-top: 1px solid #c4c7cb;
-            background: url(http://www.digitalhands.net/images/header_bg_back.jpg) no-repeat top center;
+        .card-holder {
+            position: fixed;
+            width: 0px;
+            overflow: visible;
         }
 
-        #parallax {
+        .card-wrapper {
+            display: inline-block;
+            float: right;
+            clear: both;
+        }
+
+        .card {
             position: relative;
-            margin: 0 auto;
-            overflow: hidden;
-            height: 630px;
-            width: 100%;
-            background: url(http://www.digitalhands.net/images/header_bg.jpg) no-repeat center top !important;
+            left: 32px;
+            padding: 16px 32px 16px 64px;
+            margin: 8px;
+            x-box-shadow: 0 0 8px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 8px 0 8px -8px rgba(0, 0, 0, 0.5);
+            background: #fff;
+            transition: all 0.3s ease-in-out 0.1s;
         }
 
-        #parallax .bg1 {
-            width: 1602px;
-            height: 603px;
-            background: url(http://www.digitalhands.net/images/drops_bg_up.png) no-repeat 0 0;
-        }
-
-        #parallax .bg2 {
-            width: 1602px;
-            height: 603px;
-            background: url(http://www.digitalhands.net/images/drops_bg_back.png) no-repeat 0 0;
-        }
-
-        #parallax .sloganBox {
-            width: 1200px;
-            position: absolute;
-            left: 50%;
-            height: 630px;
-            margin-left: -600px;
-        }
-
-        #parallax .slogan1 {
-            width: 1002px;
-            height: 410px;
-            background: url(http://www.digitalhands.net/images/text_yonlendiriyoruz_bg.png) no-repeat left 50px;
-        }
-
-        #parallax .slogan2 {
-            width: 1120px;
-            height: 450px;
-            background: url(http://www.digitalhands.net/images/text_uretiyoruz_bg.png) no-repeat right top;
-        }
-
-        #parallax .slogan3 {
-            width: 1102px;
-            height: 500px;
-            background: url(http://www.digitalhands.net/images/text_vesonra_bg.png) no-repeat right bottom;
-        }
-
-        .parallax-viewport {
+        .card:hover {
             position: relative;
-            overflow: hidden;
+            left: 100%;
+            margin-left: -32px;
+            box-shadow: 0 -8px 8px -8px rgba(0, 0, 0, 0.5),
+            0 8px 8px -8px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease-in-out;
         }
 
-        .parallax-layer {
-            position: absolute;
+        .card-content {
+            display: inline-block;
+            color: #fff;
+            font-family: 'Droid Sans', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            white-space: nowrap;
         }
 
-        .promoSlogan {
-            float: left;
-            position: relative;
-            width: 960px;
-            position: relative;
-            color: #8a8a8a;
-            margin: 0 auto;
-            margin-top: 50px;
-            padding-top: 7px;
-            background-image: url(http://www.digitalhands.net/images/promo_blockquote_bg.gif), url(http://www.digitalhands.net/images/promo_blockquote_bg_2.gif);
-            background-position: left center, right center;
-            background-repeat: no-repeat;
+        .bg-01 {
+            background: #539770;
         }
 
-        .promoSlogan p {
-            font-size: 21px;
-            line-height: 30px;
-            color: #8a8a8a;
-            text-align: left;
-            font-family: 'FuturaStdLightTrRegular';
-            margin-left: 42px;
+        .bg-02 {
+            background: #4B7D74;
         }
 
-        .promoSlogan p em {
-            font-family: 'FuturaStdBookTrRegular';
-            font-style: normal;
+        .bg-03 {
+            background: #8DC2BC;
         }
 
+        .bg-04 {
+            background: #EDD6B4;
+        }
+
+        .bg-05 {
+            background: #BE7467;
+        }
+
+        .bg-06 {
+            background: #E2AE63;
+        }
     </style>
 </head>
 
 <body>
-    <script type="text/javascript" src="http://wow.techbrood.com/libs/jquery/jquery1.8.1.js"></script>
-    <script type="text/javascript" src="http://wow.techbrood.com/libs/jquery/jquery.jparallax.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#parallax .parallax-layer").parallax({}, {
-                // xparallax: "60%",   //这里是插件的所有参数，大家可以一个个试试了解他们每一个的作用
-                yparallax: false,
-                // height: 630,
-                // calibrateX: false,
-                //  calibrateY: true,
-                //  invertX: false,
-                //  invertY: true,
-                //  limitX: false,
-                //  limitY: 10,
-                //  scalarX: 2,
-                //  scalarY: 8,
-                //  frictionX: 0.2,
-                //  frictionY: 0.8,
-                //  originX: 0.0,
-                //  originY: 1.0
-            });
-        });
-    </script>
 
-    <!-- Top Promo -->
-    <div class="promo">
-
-        <div id="parallax" class="port parallax-viewport">
-            <div class="bg1 parallax-layer"></div>
-            <div class="bg2 parallax-layer"></div>
-            <div class="sloganBox">
-                <div class="slogan1 parallax-layer"></div>
-                <div class="slogan2 parallax-layer"></div>
-                <div class="slogan3 parallax-layer"></div>
-            </div>
+    <div class='card-holder'>
+        <div class='card-wrapper'>
+            <a href='#'>
+                <div class='card bg-01'>
+                    <span class='card-content'>标题1</span>
+                </div>
+            </a>
         </div>
-
+        <div class='card-wrapper'>
+            <a href='#'>
+                <div class='card bg-02'>
+                    <span class='card-content'>标题2</span>
+                </div>
+            </a>
+        </div>
+        <div class='card-wrapper'>
+            <a href='#'>
+                <div class='card bg-03'>
+                    <span class='card-content'>标题3</span>
+                </div>
+            </a>
+        </div>
+        <div class='card-wrapper'>
+            <a href='#'>
+                <div class='card bg-04'>
+                    <span class='card-content'>标题4</span>
+                </div>
+            </a>
+        </div>
+        <div class='card-wrapper'>
+            <a href='#'>
+                <div class='card bg-05'>
+                    <span class='card-content'>标题5</span>
+                </div>
+            </a>
+        </div>
+        <div class='card-wrapper'>
+            <a href='#'>
+                <div class='card bg-06'>
+                    <span class='card-content'>长标题1</span>
+                </div>
+            </a>
+        </div>
     </div>
-    <!-- //Top Promo -->
+
+    <!--以下无正文 转载或者使用请注释出自梦想匣子 
+
+lssfxy.kuaizhan.com-->
+    <div style="width:960px;margin:0px auto; clear:both; text-
+
+align:center; ">
+        <script src="/statics/js/ad/96090.js" type="text/javascript"></script>
+    </div>
+    <div style="width:960px;margin:0px auto 0px auto; clear:both; 
+
+text-align:center; font-size:12px; line-height:25px; ">
+
 </body>
+
+</html>
