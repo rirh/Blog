@@ -1,8 +1,8 @@
 const express = require('express')
 
 const {
-  PORT,
-  MONGODBADRESS
+  PORT
+  // MONGODBADRESS
 } = require('./config.js')
 
 var bodyParser = require('body-parser')
@@ -11,7 +11,8 @@ var cookieParser = require('cookie-parser')
 
 const app = express()
 const Route = require('./router/index.js')
-var mongoose = require('mongoose')
+// const Mongoose = require('./helper/mongoose.js')
+// var mongoose = require('mongodb').MongoClient
 
 // 设置跨域访问
 app.all('*', function (req, res, next) {
@@ -43,13 +44,18 @@ app.use(session({
 
 // 连接mongodb数据库
 // mongoose.Promise = global.Promise; //不加这句会报错
-mongoose.connect(MONGODBADRESS)
-  .then(() => {
-    console.log('Connected to blogDB Mongoose')
-  })
-  .catch(err => {
-    console.error(`error:${err}`)
-  })
+// mongoose.connect(MONGODBADRESS)
+//   .then((db) => {
+//     console.log(db)
+
+//     console.log('Connected to blogDB Mongoose')
+//   })
+//   .catch(err => {
+//     console.error(`error:${err}`)
+//   })
+// let Mongo = new Mongoose({mongoose})
+// // Mongo.init()
+// Mongo.find()
 
 // 路由守卫
 let routes = new Route({app})

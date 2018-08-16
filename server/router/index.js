@@ -1,7 +1,8 @@
 var fs = require('fs')
-var mongoose = require('mongoose')
 var {enHanceBody} = require('../helper/index.js')
-var MongoDB = require('../helper/dbUtil.js')
+var mongoose = require('mongodb').MongoClient
+var Mongoose = require('../helper/mongoose.js')
+let Mongo = new Mongoose({mongoose})
 
 // const {
 //   MONGODBADRESS
@@ -13,16 +14,11 @@ module.exports = class router {
   }
   goHome () {
     return this.app.get('/home', (req, res) => {
-      // mongoose.blogDB.find()
-      //   .then((res) => {
-      //     console.log(res)
-      //   })
-
-      res.send(enHanceBody({
-        title: 'Programmer',
-        detail: '世界上只有两类人，一类是懂二进制的，另一类是不懂的。',
-        slogan: 'welcome to my blog'
-      }))
+      Mongo.find('home')
+        .then(data => {
+          console.log(data)
+          res.send(enHanceBody(data[0]))
+        })
     })
   }
   getImage () {

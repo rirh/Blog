@@ -71,7 +71,7 @@ source {
         <label >{{data.slogan}}</label>
     </div>
     <video autoplay="autoplay" loop="loop">
-    <source src="https://www.apple.com/105/media/us/mac/family/2018/46c4b917_abfd_45a3_9b51_4e3054191797/anim/musician/large.mp4" type="video/mp4">
+    <source src="../../../assets/video/index.mp4" type="video/mp4">
 </video>
 </div>
 </template>
