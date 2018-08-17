@@ -1,6 +1,14 @@
 export
 {
-  getHome,
-  init
+  getHome
+
 }
   from './home'
+
+export {
+
+  init,
+  getUserInfo
+
+}
+  from './app.js'

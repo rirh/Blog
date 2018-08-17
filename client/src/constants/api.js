@@ -5,3 +5,5 @@ export const GET_HOME_URL = `${host}/home`
 // export const GET_INVENFINDEXPORT_URL = `${host}/inventory/invenFindExport`
 // GET /homePage 首页标语
 export const GET_INIT_URL = `${host}/init`
+// GET /homePage 首页标语
+export const GET_USERINFO_URL = `http://pv.sohu.com/cityjson?ie=utf-8`

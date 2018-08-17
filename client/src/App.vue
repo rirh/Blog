@@ -3,26 +3,27 @@
    <router-view ></router-view>
   </div>
 </template>
-
 <script>
+
 import {init} from '@/actions'
 
 export default {
   name: 'app',
   mounted () {
-    init()
-      .then(
-        response => {
-          console.log(response)
-        }
-      )
+    console.log(window.returnCitySN)
+    this.postInfo()
   },
+
   methods: {
-    testHttp () {
-      this.$fetch('/').then(response => {
-        console.log(response)
-      })
+
+    postInfo () {
+      init()
+        .then(
+          response => {
+            console.log(response)
+          })
     }
+
   }
 }
 </script>
