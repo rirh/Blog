@@ -87,14 +87,22 @@ export default {
       //   scene.background = new THREE.CubeTextureLoader()
       scene.background = new THREE.CubeTextureLoader()
         .load(
+
           [
+            '../../../../public/assets/img/px.jpg',
+            '../../../../public/assets/img/nx.jpg',
+            '../../../../public/assets/img/py.jpg',
+            '../../../../public/assets/img/ny.jpg',
+            '../../../../public/assets/img/pz.jpg',
+            '../../../../public/assets/img/nz.jpg'
+
             // '../../../../assets/img/nx.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/nx.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/px.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/py.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/ny.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/nz.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/pz.jpg'
+            // 'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/nx.jpg',
+            // 'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/px.jpg',
+            // 'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/py.jpg',
+            // 'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/ny.jpg',
+            // 'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/nz.jpg',
+            // 'https://raw.githubusercontent.com/Ctleryes/Blog/master/client/assets/img/pz.jpg'
           ])
       //   scene.background.image = document.querySelectorAll('#box img')
       //     .setPath('../../../../assets/img/')

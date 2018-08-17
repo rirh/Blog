@@ -3,7 +3,7 @@ var mongoose = require('mongodb').MongoClient
 var Mongoose = require('../helper/mongoose.js')
 let Mongo = new Mongoose({mongoose})
 
-exports.home = function (req, res) {
+exports.resume = function (req, res) {
   Mongo.find('home')
     .then(data => {
       if (Array.isArray(data) && data.length > 0) {
