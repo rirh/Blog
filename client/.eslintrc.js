@@ -1,6 +1,3 @@
 module.exports = {
- "extends": [
-     "standard",
-     "plugin:vue/base"
- ]
+    "extends": "standard"
 };

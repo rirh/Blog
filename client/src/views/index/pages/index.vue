@@ -71,7 +71,7 @@ source {
         <label >{{data.slogan}}</label>
     </div>
     <video autoplay="autoplay" loop="loop">
-    <source src="../../../assets/video/index.mp4" type="video/mp4">
+    <source :src="videohost" type="video/mp4">
 </video>
 </div>
 </template>
@@ -79,9 +79,12 @@ source {
 <script>
 import {getHome} from '@/actions'
 import {assign} from 'lodash'
+import {host} from '@/utils/config'
+
 export default {
   data () {
     return {
+        videohost:`${host}/video?name=index`,
       data: {
         title: '',
         detail: '',

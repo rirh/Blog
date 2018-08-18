@@ -29,8 +29,10 @@
 </template>
 
 <script>
+import {host} from '@/utils/config'
 var {Detector} = require('@/assets/js/Detector.js')
 var THREE = require('three')
+
 
 export default {
   name: 'FullScreen',
@@ -86,28 +88,28 @@ export default {
       scene = new THREE.Scene()
       //   scene.background = new THREE.CubeTextureLoader()
       scene.background = new THREE.CubeTextureLoader()
-        .load(
+        // .load(
 
-          [
-            // '../../../../public/assets/img/px.jpg',
-            // '../../../../public/assets/img/nx.jpg',
-            // '../../../../public/assets/img/py.jpg',
-            // '../../../../public/assets/img/ny.jpg',
-            // '../../../../public/assets/img/pz.jpg',
-            // '../../../../public/assets/img/nz.jpg'
+        //   [
+        //     'http://localhost:3000/image?name=nx',
+        //     'http://localhost:3000/image?name=px',
+        //     'http://localhost:3000/image?name=ny',
+        //     'http://localhost:3000/image?name=py',
+        //     'http://localhost:3000/image?name=nz',
+        //     'http://localhost:3000/image?name=pz'
 
-            // '../../../../assets/img/nx.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/nx.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/px.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/py.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/ny.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/nz.jpg',
-            'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/pz.jpg'
-          ])
-      //   scene.background.image = document.querySelectorAll('#box img')
-      //     .setPath('../../../../assets/img/')
-      //     .load(['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg'])
-      //   console.log(scene)
+        //     // '../../../../assets/img/nx.jpg',
+        //     // 'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/nx.jpg',
+        //     // 'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/px.jpg',
+        //     // 'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/py.jpg',
+        //     // 'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/ny.jpg',
+        //     // 'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/nz.jpg',
+        //     // 'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/pz.jpg'
+        //   ])
+        // scene.background.image = document.querySelectorAll('#box img')
+          .setPath(`${host}/image?name=`)
+          .load(['px', 'nx', 'py', 'ny', 'pz', 'nz'])
+        console.log(scene)
       var geometry = new THREE.SphereBufferGeometry(100, 32, 16)
       var material = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: scene.background, refractionRatio: 0.95 })
       material.envMap.mapping = THREE.CubeRefractionMapping
