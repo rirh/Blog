@@ -30,6 +30,7 @@
     "less-loader": "^4.1.0",
     "swiper": "^4.3.5",
     "three": "^0.95.0",
+    "url-loader": "^1.1.1",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17",
     "vuex": "^3.0.1"

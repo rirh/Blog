@@ -6,10 +6,14 @@ module.export = {
     // 开启 CSS source maps?
     sourceMap: false,
     // css预设器配置项
-    loaderOptions: {
+    loaderOptions: [{
       test: /\.less$/,
       loader: 'style-loader!css-loader!less-loader'
-    },
+
+    },  {
+      test: /\.(jpe?g|gif|png)$/,
+      use: 'url-loader'
+    }],
     // 启用 CSS modules for all css / pre-processor files.
     modules: true
   },
