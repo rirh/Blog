@@ -1,4 +1,31 @@
-module.export = {
+module.exports = {
+  // 基本路径
+  baseUrl: '/',
+  // 输出文件目录
+  outputDir: 'dist',
+  // eslint-loader 是否在保存的时候检查
+  lintOnSave: true,
+  // use the full build with in-browser compiler?
+  // https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
+  // compiler: false,
+  // webpack配置
+  // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
+  chainWebpack: (config) => {
+    // config.module
+    //   .rule('')
+    //   .test(/\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/)
+    //   .use('url-loader')
+    //   .loader('url-loader?limit=8192')
+    //   .end();
+  },
+  configureWebpack: () => {
+
+  },
+  // vue-loader 配置项
+  // https://vue-loader.vuejs.org/en/options.html
+  // vueLoader: {},
+  // 生产环境是否生成 sourceMap 文件
+  productionSourceMap: true,
   // css相关配置
   css: {
     // 是否使用css分离插件 ExtractTextPlugin
@@ -6,31 +33,33 @@ module.export = {
     // 开启 CSS source maps?
     sourceMap: false,
     // css预设器配置项
-    loaderOptions: [{
-      test: /\.less$/,
-      loader: 'style-loader!css-loader!less-loader'
-
-    },  {
-      test: /\.(jpe?g|gif|png)$/,
-      use: 'url-loader'
-    }],
+    loaderOptions: {},
     // 启用 CSS modules for all css / pre-processor files.
-    modules: true
+    modules: false,
   },
-  // ...
-  chainWebpack: config => {
-    // https://github.com/vuejs/vue-cli/issues/1104
-    // typescript building error when import .vue file with separate .ts file, 即在 ts 文件中无法引入 .vue 组件;
-    // 下面的代码解决上面这个 bug, 解决方法来源: https://github.com/Realytics/fork-ts-checker-webpack-plugin/issues/111
-    // config.plugins.delete('fork-ts-checker')
-    // config.module
-    //   .rule('ts')
-    //   .use('ts-loader')
-    //   .tap(options => {
-    //     return {
-    //       'transpileOnly': false
-    //     }
-    //   })
-  }
-
-}
+  // use thread-loader for babel & TS in production build
+  // enabled by default if the machine has more than 1 cores
+  // parallel: require('os').cpus().length > 1,
+  // 是否启用dll
+  // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#dll-mode
+  // dll: false,
+  // PWA 插件相关配置
+  // see https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-pwa
+  pwa: {},
+  // webpack-dev-server 相关配置
+  devServer: {
+    open: process.platform === 'darwin',
+    host: '0.0.0.0',
+    port: 8080,
+    https: false,
+    hotOnly: false,
+    proxy: null, // 设置代理
+    before: (app) => {
+      console.log(`app:${app}`);
+    },
+  },
+  // 第三方插件配置
+  pluginOptions: {
+    // ...
+  },
+};

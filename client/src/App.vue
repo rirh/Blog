@@ -1,31 +1,31 @@
 <template>
   <div id="app">
-   <router-view ></router-view>
+    <router-view />
   </div>
 </template>
 <script>
 
-import {init} from '@/actions'
+import { init } from '@/actions';
 
 export default {
-  name: 'app',
-  mounted () {
-    console.log(window.returnCitySN)
-    this.postInfo()
+  name: 'App',
+  mounted() {
+    this.postInfo();
   },
 
   methods: {
 
-    postInfo () {
+    postInfo() {
       init()
         .then(
-          response => {
-            console.log(response)
-          })
-    }
+          (response) => {
+            console.log(response);
+          },
+        );
+    },
 
-  }
-}
+  },
+};
 </script>
 
 <style>

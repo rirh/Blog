@@ -62,44 +62,51 @@ source {
 </style>
 
 <template>
-<div class="wapper-content">
+  <div class="wapper-content">
     <div class="tips">
-        <div class="title">
-            <h2>{{data.title}}</h2>
-            <p>{{data.detail}}</p>
-        </div>
-        <label >{{data.slogan}}</label>
+      <div class="title">
+        <h2>{{ data.title }}</h2>
+        <p>{{ data.detail }}</p>
+      </div>
+      <label>{{ data.slogan }}</label>
     </div>
-    <video autoplay="autoplay" loop="loop">
-    <source :src="videohost" type="video/mp4">
-</video>
-</div>
+    <video
+      autoplay="autoplay"
+      loop="loop"
+    >
+      <source
+        :src="videohost"
+        type="video/mp4"
+      >
+    </video>
+  </div>
 </template>
 
 <script>
-import {getHome} from '@/actions'
-import {assign} from 'lodash'
-import {host} from '@/utils/config'
+import { getHome } from '@/actions';
+import { assign } from 'lodash';
+import { host } from '@/utils/config';
 
 export default {
-  data () {
+  data() {
     return {
-        videohost:`${host}/video?name=index`,
+      videohost: `${host}/video?name=index`,
+      //   videohost: '../../../assets/video/index.mp4',
       data: {
         title: '',
         detail: '',
-        slogan: ''
-      }
-    }
+        slogan: '',
+      },
+    };
   },
-  mounted () {
+  mounted() {
     getHome()
-      .then(({data}) => {
-        assign(this.data, data)
-      })
+      .then(({ data }) => {
+        assign(this.data, data);
+      });
   },
   methods: {
 
-  }
-}
+  },
+};
 </script>

@@ -1,101 +1,140 @@
 
 <template>
-<div class="swiper-container-layout">
-  <Icon class="user-layout" style="color:#999" type="md-arrow-round-back" size='46' @click="goBack" />
-  <Icon class="menu-layout" :type="menu?'md-menu':'md-close'" size='46' @click="openMenu" />
-  <div class="audio-layout" @click="switchAudio">
-    <img :class="{'play':true,'pause':!play}" src="../../../assets/img/Nevada.jpeg" alt="">
-    <Icon class="icon-layout" :type="play?'ios-play':'ios-pause'" size='70' />
-    <audio id="nevada_audio" autoplay="autoplay">
-      <source :src="audiohost" type="audio/mpeg" />
-    </audio>
-  </div>
-  <!-- <Avatar class="user-layout" icon="ios-person" size="large"   src="https://i.loli.net/2017/08/21/599a521472424.jpg"/> -->
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div :style="{ backgroundImage:'url(' + str.url + ')' }" v-for="str in listImg" class="swiper-slide">
-        <component :is="pages.component"></component>
-      </div>
+  <div class="swiper-container-layout">
+    <Icon
+      class="user-layout"
+      style="color:#999"
+      type="md-arrow-round-back"
+      size="46"
+      @click="goBack"
+    />
+    <Icon
+      class="menu-layout"
+      :type="menu?'md-menu':'md-close'"
+      size="46"
+      @click="openMenu"
+    />
+    <div
+      class="audio-layout"
+      @click="switchAudio"
+    >
+      <img
+        :class="{'play':true,'pause':!play}"
+        src="../../../../public/assets/img/Nevada.jpeg"
+        alt=""
+      >
+      <Icon
+        class="icon-layout"
+        :type="play?'ios-play':'ios-pause'"
+        size="40"
+      />
+      <audio
+        id="nevada_audio"
+        ref="nevadaAudio"
+        autoplay="autoplay"
+      >
+        <source
+          :src="audio.host"
+          type="audio/mpeg"
+        >
+      </audio>
     </div>
-    <div class="swiper-pagination swiper-pagination-white"></div>
+    <!-- <Avatar class="user-layout" icon="ios-person" size="large"   src="https://i.loli.net/2017/08/21/599a521472424.jpg"/> -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div
+          v-for="(swiper,index) in swiperlist"
+          :key="index"
+          :style="{ backgroundImage:'url(' + swiper.url + ')' }"
+          class="swiper-slide"
+        >
+          <component :is="swiper.component" />
+        </div>
+      </div>
+      <div class="swiper-pagination swiper-pagination-white" />
+    </div>
   </div>
-</div>
 </template>
 
 <script>
-import {
-  host
-} from "@/utils/config";
-import Swiper from "swiper";
-import "swiper/dist/css/swiper.min.css";
-import index from "@/views/about/pages/index-slide";
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
+import page1 from '@/views/about/pages/index-slide/page1';
+import page2 from '@/views/about/pages/index-slide/page2';
+import page3 from '@/views/about/pages/index-slide/page3';
+import page4 from '@/views/about/pages/index-slide/page4';
+import page5 from '@/views/about/pages/index-slide/page5';
+import page6 from '@/views/about/pages/index-slide/page6';
+// import index from '@/views/about/pages/index-slide/page1';
+// import index from '@/views/about/pages/index-slide/page1';
+// import index from '@/views/about/pages/index-slide/page1';
+import { host } from '@/utils/config';
+
 export default {
   data() {
     return {
       menu: true,
       play: true,
-      audiohost: `${host}/audio?name=Nevada`,
-      listImg: [{
-          url: ""
-        },
-        {
-          url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534224056715&di=b08756b62f56cf623198510e37bcd139&imgtype=0&src=http%3A%2F%2Fimg17.3lian.com%2Fd%2Ffile%2F201702%2F07%2F423129bac96daaa0cb7575c4a701158a.jpg"
-        },
-        {
-          url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534224056716&di=7382d3995e9536e991fc35ae3e7cbcb2&imgtype=0&src=http%3A%2F%2Fimg05.tooopen.com%2Fimages%2F20150413%2Ftooopen_sy_118262313836.jpg"
-        },
-        {
-          url: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534224056713&di=f0ff1b0a142e3fc56442f8e7bc1e2b78&imgtype=0&src=http%3A%2F%2Fimg1.3lian.com%2F2015%2Fa1%2F136%2Fd%2F242.jpg"
-        }
-      ],
-      pages: {
-        component: index
+      audio: {
+        el: document.querySelector('#nevada_audio'),
+        host: `${host}/audio?name=Nevada`,
       },
-      styleObject() {
-        return {
-          transform: `translate(${this.play ? "-70%" : "56%"}, '-56%')`
-        };
-      }
+      swiperlist: [
+        { url: '', component: page1 },
+        { url: '', component: page2 },
+        { url: '', component: page3 },
+        { url: '', component: page4 },
+        { url: '', component: page5 },
+        { url: '', component: page6 },
+
+      ],
     };
   },
   mounted() {
-    var swiper = new Swiper(".swiper-container", {
-      direction: "vertical",
+    const swiper = new Swiper('.swiper-container', {
+      direction: 'vertical',
       // parallax: true,
       autoplay: false, // 可选选项，自动滑动
       roundLengths: true,
-      effect: "cube",
+      // effect: 'cube',
+      effect: 'coverflow',
       zoom: true,
       mousewheel: {
-        releaseOnEdges: true
+        releaseOnEdges: true,
       },
       pagination: {
-        el: ".swiper-pagination",
-        type: "bullets",
-        clickable: true
-      }
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true,
+      },
     });
     console.log(swiper);
+    this.$refs.nevadaAudio.addEventListener(
+      'ended',
+      () => {
+        this.play = !this.play;
+      },
+      false,
+    );
   },
   methods: {
     goBack() {
       this.$router.push({
-        name: "index"
+        name: 'index',
       });
     },
     openMenu() {
       this.menu = !this.menu;
     },
     switchAudio() {
-      var audio = document.querySelector("#nevada_audio");
       if (this.play) {
-        audio.pause();
+        this.$refs.nevadaAudio.pause();
       } else {
-        audio.play();
+        this.$refs.nevadaAudio.play();
       }
       this.play = !this.play;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -104,6 +143,7 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
+  background: #f4f4f4;
 }
 
 .swiper-container {
@@ -169,6 +209,7 @@ export default {
   border-radius: 50%;
   height: 80%;
   width: 80%;
+  margin: 10%;
 }
 
 .play {
@@ -185,9 +226,10 @@ export default {
   display: none;
   opacity: 0.6;
   position: absolute;
-  top: 17%;
-  left: 14%;
+  top: 50%;
+  left: 50%;
   color: #fff;
+  transform: translate(-50%, -50%);
 }
 
 .audio-layout:hover .icon-layout {
@@ -204,9 +246,7 @@ export default {
 }
 
 @-webkit-keyframes rotate
-/* Safari 与 Chrome */
-
-{
+/* Safari 与 Chrome */ {
   from {
     transform: rotate(0deg);
   }

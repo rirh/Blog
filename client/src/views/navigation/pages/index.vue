@@ -1,35 +1,36 @@
 <template>
-  <div >
-    <crystal-ball @gettingStart='start'/>
+  <div>
+    <crystal-ball @gettingStart="start" />
   </div>
 </template>
 
 <script>
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
 
-import crystalBall from '../components/CrystalBall'
+import crystalBall from '../components/CrystalBall';
+
 export default {
-  name: 'navigation',
+  name: 'Navigation',
   components: {
-    crystalBall
+    crystalBall,
   },
-  data: function () {
+  data() {
     return {
-    }
+    };
   },
 
-  mounted () {
+  mounted() {
     if (Cookies.get('firstNavigation')) {
-      this.$router.push({name: 'index'})
+      this.$router.push({ name: 'index' });
     }
   },
   methods: {
-    start () {
-      Cookies.set('firstNavigation', true)
-      this.$router.push({name: 'index'})
-    }
-  }
-}
+    start() {
+      Cookies.set('firstNavigation', true);
+      this.$router.push({ name: 'index' });
+    },
+  },
+};
 </script>
 
 <style>

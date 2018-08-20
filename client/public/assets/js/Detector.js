@@ -8,24 +8,24 @@ export var Detector = {
   canvas: !!window.CanvasRenderingContext2D,
   webgl: (function () {
     try {
-      var canvas = document.createElement('canvas')
-      return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')))
+      let canvas = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
     } catch (e) {
-      return false
+      return false;
     }
-  })(),
+  }()),
   webgl2: (function () {
     try {
-      var canvas = document.createElement('canvas')
-      return !!(window.WebGL2RenderingContext && (canvas.getContext('webgl2')))
+      let canvas = document.createElement('canvas');
+      return !!(window.WebGL2RenderingContext && (canvas.getContext('webgl2')));
     } catch (e) {
-      return false
+      return false;
     }
-  })(),
+  }()),
   workers: !!window.Worker,
   fileapi: window.File && window.FileReader && window.FileList && window.Blob,
 
-  getWebGLErrorMessage: function () {
+  getWebGLErrorMessage () {
     var element = document.createElement('div')
     element.id = 'webgl-error-message'
     element.style.fontFamily = 'monospace'
@@ -51,7 +51,7 @@ export var Detector = {
     return element
   },
 
-  addGetWebGLMessage: function (parameters) {
+  addGetWebGLMessage (parameters) {
     var parent, id, element
 
     parameters = parameters || {}
@@ -63,6 +63,6 @@ export var Detector = {
     element.id = id
 
     parent.appendChild(element)
-  }
+  },
 
-}
+};
