@@ -4,15 +4,19 @@
       <Col
         v-for="(item,index) in prolist"
         :key="index"
-        span="24"
+        :span="24/prolist.length"
+        style="text-align:center"
       >
-      <img
-        :src="item.icon"
-        alt=""
-      >
-      <label for="">
+      <div>
+        <img
+          :src="item.icon"
+          alt=""
+        >
+      </div>
+
+      <p style="">
         {{ item.name }}
-      </label>
+      </p>
       </Col>
     </Row>
   </div>
@@ -28,6 +32,16 @@ export default {
       prolist: [{
         icon: `${host}/images?name=sinogo4Student.png`,
         name: '名校云学生端',
+      },
+      {
+        icon: `${host}/images?name=sinogo4Teacher.png`,
+        name: '名校云学生端',
+      }, {
+        icon: `${host}/images?name=sinogoMatch.png`,
+        name: '围棋赛事',
+      }, {
+        icon: `${host}/images?name=sinogoMatch.png`,
+        name: '名校云家长端',
       }],
     };
   },

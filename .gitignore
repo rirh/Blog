@@ -1,8 +1,10 @@
 client/node_modules
 client/dist
 server/node_modules
-BlogAPI/node_modules
+BlogAPI
+.vscode
 .DS_Store 
+
 
 # local env files
 .env.local
