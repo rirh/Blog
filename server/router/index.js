@@ -1,75 +1,73 @@
-var fs = require('fs')
+const fs = require('fs')
 
-var {
+const {
   home
 } = require('./home.js')
-var {
+const {
   resume
 } = require('./resume.js')
-var {
+const {
   init
 } = require('./Initialization.js')
+const path = require('path').resolve(__dirname, '..')
 
 module.exports = class router {
-  constructor(options) {
+  constructor (options) {
     this.app = options.app
   }
   // 获取首页数据
-  getInit() {
+  getInit () {
     return this.app.get('/init', init)
   }
-  goHome() {
+  goHome () {
     return this.app.get('/home', home)
   }
-  getResume() {
+  getResume () {
     return this.app.get('/resume', resume)
   }
-  getImage() {
+  getImage () {
     return this.app.get('/image', (req, res) => {
-      fs.readFile(`/Volumes/admin/二进制/blog/Blog/server/static/image/${req.query.name}.jpg`, 'binary', function (err, file) {
+      fs.readFile(`${path}/static/image/${req.query.name}.jpg`, 'binary', function (err, file) {
         if (err) {
-          console.log(err);
-          return;
+          console.log(err)
         } else {
           res.writeHead(200, {
             'Content-Type': 'image/jpeg'
-          });
-          res.write(file, 'binary');
-          res.end();
+          })
+          res.write(file, 'binary')
+          res.end()
         }
-      });
+      })
     })
   }
-  getAudio() {
+  getAudio () {
     return this.app.get('/audio', (req, res) => {
-      fs.readFile(`/Volumes/admin/二进制/blog/Blog/server/static/audio/${req.query.name}.mp3`, 'binary', function (err, file) {
+      fs.readFile(`${path}/static/audio/${req.query.name}.mp3`, 'binary', function (err, file) {
         if (err) {
-          console.log(err);
-          return;
+          console.log(err)
         } else {
           res.writeHead(200, {
             'Content-Type': 'audio/mp3'
-          });
-          res.write(file, 'binary');
-          res.end();
+          })
+          res.write(file, 'binary')
+          res.end()
         }
-      });
+      })
     })
   }
-  getVedio() {
+  getVedio () {
     return this.app.get('/video', (req, res) => {
-      fs.readFile(`/Volumes/admin/二进制/blog/Blog/server/static/video/${req.query.name}.mp4`, 'binary', function (err, file) {
+      fs.readFile(`${path}/static/video/${req.query.name}.mp4`, 'binary', function (err, file) {
         if (err) {
-          console.log(err);
-          return;
+          console.log(err)
         } else {
           res.writeHead(200, {
             'Content-Type': 'video/mpeg4'
-          });
-          res.write(file, 'binary');
-          res.end();
+          })
+          res.write(file, 'binary')
+          res.end()
         }
-      });
+      })
     })
   }
 }

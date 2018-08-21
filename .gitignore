@@ -1,8 +1,8 @@
-.DS_Store
 client/node_modules
 client/dist
 server/node_modules
 BlogAPI/node_modules
+.DS_Store 
 
 # local env files
 .env.local
