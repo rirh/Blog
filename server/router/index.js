@@ -40,6 +40,21 @@ module.exports = class router {
       })
     })
   }
+  getImageCustom () {
+    return this.app.get('/images', (req, res) => {
+      fs.readFile(`${path}/static/image/${req.query.name}`, 'binary', function (err, file) {
+        if (err) {
+          console.log(err)
+        } else {
+          res.writeHead(200, {
+            'Content-Type': 'image/jpeg'
+          })
+          res.write(file, 'binary')
+          res.end()
+        }
+      })
+    })
+  }
   getAudio () {
     return this.app.get('/audio', (req, res) => {
       fs.readFile(`${path}/static/audio/${req.query.name}.mp3`, 'binary', function (err, file) {

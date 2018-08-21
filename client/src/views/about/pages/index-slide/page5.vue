@@ -1,27 +1,34 @@
 <template>
-  <div>
-    <Card
-      :bordered="false"
-      class="content-page1"
-    >
-      <h1>{{ data.title }} </h1>
-      <h3> {{ data.details }}</h3>
-      <h3>{{ data.emil }}</h3>
-    </Card>
-
+  <div style="margin-top:10%">
+    <Row>
+      <Col
+        v-for="(item,index) in prolist"
+        :key="index"
+        span="24"
+      >
+      <img
+        :src="item.icon"
+        alt=""
+      >
+      <label for="">
+        {{ item.name }}
+      </label>
+      </Col>
+    </Row>
   </div>
 </template>
 <script>
+import { host } from '@/utils/config';
+
 export default {
   name: 'Name',
   components: {},
   data() {
     return {
-      data: {
-        title: 'Hello i\'m charles',
-        details: 'Life doesn’t get easier, you just get stronger',
-        emil: 'only_tigerhu@163.com',
-      },
+      prolist: [{
+        icon: `${host}/images?name=sinogo4Student.png`,
+        name: '名校云学生端',
+      }],
     };
   },
   mounted() {},
@@ -30,15 +37,13 @@ export default {
 </script>
 
 <style scoped>
-.content-page1 {
+.content-page5 {
 
   /* width: 30%;
   height: 20%; */
-  position: fixed;
-  top: 45%;
-  left: 50%;
-  background-color: rgba(255, 255, 255, 0);
-  transform: translate(-50%, -50%);
+margin-top: 10%;
+height: 100%;
+width: 100%;
 }
 .content-page1:hover{
     background-color: rgba(255, 255, 255, 0.6);

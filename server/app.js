@@ -26,7 +26,7 @@ app.all('*', function (req, res, next) {
 })
 // 设置静态资源路径
 
-app.use('/static',express.static('./static'))
+app.use('/static', express.static('./static'))
 
 // 解析 application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -66,6 +66,7 @@ routes.getImage()
 routes.getInit()
 routes.getAudio()
 routes.getVedio()
+routes.getImageCustom()
 
 app.listen(PORT, () => {
   console.log(`server on ${PORT}`)
