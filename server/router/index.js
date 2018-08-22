@@ -1,3 +1,7 @@
+var bodyParser = require('body-parser')
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 const fs = require('fs')
 
 const {
@@ -9,6 +13,9 @@ const {
 const {
   init
 } = require('./Initialization.js')
+const {
+  login, register
+} = require('./user.js')
 const path = require('path').resolve(__dirname, '..')
 
 module.exports = class router {
@@ -24,6 +31,12 @@ module.exports = class router {
   }
   getResume () {
     return this.app.get('/resume', resume)
+  }
+  postRegister () {
+    return this.app.post('/register', urlencodedParser, register)
+  }
+  postLogin () {
+    return this.app.post('/login', urlencodedParser, login)
   }
   getImage () {
     return this.app.get('/image', (req, res) => {

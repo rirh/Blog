@@ -27,6 +27,6 @@ const setting = {
     //   merge(state.sectionRequest, value)
     // }
 
-  }
-}
-export default setting
+  },
+};
+export default setting;

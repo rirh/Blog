@@ -147,7 +147,7 @@ module.exports = class Mongoose {
         .then(db => {
           var dbo = db.db(DBNAME)
           dbo.collection(name).find(where).toArray(function (err, res) { // 返回集合中所有数据
-            if (res) {
+            if (res.length) {
               resolve(res)
             } else {
               reject(err)

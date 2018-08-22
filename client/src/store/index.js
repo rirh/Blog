@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import resume from './modules/resume'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import resume from './modules/resume';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
@@ -15,8 +15,8 @@ const store = new Vuex.Store({
 
   },
   modules: {
-    resume
-  }
-})
+    resume,
+  },
+});
 
-export default store
+export default store;

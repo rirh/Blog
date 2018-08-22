@@ -6,14 +6,16 @@
       <Menu
         mode="horizontal"
         theme="dark"
-        active-name="1"
+        :active-name="name"
         style=" background: rgba(0,0,0,0.6);"
+        @on-select="logout"
       >
-        <Row
-          type="flex"
-          justify="center"
-        >
-          <Col span="10">
+        <Row>
+          <Col
+            offset="6"
+            span="10"
+            style="display:flex;align-items: center;justify-content:center;"
+          >
           <MenuItem
             name="1"
             to="/index"
@@ -63,7 +65,39 @@
               >大漠博客</a></MenuItem>
             </MenuGroup>
           </Submenu>
+            </Col>
+          <Col
+            offset="4"
+            span="4"
+            style="float:right"
+          >
 
+          <MenuItem
+            v-show="!islogin"
+
+            name="6"
+            to="/login"
+          >
+            登陆
+          </MenuItem>
+          <MenuItem
+            v-show="!islogin"
+            name="7"
+            to="/register"
+          >
+            注册
+          </MenuItem>
+          <Submenu
+            v-show="islogin"
+            name="8"
+          >
+            <template slot="title">
+              {{ userInfo }}
+            </template>
+            <MenuItem
+              name="8-1"
+            >退出登陆</MenuItem>
+          </Submenu>
             </Col>
         </Row>
         <!-- <Menu mode="horizontal" theme="primary" active-name="1"> -->
@@ -80,20 +114,43 @@ export default {
   name: 'Index',
   data() {
     return {
-
+      name: '1',
     };
   },
-
+  computed: {
+    islogin() {
+      return Cookies.get('user');
+    },
+    userInfo() {
+      if (Cookies.get('user')) {
+        return JSON.parse(Cookies.get('user')).username;
+      }
+      return false;
+    },
+  },
   mounted() {
     if (Cookies.get('firstNavigation')) {
       this.$router.push({ name: 'index' });
     } else {
       this.$router.push({ name: 'navigation' });
     }
+    if (Cookies.get('user')) {
+      this.name = '2';
+      this.$router.push({ name: 'blog' });
+    }
+  },
+  methods: {
+    logout(name) {
+      if (name === '8-1') {
+        Cookies.remove('user');
+        this.$router.push({ name: 'login' });
+      }
+    },
   },
 };
 </script>
 
 <style>
 @import "./index.less";
+
 </style>

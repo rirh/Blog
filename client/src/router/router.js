@@ -5,6 +5,8 @@ import index from '@/views/index/pages';
 import blog from '@/views/blog/pages/main';
 import utils from '@/views/utils/pages';
 import about from '@/views/about/pages';
+import login from '@/views/user/pages/login';
+import register from '@/views/user/pages/register';
 
 // import detailAbout from '@/views/about/pages/index-detail';
 
@@ -30,6 +32,16 @@ export const route = [
         component: utils,
       },
     ],
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: login,
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: register,
   },
   {
     path: '/navigation',

@@ -20,20 +20,7 @@
         </Col>
       </Row>
       <br>
-      <!-- <Row>
-        <Col>
-        <h3>{{ detail }}</h3>
-        </Col>
-      </Row>
-      <br>
-      <Row>
-        <Col>
-        <h3>{{ ps }}</h3>
-        </Col>
-      </Row> -->
-
-
-    </h4></Card>
+    </Card>
 
   </div>
 </template>

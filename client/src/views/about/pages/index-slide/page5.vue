@@ -19,6 +19,25 @@
       </p>
       </Col>
     </Row>
+    <Row>
+      <Col
+        v-for="(item,index) in prolist2"
+        :key="index"
+        :span="24/prolist.length"
+        style="text-align:center"
+      >
+      <div>
+        <img
+          :src="item.icon"
+          alt=""
+        >
+      </div>
+
+      <p style="">
+        {{ item.name }}
+      </p>
+      </Col>
+    </Row>
   </div>
 </template>
 <script>
@@ -35,13 +54,20 @@ export default {
       },
       {
         icon: `${host}/images?name=sinogo4Teacher.png`,
-        name: '名校云学生端',
+        name: '名校云老师端',
       }, {
+        icon: `${host}/images?name=sinogoParent.png`,
+        name: '名校云家长端',
+      }, {
+        icon: `${host}/images?name=sinogoMatch.png`,
+        name: '围棋赛事',
+      }],
+      prolist2: [{
         icon: `${host}/images?name=sinogoMatch.png`,
         name: '围棋赛事',
       }, {
         icon: `${host}/images?name=sinogoMatch.png`,
-        name: '名校云家长端',
+        name: '围棋赛事',
       }],
     };
   },

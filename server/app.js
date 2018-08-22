@@ -67,6 +67,9 @@ routes.getInit()
 routes.getAudio()
 routes.getVedio()
 routes.getImageCustom()
+// 登陆注册
+routes.postLogin()
+routes.postRegister()
 
 app.listen(PORT, () => {
   console.log(`server on ${PORT}`)

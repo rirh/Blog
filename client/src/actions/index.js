@@ -1,14 +1,19 @@
 export
 {
-  getHome
+  getHome,
 
 }
-  from './home'
+  from './home';
 
 export {
 
   init,
-  getUserInfo
+  getUserInfo,
 
 }
-  from './app.js'
+  from './app.js';
+export {
+  postLogin,
+  postRegister,
+}
+  from './user.js';
