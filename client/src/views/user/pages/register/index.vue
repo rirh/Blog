@@ -65,61 +65,61 @@
 </template>
 
 <script>
-import { postRegister } from "@/actions";
+import { postRegister } from '@/actions';
 
 export default {
   data() {
     return {
       formInline: {
-        user: "",
-        password: ""
+        user: '',
+        password: '',
       },
       ruleInline: {
         user: [
-          { required: true, message: "请输入邮箱", trigger: "blur" },
-          { type: "email", message: "请输入正确的邮箱地址", trigger: "blur" }
+          { required: true, message: '请输入邮箱', trigger: 'blur' },
+          { type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur' },
         ],
         password: [
           {
             required: true,
-            message: "请输入密码",
-            trigger: "blur"
+            message: '请输入密码',
+            trigger: 'blur',
           },
           {
-            type: "string",
+            type: 'string',
             min: 6,
-            message: "密码长度不能小于6位",
-            trigger: "blur"
-          }
-        ]
-      }
+            message: '密码长度不能小于6位',
+            trigger: 'blur',
+          },
+        ],
+      },
     };
   },
   methods: {
     handleSubmit(name) {
-      this.$refs[name].validate(valid => {
+      this.$refs[name].validate((valid) => {
         if (valid) {
           postRegister({
             username: this.formInline.user,
-            password: this.formInline.password
+            password: this.formInline.password,
           }).then(({ code, data: { msg } }) => {
             if (code === 200) {
               this.$Notice.info({
-                title: "提示",
-                desc: msg
+                title: '提示',
+                desc: msg,
               });
-              this.$router.push({ name: "login" });
+              this.$router.push({ name: 'login' });
             } else {
               this.$Notice.error({
-                title: "提示",
-                desc: msg
+                title: '提示',
+                desc: msg,
               });
             }
           });
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

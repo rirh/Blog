@@ -13,3 +13,5 @@ export const GET_USERINFO_URL = 'http://pv.sohu.com/cityjson?ie=utf-8';
 export const POST_LOGIN_URL = `${host}/login`;
 // 注册
 export const POST_REGISTER_URL = `${host}/register`;
+//
+export const POST_BLOG_URL = `${host}/blog`;

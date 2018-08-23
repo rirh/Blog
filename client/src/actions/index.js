@@ -17,3 +17,7 @@ export {
   postRegister,
 }
   from './user.js';
+export {
+  postBlog,
+}
+  from './blog.js';

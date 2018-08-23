@@ -8,6 +8,10 @@ export default {
   data() {
     return {};
   },
+  mounted() {
+    // href: 'https://tool.lu/',
+    window.location.href = 'https://tool.lu/';
+  },
   methods: {},
 };
 </script>

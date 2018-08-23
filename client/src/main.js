@@ -6,6 +6,7 @@ import App from './App.vue';
 // import '@/theme/index.less'
 import 'iview/dist/styles/iview.css';
 import 'iview-editor/dist/iview-editor.css';
+// import './index.less';
 
 import { routers } from './router';
 

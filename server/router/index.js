@@ -14,8 +14,12 @@ const {
   init
 } = require('./Initialization.js')
 const {
-  login, register
+  login,
+  register
 } = require('./user.js')
+const {
+  createBlog
+} = require('./blog.js')
 const path = require('path').resolve(__dirname, '..')
 
 module.exports = class router {
@@ -37,6 +41,9 @@ module.exports = class router {
   }
   postLogin () {
     return this.app.post('/login', urlencodedParser, login)
+  }
+  postBlog () {
+    return this.app.post('/blog', urlencodedParser, createBlog)
   }
   getImage () {
     return this.app.get('/image', (req, res) => {

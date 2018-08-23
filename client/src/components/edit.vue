@@ -7,38 +7,41 @@
 <script>
 import Editor from 'wangeditor';
 import 'wangeditor/release/wangEditor.min.css';
+import { oneOf } from '@/utils/helper';
 
 export default {
   name: 'Editor',
-  data() {
-    return {
-      value: {
-        type: String,
-        default: '',
-      },
-      /**
+  props: {
+    value: {
+      type: String,
+      default: '',
+    },
+    /**
      * 绑定的值的类型, enum: ['html', 'text']
      */
-      valueType: 'html',
-      /**
+    valueType: {
+      type: String,
+      default: 'html',
+      validator: val => oneOf(val, ['html', 'text']),
+    },
+    /**
      * @description 设置change事件触发时间间隔
      */
-      changeInterval: {
-        type: Number,
-        default: 200,
-      },
-      /**
+    changeInterval: {
+      type: Number,
+      default: 200,
+    },
+    /**
      * @description 是否开启本地存储
      */
-      cache: {
-        type: Boolean,
-        default: true,
-      },
-    };
+    cache: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     editorId() {
-      return `editor${this.valueType}`;
+      return `editor`;
     },
   },
   mounted() {
@@ -55,6 +58,16 @@ export default {
     // 如果本地有存储加载本地存储内容
     const html = localStorage.editorCache;
     if (html) this.editor.txt.html(html);
+  },
+  methods: {
+    oneOf(value, validList) {
+      for (let i = 0; i < validList.length; i++) {
+        if (value === validList[i]) {
+          return true;
+        }
+      }
+      return false;
+    },
   },
 };
 </script>

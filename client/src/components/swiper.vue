@@ -1,30 +1,36 @@
 <template>
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide" v-for="str in listImg" :style="{ backgroundImage: 'url(' + str.url + ')' }"></div>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div
+        v-for="str in listImg"
+        :key="str"
+        class="swiper-slide"
+        :style="{ backgroundImage: 'url(' + str.url + ')' }"
+      />
+    </div>
+    <div class="swiper-pagination swiper-pagination-white" />
   </div>
-  <div class="swiper-pagination swiper-pagination-white"></div>
-</div>
 </template>
 
 <script>
-import Swiper from 'swiper'
-import 'swiper/dist/css/swiper.min.css'
+import Swiper from 'swiper';
+import 'swiper/dist/css/swiper.min.css';
+
 export default {
   props: ['listImg'],
-  mounted () {
-    var swiper = new Swiper('.swiper-container', {
+  mounted() {
+    const swiper = new Swiper('.swiper-container', {
       pagination: '.swiper-pagination',
       paginationClickable: true,
       loop: true,
       speed: 600,
       autoplay: 4000,
-      onTouchEnd: function () {
-        swiper.startAutoplay()
-      }
-    })
-  }
-}
+      onTouchEnd() {
+        swiper.startAutoplay();
+      },
+    });
+  },
+};
 </script>
 
 <style scoped>

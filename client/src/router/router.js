@@ -7,10 +7,12 @@ import utils from '@/views/utils/pages';
 import about from '@/views/about/pages';
 import login from '@/views/user/pages/login';
 import register from '@/views/user/pages/register';
+import listblog from '@/views/blog/pages/main/list';
+import writeblog from '@/views/blog/pages/main/write';
 
 // import detailAbout from '@/views/about/pages/index-detail';
 
-export const route = [
+export default [
   {
     path: '/',
     name: 'index',
@@ -26,6 +28,19 @@ export const route = [
         path: '/blog',
         name: 'blog',
         component: blog,
+        redirect: '/listblog',
+        children: [
+          {
+            path: '/listblog',
+            name: 'listblog',
+            component: listblog,
+          },
+          {
+            path: '/writeblog',
+            name: 'writeblog',
+            component: writeblog,
+          },
+        ],
       }, {
         path: '/utils',
         name: 'utils',

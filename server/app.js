@@ -71,6 +71,9 @@ routes.getImageCustom()
 routes.postLogin()
 routes.postRegister()
 
+// 博客系统
+routes.postBlog()
+
 app.listen(PORT, () => {
   console.log(`server on ${PORT}`)
 })
