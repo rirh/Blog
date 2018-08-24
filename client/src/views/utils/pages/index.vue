@@ -9,8 +9,9 @@ export default {
     return {};
   },
   mounted() {
+
     // href: 'https://tool.lu/',
-    window.location.href = 'https://tool.lu/';
+    // window.location.href = 'https://tool.lu/';
   },
   methods: {},
 };

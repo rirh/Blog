@@ -89,7 +89,7 @@ export default {
     },
   },
   mounted() {
-    getBlog({});
+    // getBlog({});
   },
   methods: {
 

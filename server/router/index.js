@@ -1,6 +1,8 @@
 var bodyParser = require('body-parser')
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({
+  extended: false
+})
 
 const fs = require('fs')
 
@@ -20,6 +22,7 @@ const {
 const {
   createBlog
 } = require('./blog.js')
+
 const path = require('path').resolve(__dirname, '..')
 
 module.exports = class router {
@@ -47,7 +50,7 @@ module.exports = class router {
   }
   getImage () {
     return this.app.get('/image', (req, res) => {
-      fs.readFile(`${path}/static/image/${req.query.name}.jpg`, 'binary', function (err, file) {
+      fs.readFile(`${path}/static/image/${req.query.name}.jpg`, 'binary', (err, file) => {
         if (err) {
           console.log(err)
         } else {
@@ -62,7 +65,7 @@ module.exports = class router {
   }
   getImageCustom () {
     return this.app.get('/images', (req, res) => {
-      fs.readFile(`${path}/static/image/${req.query.name}`, 'binary', function (err, file) {
+      fs.readFile(`${path}/static/image/${req.query.name}`, 'binary', (err, file) => {
         if (err) {
           console.log(err)
         } else {
@@ -77,7 +80,7 @@ module.exports = class router {
   }
   getAudio () {
     return this.app.get('/audio', (req, res) => {
-      fs.readFile(`${path}/static/audio/${req.query.name}.mp3`, 'binary', function (err, file) {
+      fs.readFile(`${path}/static/audio/${req.query.name}.mp3`, 'binary', (err, file) => {
         if (err) {
           console.log(err)
         } else {
@@ -92,7 +95,7 @@ module.exports = class router {
   }
   getVedio () {
     return this.app.get('/video', (req, res) => {
-      fs.readFile(`${path}/static/video/${req.query.name}.mp4`, 'binary', function (err, file) {
+      fs.readFile(`${path}/static/video/${req.query.name}.mp4`, 'binary', (err, file) => {
         if (err) {
           console.log(err)
         } else {

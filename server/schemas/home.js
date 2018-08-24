@@ -1,10 +1,21 @@
-var Schema = require('mongoose').Schema
+let DB = require('../helper/db.js')
 
-var homeS = new Schema({
-  title: String, // 标题
-  detail: String, // 详情
-  slogan: String// 标语
-
+const db = new DB()
+var homeS = db.schema({
+  title: {
+    type: String,
+    required: true
+  },
+  detail: {
+    type: String,
+    required: true
+  },
+  slogan: {
+    type: String,
+    required: true
+  }
 })
-
-module.exports = homeS
+const Model = db.model('homes', homeS)
+module.exports = {
+  db, Model
+}

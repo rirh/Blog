@@ -1,8 +1,8 @@
 const express = require('express')
 
 const {
-  PORT
-  // MONGODBADRESS
+  PORT,
+  MONGODBADRESS
 } = require('./config.js')
 
 var bodyParser = require('body-parser')
@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // 解析 application/json
 app.use(bodyParser.json())
 
-// 设置session和cookie
+// // 设置session和cookie
 app.use(cookieParser())
 app.use(session({
   secret: '12345',
@@ -71,9 +71,54 @@ routes.getImageCustom()
 routes.postLogin()
 routes.postRegister()
 
-// 博客系统
-routes.postBlog()
+// // 博客系统
+// routes.postBlog()
+// let Db = require('./helper/db.js')
+// const db = new Db()
+// db.init()
 
+// 引入模块
+// var mongoose = require('mongoose')
+// // 链接数据库
+// // 打印db查看链接是否成功，连接数据库是请确保mongodb数据库已经开启
+
+// var db = mongoose.createConnection(MONGODBADRESS, {
+//   useNewUrlParser: true
+// })
+// db.on('error', console.error.bind(console, '链接错误'))
+// db.once('open', function () {
+//   console.log('open once')
+// })
+// var monSchema = new mongoose.Schema({
+//   title: {
+//     type: String,
+//     required: true
+//   },
+//   detail: {
+//     type: String,
+//     required: true
+//   },
+//   slogan: {
+//     type: String,
+//     required: true
+//   }
+// })
+// var monModel = db.model('home1', monSchema)
+// var content = {
+//   title: 'Programmer',
+//   detail: '世界上只有两类人，一类是懂二进制的，另一类是不懂的。',
+//   slogan: 'welcome to my blog'
+// }
+// var monEntity = new monModel(content)
+// console.log(monEntity)
+// monEntity.save(function (err) {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log('插入成功')
+//   }
+//   db.close()
+// })
 app.listen(PORT, () => {
   console.log(`server on ${PORT}`)
 })

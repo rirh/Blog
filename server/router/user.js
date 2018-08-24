@@ -1,7 +1,7 @@
 var {
   enHanceBody
 } = require('../helper/index.js')
-var User = require('../models/user')
+// var User = require('../models/user')
 
 var mongoose = require('mongodb').MongoClient
 var Mongoose = require('../helper/mongoose.js')
