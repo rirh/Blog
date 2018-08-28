@@ -20,7 +20,6 @@
     >
       <img
         :class="{'play':true,'pause':!play}"
-        src="../../../../public/assets/img/Nevada.jpeg"
         alt=""
       >
       <Icon

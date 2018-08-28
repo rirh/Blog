@@ -70,6 +70,9 @@ routes.getImageCustom()
 // 登陆注册
 routes.postLogin()
 routes.postRegister()
+// 博客
+routes.postBlog()
+routes.getBlog()
 
 // // 博客系统
 // routes.postBlog()

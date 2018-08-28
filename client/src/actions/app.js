@@ -7,8 +7,11 @@ import {
 import http from '@/http/index.js';
 // import store from '@/store'
 
-export function init() {
-  return http.fetch(`${GET_INIT_URL}`)
+export function init(params) {
+  return http.fetch(`${GET_INIT_URL}`, {}, {
+    type: 'POST',
+    data: params,
+  })
     .then(({
       response,
     }) => response)

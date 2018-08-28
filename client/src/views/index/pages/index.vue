@@ -69,7 +69,7 @@ source {
         <h2>{{ data.title }}</h2>
         <p>{{ data.detail }}</p>
       </div>
-      <strong>{{ data.slogan.toUpperCase() }}</strong>
+      <strong>{{ data.slogan }}</strong>
     </div>
     <video
       autoplay="autoplay"

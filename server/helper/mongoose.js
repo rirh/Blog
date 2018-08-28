@@ -15,7 +15,7 @@ module.exports = class Mongoose {
     return new Promise((resolve, reject) => {
       this.mongoose.connect(this.url)
         .then((db) => {
-          console.log('Connected successfully to server')
+          console.log('Connected successfully to server1')
           resolve(db)
         })
         .catch(err => {

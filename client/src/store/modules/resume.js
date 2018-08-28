@@ -14,7 +14,6 @@
 
 const setting = {
   state: {
-
   },
   getters: {
     //   获取属性状态

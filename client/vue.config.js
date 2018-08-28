@@ -17,6 +17,11 @@ module.exports = {
     //   .use('url-loader')
     //   .loader('url-loader?limit=8192')
     //   .end();
+    config.plugin('prefetch').tap((options) => {
+      options[0].fileBlacklist = options[0].fileBlacklist || [];
+      options[0].fileBlacklist.push([/myasyncRoute(.)+?\.js$/]);
+      return options;
+    });
   },
   configureWebpack: () => {
 

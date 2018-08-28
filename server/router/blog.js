@@ -1,69 +1,41 @@
-var {
-  enHanceBody
-} = require('../helper/index.js')
-// var User = require('../models/user')
-
-var mongoose = require('mongodb').MongoClient
-var Mongoose = require('../helper/mongoose.js')
-let Mongo = new Mongoose({
-  mongoose
-})
-
-exports.login = function (req, res) {
-  //   Mongo.find('home')
-  //     .then(data => {
-  let params
-  for (let k in req.body) {
-    params = JSON.parse(k)
-  }
-  console.log(params)
-  Mongo.find('user', params)
-    .then(data => {
-      res.send(enHanceBody({
-        ...data[0],
-        msg: '成功'
-      }))
-    })
-    .catch(err => {
-      console.log(err)
-      res.send({
-        code: 400,
-        data: {
-          msg: '账户未注册'
-        }
-      })
-    })
-    // })
-}
-exports.createBlog = function (req, res) {
-  //   Mongo.find('home')
-  //     .then(data => {
-  let params
-  for (let k in req.body) {
-    params = JSON.parse(k)
-  }
-  params.date = new Date()
-  Mongo.createCollection('blog')
-    .then(res => {
-      console.log(res)
-      Mongo.insert('blog', params)
-    })
+const { enHanceBody } = require('../helper/index.js')
+const { BlogModel } = require('../schemas/blog.js')
+const {clone} = require('loadsh')
+exports.getBlog = async (req, res) => {
+  console.log(req.query)
+  const {
+    authId,
+    pageNo,
+    pageSize
+  } = req.query
+  let data = await BlogModel.find({authId})
+  console.log(data.length)
+  // data = await BlogModel.find()
+  // console.log(data.length)
   res.send(enHanceBody({
-    msg: '保存成功'
+    list: clone(data).splice(((pageNo - 1) * pageSize), ((pageNo - 1) * pageSize + pageSize)),
+    total: data.length,
+    status: 200,
+    msg: '成功'
   }))
-
-  // })
 }
-
-// function initHome () {
-//   Mongo.createCollection('home')
-//     .then(res => {
-//       Mongo.insert('home', {
-//         title: 'Programmer',
-//         detail: '世界上只有两类人，一类是懂二进制的，另一类是不懂的。',
-//         slogan: 'welcome to my blog'
-//       }).then(() => {
-//         this.home()
-//       })
-//     })
-// }
+exports.createBlog = async (req, res) => {
+  let data = {}
+  for (let k in req.body) data = JSON.parse(k)
+  const params = {
+    title: data.title, // 文章标题
+    context: data.context, // 文章内容
+    tag: '', // 文章标签
+    like_num: 0, // 喜欢数量
+    review_num: 0, // 评论数量
+    look_num: 0, // 浏览次数
+    authId: data.authId,
+    date: (new Date()).valueOf()
+  }
+  data = await new BlogModel(params).save()
+  console.log(params)
+  res.send(enHanceBody({
+    status: 200,
+    msg: '成功'
+  }))
+}

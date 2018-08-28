@@ -2,6 +2,8 @@ import Vue from 'vue';
 import iView from 'iview';
 import iEditor from 'iview-editor';
 import App from './App.vue';
+import store from './store';
+
 
 // import '@/theme/index.less'
 import 'iview/dist/styles/iview.css';
@@ -19,5 +21,6 @@ Vue.config.productionTip = false;
 
 new Vue({
   router: routers,
+  store,
   render: h => h(App),
 }).$mount('#app');

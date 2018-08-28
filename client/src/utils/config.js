@@ -3,7 +3,7 @@ const host = 'http://localhost:3000';
 // 默认日历为距离当前时间一周的时间
 const WEEK = 7;
 // 默认分页数据长度
-const PAGESIZE = 10;
+const PAGESIZE = 3;
 // 默认当前页码
 const PAGENO = 1;
 // 默认长度

@@ -1,7 +1,5 @@
-let DB = require('../helper/db.js')
-
-const db = new DB()
-var homeS = db.schema({
+const { db, mongoose } = require('../helper/db.js')
+var homeSchema = mongoose.Schema({
   title: {
     type: String,
     required: true
@@ -15,7 +13,7 @@ var homeS = db.schema({
     required: true
   }
 })
-const Model = db.model('homes', homeS)
+const HomeModel = db.model('homes', homeSchema)
 module.exports = {
-  db, Model
+  homeSchema, HomeModel
 }

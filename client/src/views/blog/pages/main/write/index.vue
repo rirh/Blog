@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="height:100%">
     <Card
       class="wapper-list"
     >
@@ -48,21 +48,26 @@ export default {
       this.blog.title = msg;
     },
     saveBlog() {
-      console.log(this.blog);
-      // delete JSON.parse(Cookies.get('user')).date;
-      // console.log(JSON.parse(Cookies.get('user')));
-      // const params = {
-      //   ...JSON.parse(Cookies.get('user')),
-      //   ...this.blog,
-      // };
-      // postBlog(params)
-      //   .then((res) => {
-      //     console.log(res);
-      //     this.blog.title = '';
-      //     this.blog.context = '';
-      //     localStorage.editorCache = '';
-      //     this.$router.push({ name: 'listblog' });
-      //   });
+      /* eslint no-underscore-dangle: 0 */
+      const params = {
+        ...this.blog,
+        authId: JSON.parse(Cookies.get('user'))._id,
+      };
+      postBlog(params)
+        .then(({ data: { status, msg } }) => {
+          if (status === 200) {
+            this.$Notice.info({
+              title: '提示',
+              desc: msg,
+            });
+          }
+          this.blog.title = '';
+          this.blog.context = '';
+          localStorage.editorCache = '';
+          localStorage.editorTitleCache = '';
+          this.$router.push({ name: 'listblog' });
+          this.$store.commit('setBlogValue', { name: '1' });
+        });
     },
   },
 };

@@ -19,5 +19,6 @@ export {
   from './user.js';
 export {
   postBlog,
+  getBlog,
 }
   from './blog.js';

@@ -4,7 +4,7 @@
     :on-reach-top="handleReachTop"
   >
     <Card
-      v-for="({title,content,image,auth},index) in list"
+      v-for="({title,context,image,authId},index) in list"
       :key="index"
       class="wapper-list"
     >
@@ -15,13 +15,13 @@
         >
         <h1 class="col-title">{{ title }}</h1>
         <br>
-        <p class="con-col-list">{{ content }}</p>
+        <p class="con-col-list">{{ context }}</p>
         <Row>
           <Col
             span="3"
             class="con-col-list"
           >
-          {{ auth }}
+          {{ authId }}
           </Col>
           <Col
             span="3"
@@ -51,7 +51,7 @@
         >
         <img
           class="img-col-list"
-          :src="image"
+          :src="`${host}/images?name=auth.jpg`"
           style="height:100%;width:100%;"
           alt=""
         >
@@ -65,21 +65,23 @@
 <script>
 import { host } from '@/utils/config';
 import { getBlog } from '@/actions';
+import { mapState } from 'vuex';
 
 
 export default {
   name: 'Name',
   data() {
     return {
-      list: [
-        {
-          title: '往后余生，我想以自己喜欢的方式度过',
-          content: `毕业一个月了，昨天我才从辅导员那拿回我的毕业证书和学位证书，签字的那一刻，感觉自己四年的青春，就
-          这样悄无声息地变成了两张纸。 说来搞笑，我读了四'...`,
-          image: `${host}/images?name=auth.jpg`,
-          auth: '流浪法师',
-        },
-      ],
+      host,
+      // list: [
+      //   {
+      //     title: '往后余生，我想以自己喜欢的方式度过',
+      //     content: `毕业一个月了，昨天我才从辅导员那拿回我的毕业证书和学位证书，签字的那一刻，感觉自己四年的青春，就
+      //     这样悄无声息地变成了两张纸。 说来搞笑，我读了四'...`,
+      //     image: `${host}/images?name=auth.jpg`,
+      //     auth: '流浪法师',
+      //   },
+      // ],
 
     };
   },
@@ -87,9 +89,13 @@ export default {
     getHeight() {
       return window.innerHeight - 60;
     },
+    ...mapState({
+      list: state => state.blog.blogList,
+
+    }),
   },
   mounted() {
-    // getBlog({});
+    getBlog().then((res) => { console.log(res); });
   },
   methods: {
 
@@ -97,10 +103,10 @@ export default {
     handleReachTop() {
       return new Promise((resolve) => {
         setTimeout(() => {
-          const first = this.list[0];
-          for (let i = 1; i < 2; i++) {
-            this.list.push(first);
-          }
+          // const first = this.list[0];
+          // for (let i = 1; i < 2; i++) {
+          //   this.list.push(first);
+          // }
           resolve();
         }, 1000);
       });

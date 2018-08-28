@@ -38,6 +38,14 @@
 
                 </Input>
         </FormItem>
+        <p
+          style=" cursor: pointer"
+          @click="goGister"
+        >
+          没有账号？立即注册
+        </p>
+
+
         <FormItem prop="unlock">
           <div
             id="your-dom-id"
@@ -50,6 +58,8 @@
             type="primary"
             @click="handleSubmit('formInline')"
           >登录</Button>
+          <br>
+
         </FormItem>
       </Form>
     </Card>
@@ -117,6 +127,9 @@ export default {
         }
       });
     },
+    goGister() {
+      this.$router.push({ name: 'register' });
+    },
   },
 };
 </script>
@@ -133,7 +146,9 @@ export default {
 .login-content{
     padding: 2%;
     width: 36%;
-    background: rgba(255, 255, 255, 0)!important
+    background: rgba(255, 255, 255, 0)!important;
+
+
 }
 
 </style>

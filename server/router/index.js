@@ -20,7 +20,7 @@ const {
   register
 } = require('./user.js')
 const {
-  createBlog
+  createBlog, getBlog
 } = require('./blog.js')
 
 const path = require('path').resolve(__dirname, '..')
@@ -31,7 +31,7 @@ module.exports = class router {
   }
   // 获取首页数据
   getInit () {
-    return this.app.get('/init', init)
+    return this.app.post('/init', init)
   }
   goHome () {
     return this.app.get('/home', home)
@@ -47,6 +47,9 @@ module.exports = class router {
   }
   postBlog () {
     return this.app.post('/blog', urlencodedParser, createBlog)
+  }
+  getBlog () {
+    return this.app.get('/blog', getBlog)
   }
   getImage () {
     return this.app.get('/image', (req, res) => {
