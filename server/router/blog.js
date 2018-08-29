@@ -8,12 +8,15 @@ exports.getBlog = async (req, res) => {
     pageNo,
     pageSize
   } = req.query
-  let data = await BlogModel.find({authId})
+  let query = {}
+  if (authId) query = { authId }
+  let data = await BlogModel.find(query)
   console.log(data.length)
   // data = await BlogModel.find()
   // console.log(data.length)
   res.send(enHanceBody({
-    list: clone(data).splice(((pageNo - 1) * pageSize), ((pageNo - 1) * pageSize + pageSize)),
+    list: [...data],
+    // list: clone(data).splice(((pageNo - 1) * pageSize), ((pageNo - 1) * pageSize + pageSize)),
     total: data.length,
     status: 200,
     msg: '成功'
