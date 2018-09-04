@@ -41,8 +41,9 @@ export default {
     };
   },
   methods: {
-    change(context) {
-      this.blog.context = context;
+    change(html, text) {
+      this.blog.html = html;
+      this.blog.text = text;
     },
     changeTit(msg) {
       this.blog.title = msg;
@@ -63,7 +64,8 @@ export default {
           }
           this.blog.title = '';
           this.blog.context = '';
-          localStorage.editorCache = '';
+          localStorage.editorhtmlCache = '';
+          localStorage.editortextCache = '';
           localStorage.editorTitleCache = '';
           this.$router.push({ name: 'listblog' });
           this.$store.commit('setBlogValue', { name: '1' });

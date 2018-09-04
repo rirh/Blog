@@ -15,13 +15,16 @@
         >
         <h1 class="col-title">{{ title }}</h1>
         <br>
-        <p class="con-col-list">{{ context }}</p>
+        <p
+          class="con-col-list"
+          style="min-height:60px"
+        >{{ context }}</p>
         <Row>
           <Col
             span="3"
             class="con-col-list"
           >
-          {{ authId }}
+          {{ authId.substring(0,4) }}
           </Col>
           <Col
             span="3"
@@ -138,6 +141,7 @@ export default {
     font-size: 13px;
     line-height: 24px;
     color: #999;
+
 }
 .col-list{
   padding: 1%!important

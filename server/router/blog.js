@@ -26,7 +26,8 @@ exports.createBlog = async (req, res) => {
   for (let k in req.body) data = JSON.parse(k)
   const params = {
     title: data.title, // 文章标题
-    context: data.context, // 文章内容
+    context: data.text, // 文章内容
+    contexthtml: data.html,
     tag: '', // 文章标签
     like_num: 0, // 喜欢数量
     review_num: 0, // 评论数量

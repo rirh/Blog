@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 import { init } from '@/actions';
 
@@ -30,7 +30,6 @@ export default {
       const pc = new RTCPeerConnection(servers, mediaConstraints);
       pc.onicecandidate = (ice) => {
         if (ice.candidate) {
-          console.log(ice);
           const ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3})/;
           const ipAddr = ipRegex.exec(ice.candidate.candidate)[1];
           if (ipDups[ipAddr] === undefined) callback(ipAddr, i++);
@@ -44,6 +43,8 @@ export default {
     },
 
     postInfo() {
+      // axios.get('http://whois.pconline.com.cn/ipJson.jsp')
+      //   .then((res) => { console.log(res); });
       this.getIps((ip) => {
         init({
           ip,

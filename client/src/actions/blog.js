@@ -9,7 +9,6 @@ import store from '@/store';
 // import store from '@/store'
 
 export function getBlog() {
-  console.log(store);
   return http.fetch(`${POST_BLOG_URL}`, store.state.blog.blogRequest)
     .then(({ response: { data: { list, total } } }) => {
       store.commit('setBlogList', list);

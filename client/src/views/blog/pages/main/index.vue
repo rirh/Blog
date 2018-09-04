@@ -21,6 +21,7 @@
               博客列表
             </MenuItem>
             <MenuItem
+              v-show="isLogin"
               name="2"
               to="/writeblog"
             >
@@ -61,6 +62,8 @@
 </template>
 <script>
 import { mapState } from 'vuex';
+import Cookies from 'js-cookie';
+
 
 export default {
   data() {
@@ -71,10 +74,14 @@ export default {
     };
   },
   computed: {
+
     ...mapState({
       name: state => state.blog.name,
 
     }),
+    isLogin() {
+      return !!Cookies.get('user');
+    },
   },
   mounted() {
   },

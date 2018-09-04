@@ -9,8 +9,6 @@ import route from './router';
 // }
 //   from '@/utils/helper';
 
-console.log();
-
 
 Vue.use(VueRouter);
 

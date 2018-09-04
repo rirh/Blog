@@ -90,7 +90,8 @@ export default {
     };
   },
   mounted() {
-    const swiper = new Swiper('.swiper-container', {
+    /* eslint no-new :0 */
+    new Swiper('.swiper-container', {
       direction: 'vertical',
       // parallax: true,
       autoplay: false, // 可选选项，自动滑动
@@ -107,7 +108,6 @@ export default {
         clickable: true,
       },
     });
-    console.log(swiper);
     this.$refs.nevadaAudio.addEventListener(
       'ended',
       () => {

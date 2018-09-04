@@ -1,4 +1,5 @@
 // api地址
+// const host = 'http://101.201.234.154:3000';
 const host = 'http://localhost:3000';
 // 默认日历为距离当前时间一周的时间
 const WEEK = 7;

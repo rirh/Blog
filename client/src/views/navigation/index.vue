@@ -7,7 +7,7 @@
 <script>
 import Cookies from 'js-cookie';
 
-import crystalBall from '../components/CrystalBall';
+import crystalBall from './components/CrystalBall';
 
 export default {
   name: 'Navigation',

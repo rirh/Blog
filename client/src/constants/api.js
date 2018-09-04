@@ -6,7 +6,7 @@ export const GET_HOME_URL = `${host}/home`;
 // GET /homePage 首页标语
 export const GET_INIT_URL = `${host}/init`;
 // GET /homePage 首页标语
-export const GET_USERINFO_URL = 'http://pv.sohu.com/cityjson?ie=utf-8';
+export const GET_USERINFO_URL = 'http://whois.pconline.com.cn/ipJson.jsp';
 
 
 // 登录

@@ -66,7 +66,8 @@ export default {
     this.editor = new Editor(`#${this.editorId}`);
     this.editor.customConfig.onchange = (html) => {
       const text = this.editor.txt.text();
-      if (this.cache) localStorage.editorCache = html;
+      if (this.cache) localStorage.editorhtmlCache = html;
+      if (this.cache) localStorage.editortextCache = text;
       if (this.cache) localStorage.editorTitleCache = this.title;
       this.$emit('input', this.valueType === 'html' ? html : text);
       this.$emit('on-change', html, text);
@@ -75,13 +76,15 @@ export default {
     // create这个方法一定要在所有配置项之后调用
     this.editor.create();
     // 如果本地有存储加载本地存储内容
-    const context = localStorage.editorCache;
+    const htmlcontext = localStorage.editorhtmlCache;
+    const textcontext = localStorage.editortextCache;
+
     const title = localStorage.editorTitleCache;
-    if (context) this.editor.txt.html(context);
+    if (htmlcontext) this.editor.txt.html(htmlcontext);
     if (title) this.title = title;
     // 打开的时候发送给父组件内容
     this.$emit('on-change-title', this.title);
-    this.$emit('on-change', context);
+    this.$emit('on-change', htmlcontext, textcontext);
   },
   methods: {
     // clearDef() {

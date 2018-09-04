@@ -19,7 +19,7 @@ export function init(params) {
 }
 
 export function getUserInfo() {
-  return http.fetch(`${GET_USERINFO_URL}`, { ie: 'utf-8' })
+  return http.fetch(`${GET_USERINFO_URL}`)
     .then(({
       response,
     }) => response)

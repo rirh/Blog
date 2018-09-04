@@ -3,7 +3,7 @@ const { HomeModel } = require('../schemas/home.js')
 // 标语范文
 const content = {
   title: 'Programmer',
-  detail: '世界上只有两类人，一类是懂二进制的，另一类是不懂的。',
+  detail: '世界上只有10类人，一类是懂二进制的，另一类是不懂的。',
   slogan: 'welcome to my blog'
 }
 // 如果有的话就查询出来没有的话就创建
