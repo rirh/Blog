@@ -2,7 +2,7 @@ import home from '@/views/home/pages';
 import navigation from '@/views/navigation';
 
 import index from '@/views/index/pages';
-import blog from '@/views/blog/pages/main';
+import blog from '@/views/blog';
 import utils from '@/views/utils/pages';
 import about from '@/views/about/pages';
 import login from '@/views/user/pages/login';

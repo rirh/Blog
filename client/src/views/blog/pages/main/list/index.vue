@@ -13,6 +13,7 @@
           span="18"
           class="col-list"
         >
+        <router-view />
         <h1 class="col-title">{{ title }}</h1>
         <br>
         <p

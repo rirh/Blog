@@ -1,9 +1,12 @@
 import Vue from 'vue';
 import iView from 'iview';
 import iEditor from 'iview-editor';
+import ElementUI from 'element-ui';
 import App from './App.vue';
 import store from './store';
 
+
+import 'element-ui/lib/theme-chalk/index.css';
 
 // import '@/theme/index.less'
 import 'iview/dist/styles/iview.css';
@@ -14,6 +17,7 @@ import { routers } from './router';
 
 Vue.use(iView);
 Vue.use(iEditor);
+Vue.use(ElementUI);
 
 // 定义全局变量
 

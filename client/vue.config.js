@@ -11,20 +11,26 @@ module.exports = {
   // webpack配置
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   chainWebpack: (config) => {
-    // config.module
-    //   .rule('')
-    //   .test(/\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/)
-    //   .use('url-loader')
-    //   .loader('url-loader?limit=8192')
-    //   .end();
+    config.module
+      .rule('graphql')
+      .test(/\.graphql$/)
+      .use('graphql-tag/loader')
+      .loader('graphql-tag/loader')
+      .end();
     config.plugin('prefetch').tap((options) => {
       options[0].fileBlacklist = options[0].fileBlacklist || [];
       options[0].fileBlacklist.push([/myasyncRoute(.)+?\.js$/]);
       return options;
     });
   },
-  configureWebpack: () => {
-
+  configureWebpack: {
+    resolve: {
+      alias: {
+        assets: '@/assets',
+        components: '@/components',
+        views: '@/views',
+      },
+    },
   },
   // vue-loader 配置项
   // https://vue-loader.vuejs.org/en/options.html
