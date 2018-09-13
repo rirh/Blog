@@ -34,7 +34,7 @@
         autoplay="autoplay"
       >
         <source
-          :src="audio.host"
+          :src="`${baseUrl}assets/audio/Nevada.mp3`"
           type="audio/mpeg"
         >
       </audio>
@@ -58,6 +58,7 @@
 
 <script>
 import Swiper from 'swiper';
+import { getResume } from '@/actions';
 import 'swiper/dist/css/swiper.min.css';
 import page1 from '@/views/about/pages/index-slide/page1';
 import page2 from '@/views/about/pages/index-slide/page2';
@@ -91,9 +92,11 @@ export default {
       ],
     };
   },
-  mounted() {
+  async mounted() {
+    const data = await getResume();
+    console.log(data);
     /* eslint no-new :0 */
-    new Swiper('.swiper-container', {
+    await new Swiper('.swiper-container', {
       direction: 'vertical',
       // parallax: true,
       autoplay: false, // 可选选项，自动滑动
@@ -118,6 +121,7 @@ export default {
       false,
     );
   },
+
   methods: {
     goBack() {
       this.$router.push({

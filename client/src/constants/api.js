@@ -13,5 +13,7 @@ export const GET_USERINFO_URL = 'http://whois.pconline.com.cn/ipJson.jsp';
 export const POST_LOGIN_URL = `${host}/login`;
 // 注册
 export const POST_REGISTER_URL = `${host}/register`;
-//
+// blog
 export const POST_BLOG_URL = `${host}/blog`;
+// 简历
+export const GET_RESUME_URL = `${host}/resume`;

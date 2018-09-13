@@ -14,14 +14,19 @@
 
 const setting = {
   state: {
+    resume: { echarts: {} },
   },
   getters: {
     //   获取属性状态
   },
   actions: {
     //   应用mutations
+
   },
   mutations: {
+    setResume(state, msg) {
+      state.resume = msg;
+    },
     // setSectionValue (state, value) {
     //   merge(state.sectionRequest, value)
     // }

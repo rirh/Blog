@@ -74,6 +74,8 @@ routes.postRegister()
 routes.postBlog()
 routes.getBlog()
 
+routes.getResume()
+
 // // 博客系统
 // routes.postBlog()
 // let Db = require('./helper/db.js')

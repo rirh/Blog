@@ -5,8 +5,8 @@
       class="content-page1"
     >
       <h1>{{ data.title }} </h1>
-      <h3> {{ data.details }}</h3>
-      <h3>{{ data.emil }}</h3>
+      <h3> {{ data.dusc }}</h3>
+      <h3>{{ data.email }}</h3>
     </Card>
 
   </div>
@@ -17,12 +17,15 @@ export default {
   components: {},
   data() {
     return {
-      data: {
-        title: 'Hello i\'m charles',
-        details: 'Life doesn’t get easier, you just get stronger',
-        emil: 'only_tigerhu@163.com',
-      },
+
     };
+  },
+  computed: {
+    data() {
+      const { title = '', dusc = '', email = '' } = this.$store.state.resume.resume;
+      return { title, dusc, email };
+    },
+
   },
   mounted() {},
   methods: {},

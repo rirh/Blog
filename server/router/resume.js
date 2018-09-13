@@ -1,40 +1,16 @@
-var {enHanceBody} = require('../helper/index.js')
-var mongoose = require('mongodb').MongoClient
-var Mongoose = require('../helper/mongoose.js')
-let Mongo = new Mongoose({mongoose})
+const { enHanceBody } = require('../helper/index.js')
+const { ResumeModel } = require('../schemas/resume.js')
 
-exports.resume = function (req, res) {
-  Mongo.find('home')
-    .then(data => {
-      if (Array.isArray(data) && data.length > 0) {
-        res.send(enHanceBody(data[0]))
-      } else {
-      // 没有数据的时候插入这条数据
-        Mongo.createCollection('home')
-          .then(() => {
-            Mongo.insert('home', {
-              title: 'Programmer',
-              detail: '世界上只有两类人，一类是懂二进制的，另一类是不懂的。',
-              slogan: 'welcome to my blog'
-            }).then(() => {
-              Mongo.find('home').then(data => {
-                res.send(enHanceBody(data[0]))
-              })
-            })
-          })
-      }
-    })
+// 如果有的话就查询出来没有的话就创建
+
+exports.resume = async (req, res) => {
+  let data = await ResumeModel.find()
+  if (data.length < 1) {
+    data = await new ResumeModel({}).save()
+    data = await ResumeModel.find()
+  }
+  res.send(enHanceBody({
+    ...data,
+    msg: '成功'
+  }))
 }
-
-// function initHome () {
-//   Mongo.createCollection('home')
-//     .then(res => {
-//       Mongo.insert('home', {
-//         title: 'Programmer',
-//         detail: '世界上只有两类人，一类是懂二进制的，另一类是不懂的。',
-//         slogan: 'welcome to my blog'
-//       }).then(() => {
-//         this.home()
-//       })
-//     })
-// }
