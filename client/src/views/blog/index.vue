@@ -15,7 +15,6 @@
           span="18"
           style="padding:20px"
         >
-
           <Card>
             <template>
               <el-carousel
@@ -24,8 +23,8 @@
                 height="200px"
               >
                 <el-carousel-item
-                  v-for="item in bannerlist"
-                  :key="item"
+                  v-for="(item,index) in bannerlist"
+                  :key="index"
                   style="border-radius: 10px;"
                 >
                   <h3>
@@ -38,7 +37,6 @@
                 </el-carousel-item>
               </el-carousel>
             </template>
-
             <Scroll
               :height="getHeight"
               :on-reach-top="handleReachTop"
@@ -108,35 +106,36 @@
             </Scroll>
           </Card>
         </i-col>
-
       </Row>
-
-
     </i-col>
   </Row>
 </template>
 
 <script>
-import {
-  host,
-} from '@/utils/config';
-import {
-  getBlog,
-} from '@/actions';
-import {
-  mapState,
-} from 'vuex';
-
+import { host } from '@/utils/config';
+import { getBlog } from '@/actions';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Name',
   data() {
     return {
       bannerlist: [
-        { url: 'http://wp.ethan.pub/wp-content/uploads/2018/08/3282647757.jpg' },
-        { url: 'http://wp.ethan.pub/wp-content/uploads/2018/08/579a7b26175f26bdcbbfe131abacce87.jpg' },
-        { url: 'http://wp.ethan.pub/wp-content/uploads/2018/08/1745989280636810324.jpg' },
-        { url: 'http://img.bbs.wisenjoy.com/forum/201507/06/193625qzyiuilxr6hlzrx6.jpg' },
+        {
+          url: 'http://wp.ethan.pub/wp-content/uploads/2018/08/3282647757.jpg',
+        },
+        {
+          url:
+            'http://wp.ethan.pub/wp-content/uploads/2018/08/579a7b26175f26bdcbbfe131abacce87.jpg',
+        },
+        {
+          url:
+            'http://wp.ethan.pub/wp-content/uploads/2018/08/1745989280636810324.jpg',
+        },
+        {
+          url:
+            'http://img.bbs.wisenjoy.com/forum/201507/06/193625qzyiuilxr6hlzrx6.jpg',
+        },
       ],
       host,
       // list: [
@@ -148,7 +147,6 @@ export default {
       //     auth: '流浪法师',
       //   },
       // ],
-
     };
   },
 
@@ -158,7 +156,6 @@ export default {
     },
     ...mapState({
       list: state => state.blog.blogList,
-
     }),
   },
   mounted() {
@@ -167,8 +164,6 @@ export default {
     });
   },
   methods: {
-
-
     handleReachTop() {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -185,55 +180,53 @@ export default {
 </script>
 
 <style scoped>
-
 .ivu-card-bordered {
-    border-bottom: 1px solid #dcdee2!important
-    /* border-color: #e8eaec; */
-
+  border-bottom: 1px solid #dcdee2 !important;
+  /* border-color: #e8eaec; */
 }
 
 .wapper-list {
-    min-height: 112px;
-    margin: 0 auto;
-    width: 714px;
-    min-width: 714px;
+  min-height: 112px;
+  margin: 0 auto;
+  width: 714px;
+  min-width: 714px;
 }
 
 .col-title {
-    margin: -7px 0 4px;
-    display: inherit;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.5;
+  margin: -7px 0 4px;
+  display: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 .con-col-list {
-    margin: 0 auto;
-    font-size: 13px;
-    line-height: 24px;
-    color: #999;
+  margin: 0 auto;
+  font-size: 13px;
+  line-height: 24px;
+  color: #999;
 }
 
 .col-list {
-    padding: 1%!important
+  padding: 1% !important;
 }
 
 .img-col-list {
-    border-radius: 5%;
+  border-radius: 5%;
 }
- .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 200px;
-    margin: 0;
-  }
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
 
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
 
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
-  }
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
 </style>

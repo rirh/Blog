@@ -39,6 +39,7 @@ export default {
   left: 50%;
   background-color: rgba(255, 255, 255, 0);
   transform: translate(-50%, -50%);
+  padding: 2%
 }
 .content-page1:hover{
     background-color: rgba(255, 255, 255, 0.6);

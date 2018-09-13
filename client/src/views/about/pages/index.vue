@@ -8,18 +8,19 @@
       size="46"
       @click="goBack"
     />
-    <Icon
+    <!-- <Icon
       class="menu-layout"
       :type="menu?'md-menu':'md-close'"
       size="46"
       @click="openMenu"
-    />
+    /> -->
     <div
       class="audio-layout"
       @click="switchAudio"
     >
       <img
         :class="{'play':true,'pause':!play}"
+        :src="`${baseUrl}assets/images/Nevada.jpeg`"
         alt=""
       >
       <Icon
@@ -72,6 +73,7 @@ import { host } from '@/utils/config';
 export default {
   data() {
     return {
+      baseUrl: process.env.BASE_URL,
       menu: true,
       play: true,
       audio: {

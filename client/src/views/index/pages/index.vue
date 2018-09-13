@@ -1,4 +1,4 @@
-<style scoped>
+<style scoped >
 .wapper-content {
   height: 100%;
   width: 100%;
@@ -76,7 +76,7 @@ source {
       loop="loop"
     >
       <source
-        :src="videohost"
+        :src="`${baseUrl}assets/video/index.mp4`"
         type="video/mp4"
       >
     </video>
@@ -86,13 +86,14 @@ source {
 <script>
 import { getHome } from '@/actions';
 import { assign } from 'lodash';
-import { host } from '@/utils/config';
+// import { host } from '@/utils/config';
 
 export default {
   data() {
     return {
-      videohost: `${host}/video?name=index`,
-      //   videohost: '../../../assets/video/index.mp4',
+      baseUrl: process.env.BASE_URL,
+      // videohost: `${host}/video?name=index`,
+      videohost: '@/views/assets/video/index.mp4',
       data: {
         title: '',
         detail: '',

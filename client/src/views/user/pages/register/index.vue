@@ -51,6 +51,13 @@
           />
                 </Input>
         </FormItem>
+        <p
+          style=" cursor: pointer"
+          @click="goLogin"
+        >
+          已有账号？立即登录
+        </p>
+        <br>
         <FormItem>
           <Button
             long
@@ -118,6 +125,9 @@ export default {
           });
         }
       });
+    },
+    goLogin() {
+      this.$router.push({ name: 'login' });
     },
   },
 };

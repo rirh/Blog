@@ -7,52 +7,53 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 
-import { init } from '@/actions';
+// import { init } from '@/actions';
 
 export default {
   name: 'App',
-  mounted() {
-    this.postInfo();
-  },
-  methods: {
-    getIps(callback) {
-      const ipDups = {};
-      const RTCPeerConnection = window.RTCPeerConnection
-       || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
-      const mediaConstraints = {
-        optional: [{ RtpDataChannel: true }],
-      };
-      let servers;
-      let i = 0;
-      if (window.webkitRTCPeerConnection) servers = { iceServers: [{ urls: 'stun:stun.services.mozilla.com' }] };
-      const pc = new RTCPeerConnection(servers, mediaConstraints);
-      pc.onicecandidate = (ice) => {
-        if (ice.candidate) {
-          const ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3})/;
-          const ipAddr = ipRegex.exec(ice.candidate.candidate)[1];
-          if (ipDups[ipAddr] === undefined) callback(ipAddr, i++);
-          ipDups[ipAddr] = true;
-        }
-      };
-      pc.createDataChannel('');
-      pc.createOffer((result) => {
-        pc.setLocalDescription(result, () => { });
-      }, () => { });
-    },
+  // mounted() {
+  //   // this.postInfo();
+  // },
+  // methods: {
+  //   getIps(callback) {
+  //     const ipDups = {};
+  //     const RTCPeerConnection = window.RTCPeerConnection
+  //      || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+  //     const mediaConstraints = {
+  //       optional: [{ RtpDataChannel: true }],
+  //     };
+  //     let servers;
+  //     let i = 0;
+  //     if (window.webkitRTCPeerConnection)
+  // servers = { iceServers: [{ urls: 'stun:stun.services.mozilla.com' }] };
+  //     const pc = new RTCPeerConnection(servers, mediaConstraints);
+  //     pc.onicecandidate = (ice) => {
+  //       if (ice.candidate) {
+  //         const ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3})/;
+  //         const ipAddr = ipRegex.exec(ice.candidate.candidate)[1];
+  //         if (ipDups[ipAddr] === undefined) callback(ipAddr, i++);
+  //         ipDups[ipAddr] = true;
+  //       }
+  //     };
+  //     pc.createDataChannel('');
+  //     pc.createOffer((result) => {
+  //       pc.setLocalDescription(result, () => { });
+  //     }, () => { });
+  //   },
 
-    postInfo() {
-      // axios.get('http://whois.pconline.com.cn/ipJson.jsp')
-      //   .then((res) => { console.log(res); });
-      this.getIps((ip) => {
-        init({
-          ip,
-        }).then((res) => { console.log(res); });
-      });
-    },
+  //   postInfo() {
+  //     // axios.get('http://whois.pconline.com.cn/ipJson.jsp')
+  //     //   .then((res) => { console.log(res); });
+  //     // this.getIps((ip) => {
+  //     //   init({
+  //     //     ip,
+  //     //   }).then((res) => { console.log(res); });
+  //     // });
+  //   },
 
-  },
+  // },
 
 
 };
