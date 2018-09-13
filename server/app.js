@@ -1,8 +1,8 @@
 const express = require('express')
 
 const {
-  PORT,
-  MONGODBADRESS
+  PORT
+  // MONGODBADRESS
 } = require('./config.js')
 
 var bodyParser = require('body-parser')
