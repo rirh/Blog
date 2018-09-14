@@ -40,6 +40,7 @@ export default {
     params() {
       const { echarts: { data = [], year = [], series = [] } } = this.$store.state.resume.resume;
       if (this.myChart) {
+        this.myChart.clear();
         this.myChart.setOption(
           {
             tooltip: { trigger: 'axis' },
@@ -78,6 +79,5 @@ export default {
   width: 100%;
   top: 22%;
   left: 0;
-
 }
 </style>

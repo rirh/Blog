@@ -1,29 +1,33 @@
 <template>
-  <div style="margin-top:10%">
+  <div style="margin-top:8%">
     <Row>
       <Col
         v-for="(item,index) in prolist"
         :key="index"
-        :span="24/prolist.length"
+        :span="6"
         style="text-align:center"
       >
-      <div>
+      <a
+        :href="item.adder"
+        target="_blank"
+      >
         <img
           :src="item.icon"
           alt=""
         >
-      </div>
-
+      </a>
       <p style="">
         {{ item.name }}
       </p>
       </Col>
     </Row>
+    <br>
+    <br>
     <Row>
       <Col
         v-for="(item,index) in prolist2"
         :key="index"
-        :span="24/prolist.length"
+        :span="6"
         style="text-align:center"
       >
       <div>
@@ -48,20 +52,7 @@ export default {
   components: {},
   data() {
     return {
-      prolist: [{
-        icon: `${host}/images?name=sinogo4Student.png`,
-        name: '名校云学生端',
-      },
-      {
-        icon: `${host}/images?name=sinogo4Teacher.png`,
-        name: '名校云老师端',
-      }, {
-        icon: `${host}/images?name=sinogoParent.png`,
-        name: '名校云家长端',
-      }, {
-        icon: `${host}/images?name=sinogoMatch.png`,
-        name: '围棋赛事',
-      }],
+
       prolist2: [{
         icon: `${host}/images?name=sinogoMatch.png`,
         name: '围棋赛事',
@@ -70,6 +61,12 @@ export default {
         name: '围棋赛事',
       }],
     };
+  },
+  computed: {
+    prolist() {
+      const { works } = this.$store.state.resume.resume;
+      return works;
+    },
   },
   mounted() {},
   methods: {},
