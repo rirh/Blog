@@ -53,13 +53,13 @@ export default {
   data() {
     return {
 
-      prolist2: [{
-        icon: `${host}/images?name=sinogoMatch.png`,
-        name: '围棋赛事',
-      }, {
-        icon: `${host}/images?name=sinogoMatch.png`,
-        name: '围棋赛事',
-      }],
+      // prolist2: [{
+      //   icon: `${host}/images?name=sinogoMatch.png`,
+      //   name: '围棋赛事',
+      // }, {
+      //   icon: `${host}/images?name=sinogoMatch.png`,
+      //   name: '围棋赛事',
+      // }],
     };
   },
   computed: {

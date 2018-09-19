@@ -6,8 +6,8 @@
         span="3"
         style="height:100%;text-align:right"
       >
-      <h1 style="margin-top:70%;">我的经历</h1>
-      <p>点滴成长</p>
+      <h1 style="margin-top:90%;">我的经历</h1>
+      <h3>点滴成长</h3>
      </Col>
       <Col
         span="14"

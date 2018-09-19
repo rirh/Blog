@@ -34,7 +34,6 @@ export default {
 
 <style scoped>
 .content-page1 {
-
   /* width: 30%;
   height: 20%; */
   position: fixed;

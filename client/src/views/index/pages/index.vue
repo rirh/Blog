@@ -57,8 +57,20 @@ source {
   opacity: 1;
   color: #fff;
   font-size: 90px;
-  font-weight:bold;
-
+  font-weight: bold;
+}
+.gov {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  height: 12%;
+  width: 100%;
+  text-align: center;
+}
+.gov a,
+span {
+  color: #fff;
+  font-size: 12px;
 }
 </style>
 
@@ -70,6 +82,14 @@ source {
         <p>{{ data.detail }}</p>
       </div>
       <strong>{{ data.slogan }}</strong>
+
+      <div class="gov">
+        <span> Copyright © 2018温城说个人网站 </span>
+        <a
+          href="http://www.miitbeian.gov.cn/"
+          target="_blank"
+        >京ICP备18048665号</a>
+      </div>
     </div>
     <video
       autoplay="autoplay"

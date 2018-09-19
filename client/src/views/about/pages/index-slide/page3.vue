@@ -17,7 +17,7 @@
         style="height:100%;"
       >
       <h1 style="margin-top:70%;">技能掌握成长</h1>
-      <p>年限图示</p>
+      <h3>年限图示</h3>
      </Col>
     </h2></Row>
     <div style="display:none"> {{ params }}</div>
