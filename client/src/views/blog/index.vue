@@ -16,27 +16,6 @@
           style="padding:20px"
         >
           <Card>
-            <template>
-              <el-carousel
-                :interval="4000"
-                type="card"
-                height="200px"
-              >
-                <el-carousel-item
-                  v-for="(item,index) in bannerlist"
-                  :key="index"
-                  style="border-radius: 10px;"
-                >
-                  <h3>
-                    <img
-                      :src="item.url"
-                      style="height:100%;width:100%"
-                      alt=""
-                    >
-                  </h3>
-                </el-carousel-item>
-              </el-carousel>
-            </template>
             <Scroll
               :height="getHeight"
               :on-reach-top="handleReachTop"

@@ -19,7 +19,6 @@
     "@vue/eslint-config-standard": "^3.0.0",
     "axios": "^0.18.0",
     "echarts": "^4.1.0",
-    "element-ui": "^2.4.6",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-standard": "^11.0.0",

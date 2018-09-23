@@ -10,12 +10,6 @@
           span="24"
           style="text-align:center"
         >
-        <!-- <Avatar
-          :src="avatar"
-          icon="ios-person"
-          size="large"
-          class="avatar-view"
-        /> -->
 
         </Col>
       </Row>

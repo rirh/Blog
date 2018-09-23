@@ -1,4 +1,9 @@
-const { db, mongoose } = require('../helper/db.js')
+const {
+  db,
+  mongoose
+} = require('../helper/db.js')
+const host = 'http://localhost:3000'
+
 var resumeSchema = mongoose.Schema({
   title: {
     type: String,
@@ -29,57 +34,84 @@ var resumeSchema = mongoose.Schema({
     default: {
       data: ['JS', 'ES6', 'NODE', 'CSS3', 'WEBPACK', 'HTML5', 'JAVA'],
       year: [2015, 2016, 2017, 2018],
-      series: [
-        {
-          type: 'bar',
-          animation: false,
-          name: 'JAVA',
-          itemStyle: { normal: { opacity: 0.5 } },
-          data: [40, 30, 30, 30]
+      series: [{
+        type: 'bar',
+        animation: false,
+        name: 'JAVA',
+        itemStyle: {
+          normal: {
+            opacity: 0.5
+          }
         },
-        {
-          type: 'bar',
-          animation: false,
-          name: 'JS',
-          itemStyle: { normal: { opacity: 0.5 } },
-          data: [30, 44, 62, 92]
+        data: [40, 30, 30, 30]
+      },
+      {
+        type: 'bar',
+        animation: false,
+        name: 'JS',
+        itemStyle: {
+          normal: {
+            opacity: 0.5
+          }
         },
-        {
-          type: 'bar',
-          animation: false,
-          name: 'CSS3',
-          itemStyle: { normal: { opacity: 0.5 } },
-          data: [20, 30, 60, 72]
+        data: [30, 44, 62, 92]
+      },
+      {
+        type: 'bar',
+        animation: false,
+        name: 'CSS3',
+        itemStyle: {
+          normal: {
+            opacity: 0.5
+          }
         },
-        {
-          type: 'bar',
-          animation: false,
-          name: 'HTML5',
-          itemStyle: { normal: { opacity: 0.5 } },
-          data: [40, 60, 70, 89]
+        data: [20, 30, 60, 72]
+      },
+      {
+        type: 'bar',
+        animation: false,
+        name: 'HTML5',
+        itemStyle: {
+          normal: {
+            opacity: 0.5
+          }
         },
+        data: [40, 60, 70, 89]
+      },
 
-        {
-          type: 'bar',
-          animation: false,
-          name: 'WEBPACK',
-          itemStyle: { normal: { opacity: 0.5 } },
-          data: [0, 20, 30, 60]
+      {
+        type: 'bar',
+        animation: false,
+        name: 'WEBPACK',
+        itemStyle: {
+          normal: {
+            opacity: 0.5
+          }
         },
-        {
-          type: 'bar',
-          animation: false,
-          name: 'ES6',
-          itemStyle: { normal: { opacity: 0.5 } },
-          data: [0, 10, 40, 82]
+        data: [0, 20, 30, 60]
+      },
+      {
+        type: 'bar',
+        animation: false,
+        name: 'ES6',
+        itemStyle: {
+          normal: {
+            opacity: 0.5
+          }
         },
-        {
-          type: 'bar',
-          animation: false,
-          name: 'NODE',
-          itemStyle: { normal: { opacity: 0.5 } },
-          data: [0, 0, 30, 50]
-        }
+        data: [0, 10, 40, 82]
+      },
+      {
+        type: 'bar',
+        animation: false,
+        name: 'NODE',
+        itemStyle: {
+          normal: {
+            opacity: 0.5
+          }
+        },
+        data: [0, 0, 30, 50]
+      }
       ]
     }
   },
@@ -110,14 +142,36 @@ var resumeSchema = mongoose.Schema({
     以前端开发规范设计
     负责药库管理，诊所管理，统计，以及权限模块开发
     负责系统后台总后台开发
-    负责项目上线配置打包以及管理
-`
+    负责项目上线配置打包以及管理`
     }]
-
+  },
+  works: {
+    type: Object,
+    default: [
+      {
+        icon: `${host}/images?name=sinogo4Student.png`,
+        name: '名校云学生端',
+        adder: 'http://a.app.qq.com/o/simple.jsp?pkgname=com.sinogo.mobile.sinogostudent&fromcase=40002'
+      },
+      {
+        icon: `${host}/images?name=sinogo4Teacher.png`,
+        name: '名校云老师端',
+        adder: 'http://a.app.qq.com/o/simple.jsp?pkgname=com.sinogo.mobile.teacher&fromcase=40002'
+      }, {
+        icon: `${host}/images?name=sinogoParent.png`,
+        name: '名校云家长端',
+        adder: 'http://a.app.qq.com/o/simple.jsp?pkgname=com.sinogo.mobile.student&fromcase=40002'
+      }, {
+        icon: `${host}/images?name=sinogoMatch.png`,
+        name: '围棋赛事',
+        adder: 'http://a.app.qq.com/o/simple.jsp?pkgname=com.sinogo.mobile.match&fromcase=40002'
+      }
+    ]
   }
 
 })
 const ResumeModel = db.model('resumes', resumeSchema)
 module.exports = {
-  resumeSchema, ResumeModel
+  resumeSchema,
+  ResumeModel
 }
