@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Home = require('../lib/schema/home')
+var async = require("async");
 
 // 标语范文
 /* GET index listing. */
