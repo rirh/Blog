@@ -11,7 +11,7 @@ const content = {
   slogan: 'welcome to my blog'
 }
 
-router.get('/', async (req, res, next) => {
+router.get('/',  (req, res, next) => {
   const home = new Home(content)
   const find = async () => {
     const findData = await Home.find()
@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
       await find()
     }
   }
-  res.send(await find())
+  res.send(find())
 });
 
 module.exports = router;
