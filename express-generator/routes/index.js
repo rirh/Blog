@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-
 const Home = require('../lib/schema/home')
+
 // 标语范文
 /* GET index listing. */
 const content = {
