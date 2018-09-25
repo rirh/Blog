@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Home = require('../lib/schema/home')
-var async = require("async");
 
 // 标语范文
 /* GET index listing. */
@@ -11,7 +10,7 @@ const content = {
   slogan: 'welcome to my blog'
 }
 
-router.get('/',  (req, res, next) => {
+router.get('/', async (req, res, next) => {
   const home = new Home(content)
   const find = async () => {
     const findData = await Home.find()
@@ -22,7 +21,7 @@ router.get('/',  (req, res, next) => {
       await find()
     }
   }
-  res.send(find())
+  res.send(await find())
 });
 
 module.exports = router;
