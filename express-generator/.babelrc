@@ -1,17 +1,3 @@
 {
-    "presets": [
-        "stage-3",
-        "es2015"
-    ],
-    "plugins": [
-        [
-            "transform-runtime",
-            {
-                "helpers": false,
-                "polyfill": false,
-                "regenerator": true,
-                "moduleName": "babel-runtime"
-            }
-        ]
-    ]
+    "plugins": ["transform-runtime", "babel-plugin-transform-regenerator", "babel-plugin-transform-es2015-modules-commonjs"]
 }
