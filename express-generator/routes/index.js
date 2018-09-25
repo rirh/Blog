@@ -21,7 +21,7 @@ router.get('/', async (req, res, next) => {
       await find()
     }
   }
-  res.send(await find())
+res.send(`${JSON.stringify(await find())}`)
 });
 
 module.exports = router;
