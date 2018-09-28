@@ -10,7 +10,8 @@
   "dependencies": {
     "es6-promise": "^4.2.4",
     "iview-editor": "^1.1.1",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vux": "^2.9.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",
@@ -36,9 +37,11 @@
     "swiper": "^4.3.5",
     "three": "^0.95.0",
     "url-loader": "^1.1.1",
+    "vue-loader": "^14.2.2",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.17",
     "vuex": "^3.0.1",
+    "vux-loader": "^1.2.9",
     "wangeditor": "^3.1.1"
   }
 }

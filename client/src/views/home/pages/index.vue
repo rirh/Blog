@@ -75,7 +75,6 @@
 
           <MenuItem
             v-show="!islogin"
-
             name="6"
             to="/login"
           >
@@ -101,6 +100,7 @@
           </Submenu>
             </Col>
         </Row>
+
         <!-- <Menu mode="horizontal" theme="primary" active-name="1"> -->
       </Menu>
     </Affix>

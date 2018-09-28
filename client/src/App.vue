@@ -7,55 +7,19 @@
   </div>
 </template>
 <script>
-// import axios from 'axios';
-
-// import { init } from '@/actions';
 
 export default {
   name: 'App',
-  // mounted() {
-  //   // this.postInfo();
-  // },
-  // methods: {
-  //   getIps(callback) {
-  //     const ipDups = {};
-  //     const RTCPeerConnection = window.RTCPeerConnection
-  //      || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
-  //     const mediaConstraints = {
-  //       optional: [{ RtpDataChannel: true }],
-  //     };
-  //     let servers;
-  //     let i = 0;
-  //     if (window.webkitRTCPeerConnection)
-  // servers = { iceServers: [{ urls: 'stun:stun.services.mozilla.com' }] };
-  //     const pc = new RTCPeerConnection(servers, mediaConstraints);
-  //     pc.onicecandidate = (ice) => {
-  //       if (ice.candidate) {
-  //         const ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3})/;
-  //         const ipAddr = ipRegex.exec(ice.candidate.candidate)[1];
-  //         if (ipDups[ipAddr] === undefined) callback(ipAddr, i++);
-  //         ipDups[ipAddr] = true;
-  //       }
-  //     };
-  //     pc.createDataChannel('');
-  //     pc.createOffer((result) => {
-  //       pc.setLocalDescription(result, () => { });
-  //     }, () => { });
-  //   },
-
-  //   postInfo() {
-  //     // axios.get('http://whois.pconline.com.cn/ipJson.jsp')
-  //     //   .then((res) => { console.log(res); });
-  //     // this.getIps((ip) => {
-  //     //   init({
-  //     //     ip,
-  //     //   }).then((res) => { console.log(res); });
-  //     // });
-  //   },
-
-  // },
-
-
+  mounted() {
+    // 打开时判断是手机端页面还是pc端页面
+    if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+      /* window.location.href="你的手机版地址"; */
+      this.$router.push({ name: 'navigation' });
+    } else {
+      /* window.location.href="你的电脑版地址";    */
+      this.$router.push({ name: 'navigation' });
+    }
+  },
 };
 </script>
 

@@ -1,4 +1,12 @@
+const vuxLoader = require('vux-loader');
+
 module.exports = {
+  configureWebpack: (config) => {
+    /** eslint global-require:0 */
+    vuxLoader.merge(config, {
+      plugins: ['vux-ui'],
+    });
+  },
   lintOnSave: false,
   devServer: {
     port: 8080,

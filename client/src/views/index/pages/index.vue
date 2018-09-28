@@ -121,10 +121,10 @@ export default {
       },
     };
   },
-  mounted() {
-    getHome().then(({ data }) => {
-      assign(this.data, data);
-    });
+  async mounted() {
+    const { data } = await getHome();
+    console.log(data);
+    assign(this.data, data);
   },
   methods: {},
 };

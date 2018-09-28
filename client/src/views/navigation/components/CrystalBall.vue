@@ -139,9 +139,8 @@ export default {
         //     // 'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/pz.jpg'
         //   ])
         // scene.background.image = document.querySelectorAll('#box img')
-        .setPath(`${host}/image?name=`)
-        .load(['px', 'nx', 'py', 'ny', 'pz', 'nz']);
-      console.log(scene);
+        .setPath(`${host}/file/image?name=`)
+        .load(['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg']);
       const geometry = new THREE.SphereBufferGeometry(100, 32, 16);
       const material = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: scene.background, refractionRatio: 0.95 });
       material.envMap.mapping = THREE.CubeRefractionMapping;

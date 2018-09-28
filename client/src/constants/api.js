@@ -10,9 +10,9 @@ export const GET_USERINFO_URL = 'http://whois.pconline.com.cn/ipJson.jsp';
 
 
 // 登录
-export const POST_LOGIN_URL = `${host}/login`;
+export const POST_LOGIN_URL = `${host}/users/login`;
 // 注册
-export const POST_REGISTER_URL = `${host}/register`;
+export const POST_REGISTER_URL = `${host}/users/register`;
 // blog
 export const POST_BLOG_URL = `${host}/blog`;
 // 简历

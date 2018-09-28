@@ -21,7 +21,13 @@ router.get('/', async (req, res, next) => {
       await find()
     }
   }
-res.send(`${JSON.stringify(await find())}`)
+  const data = await find();
+  let result = {}
+  result.code = 200
+  result.status = true
+  result.data = data[0];
+  res.json(result)
+
 });
 
 module.exports = router;
