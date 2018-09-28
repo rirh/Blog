@@ -1,5 +1,4 @@
 client/node_modules
-client/dist
 client/.eslintrc.js
 server/node_modules
 express-generator/node_modules
