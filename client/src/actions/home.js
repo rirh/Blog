@@ -6,17 +6,11 @@ import {
 import http from '@/http/index.js';
 // import store from '@/store'
 
-export function getHome() {
-  return http.fetch(`${GET_HOME_URL}`)
-    .then(({
-      response,
-    }) => response)
-    .catch();
+export async function getHome() {
+  const { response } = await http.fetch(`${GET_HOME_URL}`);
+  return response;
 }
-export function init() {
-  return http.fetch(`${GET_INIT_URL}`)
-    .then(({
-      response,
-    }) => response)
-    .catch();
+export async function init() {
+  const { response } = await http.fetch(`${GET_INIT_URL}`);
+  return response;
 }

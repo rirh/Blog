@@ -103,26 +103,25 @@ export default {
     };
   },
   methods: {
-    handleSubmit(name) {
-      this.$refs[name].validate((valid) => {
+    async handleSubmit(name) {
+      this.$refs[name].validate(async (valid) => {
         if (valid) {
-          postRegister({
+          const { code, msg } = await postRegister({
             username: this.formInline.user,
             password: this.formInline.password,
-          }).then(({ code, data: { msg } }) => {
-            if (code === 200) {
-              this.$Notice.info({
-                title: '提示',
-                desc: msg,
-              });
-              this.$router.push({ name: 'login' });
-            } else {
-              this.$Notice.error({
-                title: '提示',
-                desc: msg,
-              });
-            }
           });
+          if (code === 200) {
+            this.$Notice.info({
+              title: '提示',
+              desc: msg,
+            });
+            this.$router.push({ name: 'login' });
+          } else {
+            this.$Notice.error({
+              title: '错误',
+              desc: msg,
+            });
+          }
         }
       });
     },

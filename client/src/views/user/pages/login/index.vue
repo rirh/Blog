@@ -102,28 +102,26 @@ export default {
   },
   methods: {
     handleSubmit(name) {
-      this.$refs[name].validate((valid) => {
+      this.$refs[name].validate(async (valid) => {
         if (valid) {
-          postLogin({
+          const { code, msg, data } = await postLogin({
             username: this.formInline.user,
             password: this.formInline.password,
-          }).then(({
-            code, data: { msg }, data,
-          }) => {
-            if (code === 200) {
-              this.$Notice.info({
-                title: '提示',
-                desc: msg,
-              });
-              Cookies.set('user', data);
-              this.$router.push({ name: 'index' });
-            } else {
-              this.$Notice.error({
-                title: '提示',
-                desc: msg,
-              });
-            }
           });
+
+          if (code === 200) {
+            this.$Notice.info({
+              title: '提示',
+              desc: msg,
+            });
+            Cookies.set('user', data);
+            this.$router.push({ name: 'index' });
+          } else {
+            this.$Notice.error({
+              title: '提示',
+              desc: msg,
+            });
+          }
         }
       });
     },

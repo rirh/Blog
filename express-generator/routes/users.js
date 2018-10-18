@@ -1,46 +1,29 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const User = require('../lib/schema/user')
+const encode = require('../util/enbody')
+
 
 
 /* post users listing. */
 router.post('/login', async (req, res, next) => {
-  const {
-    username,
-    password
-  } = req.body;
-  const responseData = {};
+    for (let k in req.body) params = JSON.parse(k)
+  const {username,password} = params;
   if (username == '' || password == '') {
-    responseData.code = 1;
-    responseData.message = '用户名和密码不能为空';
-    res.json(responseData);
+    res.json(encode(false, '用户名和密码不能为空'));
     return;
   }
-  let user = await User.findOne({
-    username
-  });
-  if (user) {
-    responseData = {
-      code: 1,
-      message: '用户不存在，请先注册',
-    }
-    res.json(responseData);
+  let user = await User.findOne({username});
+  if (!user) {
+    res.json(encode(false, '用户不存在请先注册'));
     return;
-
   }
-  user = await User.findOne({
-    password
-  });
-  if (user) {
-    responseData = {
-      code: 1,
-      message: '密码错误，请重新输入！',
-    }
-    res.json(responseData);
+  user = await User.findOne({password});
+  if (!user) {
+        res.json(encode(false, '密码错误'));
     return;
-
   }
-  res.json(user);
+    res.status(200).json(encode(true, user));
 
 });
 
@@ -57,25 +40,14 @@ router.post('/register', async (req, res, next) => {
   let user = await User.findOne({
     username
   });
-  console.log(user)
-
   if (user) {
-
-    responseData = {
-      code: 1,
-      message: '用户已存在，请直接登录',
-    }
-    res.json(responseData);
-
+    res.status(200).json(encode(false,"用户已存在"));
   } else {
-    user = new User({
+    user = await new User({
       username: username,
       password: password
-    });
-    console.log(2)
-
-    user = await user.save()
-    res.json(user);
+    }).save();
+    res.status(200).json(encode(true,user));
   }
 
 

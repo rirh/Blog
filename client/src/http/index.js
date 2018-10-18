@@ -66,7 +66,7 @@ export default {
       /* eslint no-underscore-dangle: 0 */
       axios({
         method: options.type || 'GET',
-        url: `${url}?authId=${Cookies.get('user') ? JSON.parse(Cookies.get('user'))._id : ''}&rundom=${Math.floor(Math.random() * (99999999 - 99999 + 1)) + 99999}`,
+        url,
         params,
         // data: qs.stringify(options.data),
         data: options.data,

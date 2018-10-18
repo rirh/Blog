@@ -17,13 +17,10 @@ export function postLogin(params) {
     }) => response)
     .catch();
 }
-export function postRegister(params) {
-  return http.fetch(`${POST_REGISTER_URL}`, {}, {
+export async function postRegister(params) {
+  const { response } = await http.fetch(`${POST_REGISTER_URL}`, {}, {
     type: 'POST',
     data: params,
-  })
-    .then(({
-      response,
-    }) => response)
-    .catch();
+  });
+  return response;
 }
