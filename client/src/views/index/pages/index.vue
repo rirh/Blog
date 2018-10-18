@@ -33,44 +33,47 @@ source {
 
 .tips .title {
   position: absolute;
-  top: 20%;
-  left: 8%;
+  top: 12rem;
+  left: 8rem;
+  cursor: pointer
 }
 
 .tips .title h2 {
   opacity: 1;
-  color: #fff;
-  font-size: 90px;
-  font-weight: 600px;
+  color:var(--font);
+  font-size: 9rem;
+  font-weight: 60rem;
 }
 
 .tips .title p {
   opacity: 1;
-  color: #fff;
-  font-size: 21px;
-  font-weight: 600px;
+  color:var(--font);
+  font-size: 2.1rem;
+  font-weight: 60rem;
 }
 .tips strong {
   position: absolute;
   bottom: 20%;
   right: 3%;
   opacity: 1;
-  color: #fff;
-  font-size: 90px;
+  color:var(--font);
+  font-size: 9rem;
   font-weight: bold;
+   cursor: pointer
 }
 .gov {
   position: absolute;
   bottom: 0px;
   left: 0px;
-  height: 12%;
+  height: 8rem;
   width: 100%;
   text-align: center;
+  cursor: pointer
 }
 .gov a,
 span {
-  color: #fff;
-  font-size: 12px;
+  color:var(--font);
+  font-size: 1.2rem;
 }
 </style>
 
@@ -112,7 +115,6 @@ export default {
   data() {
     return {
       baseUrl: process.env.BASE_URL,
-      // videohost: `${host}/video?name=index`,
       videohost: '@/views/assets/video/index.mp4',
       data: {
         title: '',
@@ -123,7 +125,6 @@ export default {
   },
   async mounted() {
     const { data } = await getHome();
-    console.log(data);
     assign(this.data, data);
   },
   methods: {},

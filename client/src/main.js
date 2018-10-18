@@ -4,7 +4,7 @@ import iEditor from 'iview-editor';
 import App from './App.vue';
 import store from './store';
 
-
+import '@/theme/index.css';
 import 'iview/dist/styles/iview.css';
 import 'iview-editor/dist/iview-editor.css';
 import '@/theme/index.less';

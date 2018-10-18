@@ -20,13 +20,13 @@ export default {
   },
 
   mounted() {
-    if (Cookies.get('firstNavigation')) {
+    if (Cookies.get('FIRST_OPEN')) {
       this.$router.push({ name: 'index' });
     }
   },
   methods: {
     start() {
-      Cookies.set('firstNavigation', true);
+      Cookies.set('FIRST_OPEN', true);
       this.$router.push({ name: 'index' });
     },
   },
