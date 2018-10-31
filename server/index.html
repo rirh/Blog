@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    img {
+        height: 20px;
+        width: 20px;
+        /* transition: 1s height, ease 1s 1s width; */
+        /* transition: 1s ease; */
+
+
+    }
+
+    img:hover {
+        height: 200px;
+        width: 200px;
+        animation: pound .3s infinite;
+
+    }
+
+    @keyframes pound {
+        from {
+            transform: none;
+        }
+
+        to {
+            transform: scale(1.2);
+        }
+    }
+
+    .heart {
+        
+    }
+
+    div:hover {
+
+        animation: 1s rainbow infinite steps(10);
+    }
+
+    @keyframes rainbow {
+        0% {
+            background: #c00;
+        }
+
+        50% {
+            background: orange;
+        }
+
+        100% {
+            background: yellowgreen;
+        }
+    }
+
+    .wapper {
+        position: relative;
+    }
+
+    .shake {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: url(https://i.loli.net/2017/08/21/599a521472424.jpg);
+        background-size: 100% 100%;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+        animation: .3s shake infinite;
+    }
+
+    @keyframes shake {
+        0% {
+            top: 10px;
+        }
+
+        20% {
+            top: -10px;
+        }
+
+        40% {
+            top: 10px;
+        }
+
+        60% {
+            top: -10px;
+        }
+
+        80% {
+            top: 10px;
+        }
+
+        90% {
+            top: -10px;
+        }
+        100% {
+            top: 10px;
+        }
+    }
+</style>
+
+<body>
+
+    <img src="https://i.loli.net/2017/08/21/599a521472424.jpg" alt="">
+    <div class="wapper">
+        <div class="shake"></div>
+    </div>
+</body>
+
+</html>

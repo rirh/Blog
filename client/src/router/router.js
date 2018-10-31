@@ -1,14 +1,15 @@
-import home from '@/views/home/pages';
+import home from '@/views/home';
 import navigation from '@/views/navigation';
 
-import index from '@/views/index/pages';
+import index from '@/views/index';
 import blog from '@/views/blog';
 import utils from '@/views/utils/pages';
 import about from '@/views/about/pages';
 import login from '@/views/user/pages/login';
 import register from '@/views/user/pages/register';
-import listblog from '@/views/blog/pages/main/list';
-import writeblog from '@/views/blog/pages/main/write';
+
+import phoneblog from '@/views/blog/phone';
+
 
 // 错误页面
 import err401 from '@/views/error/401';
@@ -34,25 +35,17 @@ export default [
         path: '/blog',
         name: 'blog',
         component: blog,
-        redirect: '/listblog',
-        children: [
-          {
-            path: '/listblog',
-            name: 'listblog',
-            component: listblog,
-          },
-          {
-            path: '/writeblog',
-            name: 'writeblog',
-            component: writeblog,
-          },
-        ],
       }, {
         path: '/utils',
         name: 'utils',
         component: utils,
       },
     ],
+  },
+  {
+    path: '/phoneblog',
+    name: 'phoneblog',
+    component: phoneblog,
   },
   {
     path: '/login',
@@ -86,6 +79,4 @@ export default [
     name: 'error_404',
     component: err404,
   },
-
-
 ];

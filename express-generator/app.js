@@ -7,6 +7,7 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const fileRouter = require('./routes/file')
+const blogRouter = require('./routes/blog')
 
 const app = express();
 // 设置跨域访问
@@ -28,5 +29,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/home', indexRouter);
 app.use('/users', usersRouter);
 app.use('/file', fileRouter);
+app.use('/blog', blogRouter);
 
 module.exports = app;

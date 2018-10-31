@@ -28,7 +28,7 @@
               </MenuItem>
               <MenuItem
                 name="2"
-                to="/blog"
+                to="/phoneblog"
               > 博客
               </MenuItem>
               <MenuItem
@@ -98,7 +98,7 @@
                 name="8"
               >
                 <template slot="title">
-                  {{ userInfo }}
+                  {{ userInfo.substring(0,userInfo.indexOf("@")) }}
                 </template>
                 <MenuItem
                   name="8-1"
@@ -136,7 +136,7 @@ export default {
       if (Cookies.get('user')) {
         return JSON.parse(Cookies.get('user')).username;
       }
-      return false;
+      return '';
     },
   },
   mounted() {

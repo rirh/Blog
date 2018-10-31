@@ -17,7 +17,7 @@ export default {
       )
     ) {
       /* window.location.href="你的手机版地址"; */
-      this.$router.push({ name: 'navigation' });
+      this.$router.push({ name: 'phoneblog' });
     } else {
       /* window.location.href="你的电脑版地址";    */
       this.$router.push({ name: 'navigation' });
