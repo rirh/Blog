@@ -47,27 +47,27 @@ export default {
   props: {
     showinner: {
       type: Boolean,
-      default: () => false,
+      default: () => false
     },
     avatar: {
       type: String,
-      default: () => 'https://i.loli.net/2017/08/21/599a521472424.jpg',
+      default: () => 'https://i.loli.net/2017/08/21/599a521472424.jpg'
     },
     name: {
       type: String,
-      default: () => 'charles的小世界',
+      default: () => 'charles的小世界'
     },
     description: {
       type: String,
-      default: () => 'MLGB(My Life Getting Better)',
-    },
+      default: () => 'MLGB(My Life Getting Better)'
+    }
   },
 
-  data() {
-    return {};
+  data () {
+    return {}
   },
-  methods: {},
-};
+  methods: {}
+}
 </script>
 
 <style scoped>

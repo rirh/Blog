@@ -11,7 +11,7 @@ var options = {
 }
 // 数据库地址
 const MONGODBADRESS = `mongodb://${options.db_user ? options.db_user + ':' + options.db_pwd + '@' : options.db_host}:${options.db_port}/${options.db_name}`
-
+// const host = 'http://api.huzhihui.org.cn';
 // host地址
 const HOST = `http://localhost:${PORT}`
 // host地址

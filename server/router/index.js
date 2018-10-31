@@ -20,7 +20,8 @@ const {
   register
 } = require('./user.js')
 const {
-  createBlog, getBlog
+  createBlog,
+  getBlog
 } = require('./blog.js')
 
 const path = require('path').resolve(__dirname, '..')

@@ -1,31 +1,23 @@
 import {
   // GET /homePage 首页标语
-  POST_BLOG_URL,
-} from '@/constants/api.js';
-import http from '@/http/index.js';
-import store from '@/store';
-
+  GET_BLOG_URL
+} from '@/constants/api.js'
+import http from '@/http/index.js'
+import store from '@/store'
 
 // import store from '@/store'
-
-export function getBlog() {
-  return http.fetch(`${POST_BLOG_URL}`, store.state.blog.blogRequest)
-    .then(({ response: { data: { list, total } } }) => {
-      store.commit('setBlogList', list);
-      store.commit('setBlogValue', {
-        blogTatol: total,
-      });
-    })
-    .catch();
+export async function getBlog (params) {
+  const {response} = await http.fetch(`${GET_BLOG_URL}`)
+  return response
 }
 
-export function postBlog(params) {
-  return http.fetch(`${POST_BLOG_URL}`, {}, {
+export function postBlog (params) {
+  return http.fetch(`${GET_BLOG_URL}`, {}, {
     type: 'POST',
-    data: params,
+    data: params
   })
     .then(({
-      response,
+      response
     }) => response)
-    .catch();
+    .catch()
 }

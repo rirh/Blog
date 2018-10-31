@@ -10,21 +10,19 @@ const context = require('../util/directory')
 
 
 router.get('/', async (req, res, next) => {
-
-  const directorys = new Directorys(context)
+  const home = new Directorys(context)
   const find = async () => {
-    const result = await directorys.find()
-    if (result.length > 0) {
-      return result;
+    const findData = await Directorys.find()
+console.log(findData)
+    if (findData.length > 0) {
+      return findData;
     } else {
-      await directorys.save()
+      await home.save()
       await find()
     }
   }
   const data = await find();
- 
-  res.json(encode(true, data[0]))
-
+  res.json(encode(true, data))
 });
 
 module.exports = router;

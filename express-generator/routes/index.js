@@ -25,8 +25,6 @@ router.get('/', async (req, res, next) => {
   }
   const data = await find();
   res.json(encode(true, data[0]))
-
-
 });
 
 module.exports = router;

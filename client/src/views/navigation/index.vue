@@ -20,9 +20,7 @@ export default {
   },
 
   mounted() {
-    if (Cookies.get('FIRST_OPEN')) {
-      this.$router.push({ name: 'index' });
-    }
+   
   },
   methods: {
     start() {
