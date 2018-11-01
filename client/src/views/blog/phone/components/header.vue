@@ -8,9 +8,9 @@
         />
       </i-col>
       <i-col
-        v-show="showinner"
+        v-if="showinner"
         span="16"
-        style="text-align:center"
+        class="header-title"
       >
         <Avatar :src="avatar" />
         <span>{{ name }}</span>
@@ -47,27 +47,27 @@ export default {
   props: {
     showinner: {
       type: Boolean,
-      default: () => false
+      default: () => false,
     },
     avatar: {
       type: String,
-      default: () => 'https://i.loli.net/2017/08/21/599a521472424.jpg'
+      default: () => 'https://i.loli.net/2017/08/21/599a521472424.jpg',
     },
     name: {
       type: String,
-      default: () => 'charles的小世界'
+      default: () => 'charles的小世界',
     },
     description: {
       type: String,
-      default: () => 'MLGB(My Life Getting Better)'
-    }
+      default: () => 'MLGB(My Life Getting Better)',
+    },
   },
 
-  data () {
-    return {}
+  data() {
+    return {};
   },
-  methods: {}
-}
+  methods: {},
+};
 </script>
 
 <style scoped>
@@ -76,6 +76,20 @@ export default {
   height: 20rem;
   position: relative;
 }
+.header-title{
+  text-align: center;
+  animation:pound .2s 1; ;
+}
+
+    @keyframes pound {
+        from {
+            transform: scale(.9);
+        }
+
+        to {
+            transform: scale(1.2);
+        }
+    }
 .header-inner {
   position: fixed;
   width: 100%;
@@ -110,4 +124,5 @@ export default {
   font-weight: 300;
   text-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
 }
+
 </style>

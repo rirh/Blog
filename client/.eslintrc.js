@@ -32,15 +32,5 @@ module.exports = {
 
 
     },
-    "globals": {
-        "LODOP": false,
-        "CLODOP": false
-    },
-    "settings": {
-        "import/resolver": {
-            "webpack": {
-                "config": './build/webpack.base.config.js'
-            }
-        }
-    }
+    
 };

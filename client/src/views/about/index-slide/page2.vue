@@ -52,7 +52,7 @@ export default {
     data() {
       const { resume = '' } = this.$store.state.resume.resume;
       return {
-        avatar: `${host}/image?name=icon`,
+        avatar: `${host}/file/image?name=icon.jpg`,
         resume,
       };
     },

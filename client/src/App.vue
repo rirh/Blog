@@ -7,6 +7,8 @@
   </div>
 </template>
 <script>
+import Cookies from 'js-cookie';
+
 export default {
   name: 'App',
   mounted() {
@@ -18,8 +20,8 @@ export default {
     ) {
       /* window.location.href="你的手机版地址"; */
       this.$router.push({ name: 'phoneblog' });
-    } else {
-      /* window.location.href="你的电脑版地址";    */
+    }
+    if (!Cookies.get('FIRST_OPEN')) {
       this.$router.push({ name: 'navigation' });
     }
   },

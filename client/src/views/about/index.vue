@@ -60,12 +60,12 @@
 import Swiper from 'swiper';
 import { getResume } from '@/actions';
 import 'swiper/dist/css/swiper.min.css';
-import page1 from '@/views/about/pages/index-slide/page1';
-import page2 from '@/views/about/pages/index-slide/page2';
-import page3 from '@/views/about/pages/index-slide/page3';
-import page4 from '@/views/about/pages/index-slide/page4';
-import page5 from '@/views/about/pages/index-slide/page5';
-import page6 from '@/views/about/pages/index-slide/page6';
+import page1 from '@/views/about/index-slide/page1';
+import page2 from '@/views/about/index-slide/page2';
+import page3 from '@/views/about/index-slide/page3';
+import page4 from '@/views/about/index-slide/page4';
+import page5 from '@/views/about/index-slide/page5';
+import page6 from '@/views/about/index-slide/page6';
 // import index from '@/views/about/pages/index-slide/page1';
 // import index from '@/views/about/pages/index-slide/page1';
 // import index from '@/views/about/pages/index-slide/page1';

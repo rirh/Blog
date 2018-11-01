@@ -26,7 +26,7 @@
                 to="/index"
               > 首页
               </MenuItem>
-              <MenuItem
+              <!-- <MenuItem
                 name="2"
                 to="/phoneblog"
               > 博客
@@ -35,7 +35,7 @@
                 name="3"
                 to="/utils"
               > 工具
-              </MenuItem>
+              </MenuItem> -->
               <MenuItem
                 name="4"
                 to="/about"
@@ -140,21 +140,21 @@ export default {
     },
   },
   mounted() {
-    if (Cookies.get('FIRST_OPEN')) {
-      this.$router.push({
-        name: 'index',
-      });
-    } else {
-      this.$router.push({
-        name: 'navigation',
-      });
-    }
-    if (Cookies.get('user')) {
-      this.name = '2';
-      this.$router.push({
-        name: 'blog',
-      });
-    }
+    // if (Cookies.get('FIRST_OPEN')) {
+    //   this.$router.push({
+    //     name: 'index',
+    //   });
+    // } else {
+    //   this.$router.push({
+    //     name: 'navigation',
+    //   });
+    // }
+    // if (Cookies.get('user')) {
+    //   this.name = '2';
+    //   this.$router.push({
+    //     name: 'blog',
+    //   });
+    // }
   },
   methods: {
     handleMenu(name) {

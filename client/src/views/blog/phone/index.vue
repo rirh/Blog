@@ -1,70 +1,80 @@
 <template>
-  <div class="main" ref="main">
+  <div
+    ref="main"
+    class="main"
+  >
     <Row>
       <header-avatar
-      :showinner="showbacktop"
+        :showinner="showbacktop"
         :avatar="user.avatar||''"
         :name="user.name"
-        :description="user.description" />
+        :description="user.description"
+      />
       <content-list
-      :data="list"
-      class="container" />
+        :data="list"
+        class="container"
+      />
     </Row>
-    <div v-show="this.showbacktop" class="back-top-show" :style="styles" @click="back">
-              <Icon type="ios-arrow-up" />
+    <div
+      v-show="showbacktop"
+      class="back-top-show"
+      :style="styles"
+      @click="back"
+    >
+      <Icon type="ios-arrow-up" />
     </div>
   </div>
 </template>
 
 <script>
-import headerAvatar from './components/header'
-import contentList from './components/content'
-import {getBlog} from '@/actions'
-import {scrollTop} from '@/utils/helper'
+import { getBlog } from '@/actions';
+import { scrollTop } from '@/utils/helper';
+import headerAvatar from './components/header';
+import contentList from './components/content';
 
 export default {
   name: 'Name',
   components: {
     headerAvatar,
-    contentList
+    contentList,
   },
-  data () {
+  data() {
     return {
       showbacktop: false,
       user: {},
-      list: []
-    }
+      list: [],
+    };
   },
   computed: {
-    styles () {
+    styles() {
       return {
         bottom: `${30}px`,
-        right: `${30}px`
-      }
-    }
+        right: `${30}px`,
+      };
+    },
   },
 
-  async mounted  () {
-    this.$refs.main.addEventListener('scroll', this.handleScroll)
-    const {code, data, msg} = await getBlog()
+  async mounted() {
+    this.$refs.main.addEventListener('scroll', this.handleScroll);
+    const { code, data, msg } = await getBlog();
     if (code === 200) {
-      const {user} = data[0]
-      this.user = user
-      this.list = data[0].data
+      const { user } = data[0];
+      this.user = user;
+      this.list = data[0].data;
     } else {
-      this.$Notice.error({title: '错误', desc: msg})
+      this.$Notice.error({ title: '错误', desc: msg });
     }
   },
   methods: {
-    handleScroll ({target: {scrollTop}}) {
-      this.showbacktop = scrollTop > 200
+    handleScroll({ target: { scrollTop } }) {
+      this.showbacktop = scrollTop > 200;
     },
-    back () {
-      const sTop = this.$refs.main.scrollTop || this.$refs.main.scrollTop
-      scrollTop(this.$refs.main, sTop, 0, this.duration)
-    }
-  }
-}
+    back() {
+      const sTop = this.$refs.main.scrollTop || this.$refs.main.scrollTop;
+      scrollTop(this.$refs.main, sTop, 0, this.duration);
+    },
+  },
+};
 </script>
 
 <style scoped>

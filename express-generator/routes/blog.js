@@ -11,7 +11,6 @@ router.get ('/', async (req, res, next) => {
   const home = new Directorys (context);
   const find = async () => {
     const findData = await Directorys.find ();
-    console.log (findData);
     if (findData.length > 0) {
       return findData;
     } else {

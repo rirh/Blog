@@ -8,6 +8,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const fileRouter = require('./routes/file')
 const blogRouter = require('./routes/blog')
+const resumeRouter = require('./routes/resume')
 
 const app = express();
 // 设置跨域访问
@@ -30,5 +31,7 @@ app.use('/home', indexRouter);
 app.use('/users', usersRouter);
 app.use('/file', fileRouter);
 app.use('/blog', blogRouter);
+app.use('/resume', resumeRouter);
+
 
 module.exports = app;

@@ -14,6 +14,7 @@ const MONGODBADRESS = `mongodb://${options.db_user ? options.db_user + ':' + opt
 
 // host地址
 const HOST = `http://localhost:${PORT}`
+// const HOST = `http://api.huzhihui.org.cn`
 // host地址
 const DBNAME = 'blogDB'
 

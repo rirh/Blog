@@ -4,7 +4,7 @@ import navigation from '@/views/navigation';
 import index from '@/views/index';
 import blog from '@/views/blog';
 import utils from '@/views/utils/pages';
-import about from '@/views/about/pages';
+import about from '@/views/about';
 import login from '@/views/user/pages/login';
 import register from '@/views/user/pages/register';
 
