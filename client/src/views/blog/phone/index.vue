@@ -21,7 +21,10 @@
       :style="styles"
       @click="back"
     >
-      <Icon type="ios-arrow-up" />
+      <Icon
+        type="ios-arrow-up"
+        size="24"
+      />
     </div>
   </div>
 </template>

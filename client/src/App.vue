@@ -20,8 +20,7 @@ export default {
     ) {
       /* window.location.href="你的手机版地址"; */
       this.$router.push({ name: 'phoneblog' });
-    }
-    if (!Cookies.get('FIRST_OPEN')) {
+    } else if (!Cookies.get('FIRST_OPEN')) {
       this.$router.push({ name: 'navigation' });
     }
   },

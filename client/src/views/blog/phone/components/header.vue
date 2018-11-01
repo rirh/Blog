@@ -13,7 +13,7 @@
         class="header-title"
       >
         <Avatar :src="avatar" />
-        <span>{{ name }}</span>
+        <span class="name">{{ name }}</span>
       </i-col>
       <i-col
         :span="showinner?4:20"
