@@ -1,8 +1,6 @@
 client/node_modules
-client/.eslintrc.js
 server/node_modules
 express-generator/node_modules
-express-generator/.eslintrc.js
 .vscode
 .DS_Store 
 

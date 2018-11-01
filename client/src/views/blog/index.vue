@@ -5,29 +5,29 @@
 </template>
 
 <script>
-import { host } from '@/utils/config';
-import { getBlog } from '@/actions';
-import { mapState } from 'vuex';
+import { host } from '@/utils/config'
+import { getBlog } from '@/actions'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Name',
-  data() {
+  data () {
     return {
-    };
+    }
   },
 
   computed: {
 
   },
-  mounted() {
+  mounted () {
 
   },
   methods: {
-    handleReachTop() {
+    handleReachTop () {
 
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>
