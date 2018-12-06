@@ -3,7 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-
+const mysql = require('./mysql')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const fileRouter = require('./routes/file')
@@ -23,9 +23,18 @@ app.all('*', function (req, res, next) {
 })
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+    extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+// connection.query('SELECT * FROM todolist', function (error, results, fields) {
+//     if (error) throw error;
+//     console.log(`The solution is: ${Array.from(results)}`);
+// })
+
 
 app.use('/home', indexRouter);
 app.use('/users', usersRouter);
