@@ -5,8 +5,6 @@
       v-if="showFullScreenBtn&&showfull"
       class="full-navigation-header"
     >
-
-
       <Row>
         <Col
           span="2"
@@ -61,6 +59,7 @@ import { host } from '@/utils/config';
 const { Detector } = require('./Detector.js');
 const THREE = require('three');
 
+
 export default {
   name: 'FullScreen',
   props: {
@@ -105,36 +104,13 @@ export default {
     // console.log(document.querySelectorAll('#box img'))
     if (!Detector.webgl) Detector.addGetWebGLMessage();
     let container;
-    let camera; let scene; let
-      renderer;
+    let camera;
+    let scene;
+    let renderer;
     const spheres = [];
     let mouseX = 0; let mouseY = 0;
     let windowHalfX = window.innerWidth / 2;
     let windowHalfY = window.innerHeight / 2;
-    function onWindowResize() {
-      windowHalfX = window.innerWidth / 2;
-      windowHalfY = window.innerHeight / 2;
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-    function randomNum(minNum, maxNum) {
-      switch (arguments.length) {
-        case 1:
-          return parseInt(Math.random() * minNum + 1, 10);
-          break;
-        case 2:
-          return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
-          break;
-        default:
-          return 0;
-          break;
-      }
-    }
-    function onDocumentMouseMove(event) {
-      mouseX = (event.clientX - windowHalfX) * 10;
-      mouseY = (event.clientY - windowHalfY) * 10;
-    }
     document.addEventListener('mousemove', onDocumentMouseMove, false);
 
     function init() {
@@ -164,181 +140,19 @@ export default {
         //   ])
         // scene.background.image = document.querySelectorAll('#box img')
         .setPath(`${host}/file/image?name=`)
-        // .setPath('public/assets/images/')
         .load(['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg']);
       const geometry = new THREE.SphereBufferGeometry(100, 32, 16);
-      const material = new THREE.MeshBasicMaterial(
-        { color: 0xffffff, envMap: scene.background, refractionRatio: 0.95 },
-      );
+      const material = new THREE.MeshBasicMaterial({ color: 0xffffff, envMap: scene.background, refractionRatio: 0.95 });
       material.envMap.mapping = THREE.CubeRefractionMapping;
-      const arrStr = [
-        'albania',
-        'fintech',
-        'fintech',
-        'blockchain',
-        'blockchain',
-        'suplychain',
-        'suplychain',
-        'albania',
-      ];
-      const loader = new THREE.FontLoader();
-      loader.load('https://easy-mock.com/mock/5a1fe521583969285ab1fa9a/getaway/typefont#!method=get', (font) => {
-        arrStr.forEach((e) => {
-          const textGeo = new THREE.TextGeometry(e, {
-            font,
-            size: 300,
-            height: 5,
-            curveSegments: 12,
-            bevelEnabled: true,
-            bevelThickness: 10,
-            bevelSize: 8,
-            bevelSegments: 5,
-          });
-          const textMate = new THREE.MeshPhongMaterial(
-            { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-          );
-          const textMesh = new THREE.Mesh(textGeo, textMate);
-          textMesh.castShadow = true;
-          textMesh.position.x = Math.random() * 10000 - 5000;
-          textMesh.position.y = Math.random() * 10000 - 5000;
-          textMesh.position.z = Math.random() * 10000 - 5000;
-          textMesh.scale.z = Math.random() * 3 + 1;
-          textMesh.scale.y = textMesh.scale.z;
-          textMesh.scale.x = textMesh.scale.y;
-          scene.add(textMesh);
-          spheres.push(textMesh);
-        });
-        // let geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // let mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // let textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-        // geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-        // geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-        // geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-        // geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-      });
-
-      for (let i = 0; i < 400; i++) {
+      for (let i = 0; i < 333; i++) {
         const mesh = new THREE.Mesh(geometry, material);
         mesh.position.x = Math.random() * 10000 - 5000;
         mesh.position.y = Math.random() * 10000 - 5000;
         mesh.position.z = Math.random() * 10000 - 5000;
-        mesh.scale.z = Math.random() * 3 + 1;
-        mesh.scale.y = mesh.scale.z;
-        mesh.scale.x = mesh.scale.y;
-
-
+        mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3 + 1;
         scene.add(mesh);
         spheres.push(mesh);
       }
-
       //
       renderer = new THREE.WebGLRenderer();
       renderer.setPixelRatio(window.devicePixelRatio);
@@ -347,8 +161,17 @@ export default {
       //
       window.addEventListener('resize', onWindowResize, false);
     }
-
-
+    function onWindowResize() {
+      windowHalfX = window.innerWidth / 2;
+      windowHalfY = window.innerHeight / 2;
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+    function onDocumentMouseMove(event) {
+      mouseX = (event.clientX - windowHalfX) * 10;
+      mouseY = (event.clientY - windowHalfY) * 10;
+    }
     //
 
     function render() {
@@ -360,6 +183,7 @@ export default {
       }
       camera.position.x += (mouseX - camera.position.x) * 0.05;
       camera.position.y += (-mouseY - camera.position.y) * 0.05;
+
       camera.lookAt(scene.position);
       renderer.render(scene, camera);
     }
@@ -367,7 +191,6 @@ export default {
       requestAnimationFrame(animate);
       render();
     }
-
     init();
     animate();
   },
