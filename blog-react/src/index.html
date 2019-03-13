@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    :root {
+      --black: #333;
+      --white: #f5f2f0;
+
+    }
+
+    html,
+    body {
+      display: flex;
+      display: -webkit-flex;
+      justify-content: center;
+      align-items: center;
+      height: 90%;
+      background-color: var(--black);
+
+
+    }
+
+
+
+
+    .item {
+      height: 30px;
+      width: 30px;
+      background-color: var(--black);
+      border-radius: 50%;
+      /* box-shadow: 0px 2px 1px 1px var(--black); */
+    }
+
+    .dice-1 {
+      padding: 3px;
+      height: 90px;
+      width: 90px;
+      display: flex;
+      display: -webkit-flex;
+      background: var(--white);
+      justify-content: center;
+      align-items: center;
+      border-radius: 9px;
+      /* box-shadow: 0px -3px 1px 0px #fff; */
+    }
+
+    .dice-2 {
+      padding: 3px;
+      margin: 10px;
+      height: 90px;
+      width: 90px;
+      display: flex;
+      display: -webkit-flex;
+      background: var(--white);
+      border-radius: 9px;
+      justify-content: space-between;
+      /* justify-content: space-between; */
+      /* box-shadow: 0px -3px 1px 0px #fff; */
+    }
+
+    .dice-2 .item:nth-child(2) {
+      align-self: flex-end;
+    }
+
+    .dice-3 {
+      padding: 3px;
+      margin: 10px;
+      height: 90px;
+      width: 90px;
+      display: flex;
+      display: -webkit-flex;
+      background: var(--white);
+      border-radius: 9px;
+      justify-content: space-between;
+      /* justify-content: space-between; */
+      /* box-shadow: 0px -3px 1px 0px #fff; */
+    }
+
+    .dice-3 .item:nth-child(2) {
+      align-self: center;
+    }
+
+    .dice-3 .item:nth-child(3) {
+      align-self: flex-end;
+    }
+
+    .dice-4 {
+      padding: 3px;
+      margin: 10px;
+      height: 90px;
+      width: 90px;
+      display: flex;
+      display: -webkit-flex;
+      background: var(--white);
+      border-radius: 9px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .dice-4 .column {
+      flex-basis: 90%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .dice-4 .column:nth-child(2) {
+      flex-basis: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .dice-5 {
+      padding: 3px;
+      margin: 10px;
+      height: 90px;
+      width: 90px;
+      display: flex;
+      display: -webkit-flex;
+      background: var(--white);
+      border-radius: 9px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .dice-5 .row {
+      flex-basis: 90%;
+      display: flex;
+    }
+
+    .row:nth-child(1) {
+      justify-content: space-between;
+    }
+
+    .row:nth-child(2) {
+      justify-content: center;
+    }
+
+    .row:nth-child(3) {
+      justify-content: space-between;
+    }
+
+    .dice-6 {
+      padding: 3px;
+      height: 90px;
+      width: 90px;
+      display: flex;
+      display: -webkit-flex;
+      background: var(--white);
+      border-radius: 9px;
+      justify-content: space-between;
+    }
+
+    .dice-6 .column {
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    @keyframes content {
+      to {
+        transform: rotateY(360deg)translateZ(20px)
+      }
+    }
+
+    .dice {
+      width: 90px;
+      height: 90px;
+      background: #e5fffb;
+      perspective: 900px;
+    }
+
+    .cube {
+      transform-style: preserve-3d;
+      animation: content 2s linear  infinite;
+    }
+
+    .dice-row {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width:90px;
+      height: 90px
+    }
+
+    .dice-1 {
+      transform: translateZ(45px);
+    }
+
+    .dice-2 {
+      transform: translateZ(-45px);
+    }
+
+    .dice-3 {
+      fill: #BADDD6;
+      transform: rotateX(90deg) translateZ(-45px)
+    }
+
+    .dice-4 {
+      fill: #FFB5BA;
+      transform: rotateY(-90deg) translateZ(45px)
+    }
+
+    .dice-5 {
+      fill: #866667;
+      transform: rotateX(-90deg)translateZ(-45px)
+    }
+
+    .dice-6 {
+      fill: #E25D6E;
+      transform: rotateY(90deg) translateZ(45px)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dice">
+    <div class="cube">
+
+      <div class="dice-1 dice-row">
+        <div class="item"></div>
+      </div>
+
+
+      <div class="dice-2 dice-row">
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+
+      <div class="dice-3 dice-row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="dice-4 dice-row">
+        <div class="column ">
+          <span class="item"></span>
+          <span class="item"></span>
+        </div>
+        <div class="column">
+          <span class="item"></span>
+          <span class="item"></span>
+        </div>
+      </div>
+      <div class="dice-5 dice-row">
+        <div class="row">
+          <span class="item"></span>
+          <span class="item"></span>
+        </div>
+        <div class="row">
+          <span class="item"></span>
+        </div>
+        <div class="row">
+          <span class="item"></span>
+          <span class="item"></span>
+        </div>
+      </div>
+      <div class="dice-6 dice-row">
+        <div class="column">
+          <span class="item"></span>
+          <span class="item"></span>
+          <span class="item"></span>
+        </div>
+        <div class="column">
+          <span class="item"></span>
+          <span class="item"></span>
+          <span class="item"></span>
+        </div>
+      </div>
+    </div>
+    <!-- </div>
+  <div class="dice-1">
+    <div class="item"></div>
+  </div>
+
+
+  <div class="dice-2">
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+
+  <div class="dice-3">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+  <div class="dice-4">
+    <div class="column">
+      <span class="item"></span>
+      <span class="item"></span>
+    </div>
+    <div class="column">
+      <span class="item"></span>
+      <span class="item"></span>
+    </div>
+  </div>
+  <div class="dice-5">
+    <div class="row">
+      <span class="item"></span>
+      <span class="item"></span>
+    </div>
+    <div class="row">
+      <span class="item"></span>
+    </div>
+    <div class="row">
+      <span class="item"></span>
+      <span class="item"></span>
+    </div>
+  </div>
+  <div class="dice-6">
+    <div class="column">
+      <span class="item"></span>
+      <span class="item"></span>
+      <span class="item"></span>
+    </div>
+    <div class="column">
+      <span class="item"></span>
+      <span class="item"></span>
+      <span class="item"></span>
+    </div>
+  </div> -->
+</body>
+
+</html>

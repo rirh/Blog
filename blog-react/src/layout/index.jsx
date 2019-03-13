@@ -5,6 +5,7 @@ import u from 'utils'
 import Navigation from 'layout/navigation'
 import View from 'layout/view'
 import appState from "store"
+import "./index.css"
 
 
 

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    :root {
+      --black: #333;
+      --white: #f4f4f4;
+    }
+
+    html,
+    body {
+      height: 100%;
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--black);
+      margin: 0;
+      padding: 0;
+    }
+
+    .dice {
+      display: flex;
+      display: -webkit-flex;
+      height: 90px;
+      width: 90px;
+      background-color: var(--white);
+      border-radius: 9px;
+      padding: 3px;
+      /* box-shadow: 3px 3px 1px 1px var(--white) */
+    }
+
+    .item {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      background-color: var(--black);
+
+    }
+
+    .d1 {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .d2 {
+      justify-content: space-between;
+    }
+
+    .d2 .item:nth-child(2) {
+      align-self: flex-end;
+    }
+
+    .d3 .item:nth-child(2) {
+      align-self: center;
+    }
+
+    .d3 .item:nth-child(3) {
+      align-self: flex-end;
+    }
+
+    .d4 {
+      justify-content: space-between;
+
+    }
+
+    .d4 .row {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .d5 {
+      justify-content: space-between;
+    }
+
+    .d5 .row:nth-child(2n-1) {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .d5 .row:nth-child(2) {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .d6 {
+      flex-wrap: wrap;
+    }
+
+    .d6 .row {
+      display: flex;
+      display: -webkit-flex;
+      flex-basis: 100%;
+      justify-content: space-evenly;
+
+    }
+
+
+    @keyframes rotate {
+      from {
+        transform: rotateY(0);
+      }
+
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+
+    .di-3d {
+      perspective: 300px;
+    }
+
+    .cube {
+      transform-style: preserve-3d;
+      animation: rotate .5s infinite linear;
+
+    }
+
+    .dice {
+      position: absolute;
+      left: -45px;
+      /* top: 0px;
+      left: 0px;
+      width: 90px;
+      height: 90px */
+    }
+
+    .d1 {
+      transform: translateZ(45px)
+    }
+
+    .d2 {
+      transform: rotateX(90deg) translateZ(46.5px)
+    }
+
+    .d3 {
+      transform: rotateX(90deg) translateZ(-46.5px)
+    }
+
+    .d4 {
+      transform: rotateY(90deg) translateZ(46.5px)
+    }
+
+    .d5 {
+      transform: rotateY(90deg) translateZ(-46.5px)
+    }
+
+    .d6 {
+      transform: translateZ(-45px)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="di-3d">
+    <div class="cube">
+      <div class="dice d1">
+        <div class="item"></div>
+      </div>
+      <div class="dice d2">
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="dice d3">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="dice d4">
+        <div class="row">
+          <div class="item"></div>
+          <div class="item"></div>
+        </div>
+        <div class="row">
+          <div class="item"></div>
+          <div class="item"></div>
+        </div>
+      </div>
+      <div class="dice d5">
+        <div class="row">
+          <div class="item"></div>
+          <div class="item"></div>
+        </div>
+        <div class="row">
+          <div class="item"></div>
+        </div>
+        <div class="row">
+          <div class="item"></div>
+          <div class="item"></div>
+        </div>
+      </div>
+      <div class="dice d6">
+        <div class="row">
+          <div class="item"></div>
+          <div class="item"></div>
+        </div>
+        <div class="row">
+          <div class="item"></div>
+          <div class="item"></div>
+        </div>
+        <div class="row">
+          <div class="item"></div>
+          <div class="item"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>
