@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/core": "7.1.6",
     "@svgr/webpack": "2.4.1",
+    "antd": "^3.15.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -35,6 +36,7 @@
     "jest-resolve": "23.6.0",
     "mini-css-extract-plugin": "0.4.3",
     "mobx-react": "^5.4.3",
+    "mocha": "^6.0.2",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -44,9 +46,11 @@
     "prop-types": "^15.7.2",
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.0",
+    "react-css-modules": "^4.7.9",
     "react-dev-utils": "^7.0.1",
     "react-dom": "^16.7.0",
     "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.8",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.0",
@@ -61,7 +65,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test1": "node scripts/test.js",
+    "test": "mocha --reporter list"
   },
   "eslintConfig": {
     "extends": "react-app"

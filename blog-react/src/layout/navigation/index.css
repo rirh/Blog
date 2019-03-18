@@ -1,0 +1,22 @@
+.wapper{
+  position:relative;
+}
+.btn{
+  position: absolute;
+  width: 120px;
+  top: 70%;
+  left: 50%;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px;
+  transform: translateX(-60px);
+  outline: none;
+
+}
+
+.btn:hover{
+  border-color: var(--blue);
+  color: var(--blue);
+  outline: none;
+}

@@ -43,7 +43,7 @@ class Boll extends Component {
         .load(["px.jpg", "nx.jpg", "py.jpg", "ny.jpg", "pz.jpg", "nz.jpg"]);
       const geometry = new THREE.SphereBufferGeometry(100, 32, 16);
       const material = new THREE.MeshBasicMaterial({
-        color: 0xffffff,
+        color: 0xf4f4f4,
         envMap: scene.background,
         refractionRatio: 0.95
       });
