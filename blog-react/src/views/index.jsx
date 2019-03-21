@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from "mobx-react"
 import u from 'utils'
-import Navigation from 'layout/navigation'
-import View from 'layout/view'
+import Navigation from 'desktop'
+import Mobile from 'mobile'
 import appState from "store"
 import "./index.css"
-
-
 
 class App extends Component {
     component() {
@@ -16,7 +14,7 @@ class App extends Component {
         if (isPc) {
             component = Navigation;
         } else {
-            component = View;
+            component = Mobile;
         }
         return component;
     }
@@ -24,7 +22,9 @@ class App extends Component {
         return (
             <Provider appState={appState}>
                 <BrowserRouter>
-                    <Route component={this.component()}></Route>
+                    <Switch>
+                        <Route path="/" component={this.component()}></Route>
+                    </Switch>
                 </BrowserRouter>
             </Provider>
         )

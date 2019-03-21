@@ -1,6 +1,11 @@
 .wapper{
   position:relative;
 }
+@keyframes rainbow {
+  0% { background: #c00; }
+  50% { background: orange; }
+  100% { background: yellowgreen; }
+}
 .btn{
   position: absolute;
   width: 120px;
@@ -14,6 +19,7 @@
   outline: none;
 
 }
+
 
 .btn:hover{
   border-color: var(--blue);
