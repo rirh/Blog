@@ -1,84 +1,54 @@
 <template>
   <div>
-    <div id="crystal" />
-    <div
-      v-if="showFullScreenBtn&&showfull"
-      class="full-navigation-header"
-    >
-
-
+    <div id="crystal"/>
+    <div v-if="showFullScreenBtn&&showfull" class="full-navigation-header">
       <Row>
-        <Col
-          span="2"
-          style="text-align:center;color:#fff"
-        >
-        <Icon
-          type="ios-expand"
-          size="24"
-          @click="full"
-        />
-        <span style="display:inline-block;font-size:14px;margin-left:5px">全屏浏览</span>
-      </Col>
+        <Col span="2" style="text-align:center;color:#fff">
+          <Icon type="ios-expand" size="24" @click="full"/>
+          <span style="display:inline-block;font-size:14px;margin-left:5px">全屏浏览</span>
+        </Col>
       </Row>
     </div>
-    <div
-      v-if="showFullScreenBtn&&showfull"
-      class="getting-start"
-    >
+    <div v-if="showFullScreenBtn&&showfull" class="getting-start">
       <Row>
-        <Col
-          span="24"
-          style="text-align:center;color:#fff"
-        >
-        <Icon
-          type="ios-arrow-round-down"
-          size="34"
-          @click="full"
-        />
-      </Col>
+        <Col span="24" style="text-align:center;color:#fff">
+          <Icon type="ios-arrow-round-down" size="34" @click="full"/>
+        </Col>
       </Row>
       <br>
       <Row>
-        <Col
-          span="24"
-          style="text-align:center;color:#fff"
-        >
-        <Button
-          size="large"
-          ghost
-          @click="gettingStart"
-        >点击开始</Button>
-      </Col>
+        <Col span="24" style="text-align:center;color:#fff">
+          <Button size="large" ghost @click="gettingStart">点击开始</Button>
+        </Col>
       </Row>
     </div>
   </div>
-
 </template>
 
 <script>
-import { host } from '@/utils/config';
+import { host } from "@/utils/config";
 
-const { Detector } = require('./Detector.js');
-const THREE = require('three');
+const { Detector } = require("./Detector.js");
+const THREE = require("three");
 
 export default {
-  name: 'FullScreen',
+  name: "FullScreen",
   props: {
     value: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       showfull: true,
-      caheshowfull: true,
+      caheshowfull: true
     };
   },
   computed: {
     showFullScreenBtn() {
-      return window.navigator.userAgent.indexOf('MSIE') < 0;
-    },
+      return window.navigator.userAgent.indexOf("MSIE") < 0;
+    }
   },
   mounted() {
     // var scene = new THREE.Scene()
@@ -105,10 +75,12 @@ export default {
     // console.log(document.querySelectorAll('#box img'))
     if (!Detector.webgl) Detector.addGetWebGLMessage();
     let container;
-    let camera; let scene; let
-      renderer;
+    let camera;
+    let scene;
+    let renderer;
     const spheres = [];
-    let mouseX = 0; let mouseY = 0;
+    let mouseX = 0;
+    let mouseY = 0;
     let windowHalfX = window.innerWidth / 2;
     let windowHalfY = window.innerHeight / 2;
     function onWindowResize() {
@@ -135,24 +107,29 @@ export default {
       mouseX = (event.clientX - windowHalfX) * 10;
       mouseY = (event.clientY - windowHalfY) * 10;
     }
-    document.addEventListener('mousemove', onDocumentMouseMove, false);
+    document.addEventListener("mousemove", onDocumentMouseMove, false);
 
     function init() {
-      container = document.getElementById('crystal');
-      camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 100000);
+      container = document.getElementById("crystal");
+      camera = new THREE.PerspectiveCamera(
+        60,
+        window.innerWidth / window.innerHeight,
+        1,
+        100000
+      );
       camera.position.z = 3200;
       scene = new THREE.Scene();
       //   scene.background = new THREE.CubeTextureLoader()
       scene.background = new THREE.CubeTextureLoader()
-      // .load(
+        // .load(
 
-      //   [
-      //     'http://localhost:3000/image?name=nx',
-      //     'http://localhost:3000/image?name=px',
-      //     'http://localhost:3000/image?name=ny',
-      //     'http://localhost:3000/image?name=py',
-      //     'http://localhost:3000/image?name=nz',
-      //     'http://localhost:3000/image?name=pz'
+        //   [
+        //     'http://localhost:3000/image?name=nx',
+        //     'http://localhost:3000/image?name=px',
+        //     'http://localhost:3000/image?name=ny',
+        //     'http://localhost:3000/image?name=py',
+        //     'http://localhost:3000/image?name=nz',
+        //     'http://localhost:3000/image?name=pz'
 
         //     // '../../../../assets/img/nx.jpg',
         //     // 'https://raw.githubusercontent.com/Ctleryes/Blog/dev/client/public/assets/img/nx.jpg',
@@ -165,165 +142,172 @@ export default {
         // scene.background.image = document.querySelectorAll('#box img')
         .setPath(`${host}/file/image?name=`)
         // .setPath('public/assets/images/')
-        .load(['px.jpg', 'nx.jpg', 'py.jpg', 'ny.jpg', 'pz.jpg', 'nz.jpg']);
+        .load(["px.jpg", "nx.jpg", "py.jpg", "ny.jpg", "pz.jpg", "nz.jpg"]);
       const geometry = new THREE.SphereBufferGeometry(100, 32, 16);
-      const material = new THREE.MeshBasicMaterial(
-        { color: 0xffffff, envMap: scene.background, refractionRatio: 0.95 },
-      );
+      const material = new THREE.MeshBasicMaterial({
+        color: 0xffffff,
+        envMap: scene.background,
+        refractionRatio: 0.95
+      });
       material.envMap.mapping = THREE.CubeRefractionMapping;
       const arrStr = [
-        'albania',
-        'fintech',
-        'fintech',
-        'blockchain',
-        'blockchain',
-        'suplychain',
-        'suplychain',
-        'albania',
+        "albania",
+        "fintech",
+        "fintech",
+        "blockchain",
+        "blockchain",
+        "suplychain",
+        "suplychain",
+        "albania"
       ];
       const loader = new THREE.FontLoader();
-      loader.load('https://easy-mock.com/mock/5a1fe521583969285ab1fa9a/getaway/typefont#!method=get', (font) => {
-        arrStr.forEach((e) => {
-          const textGeo = new THREE.TextGeometry(e, {
-            font,
-            size: 300,
-            height: 5,
-            curveSegments: 12,
-            bevelEnabled: true,
-            bevelThickness: 10,
-            bevelSize: 8,
-            bevelSegments: 5,
+      loader.load(
+        "https://easy-mock.com/mock/5a1fe521583969285ab1fa9a/getaway/typefont#!method=get",
+        font => {
+          arrStr.forEach(e => {
+            const textGeo = new THREE.TextGeometry(e, {
+              font,
+              size: 300,
+              height: 5,
+              curveSegments: 12,
+              bevelEnabled: true,
+              bevelThickness: 10,
+              bevelSize: 8,
+              bevelSegments: 5
+            });
+            const textMate = new THREE.MeshPhongMaterial({
+              color: 0xff0000,
+              envMap: scene.background,
+              refractionRatio: 0.95
+            });
+            const textMesh = new THREE.Mesh(textGeo, textMate);
+            textMesh.castShadow = true;
+            textMesh.position.x = Math.random() * 10000 - 5000;
+            textMesh.position.y = Math.random() * 10000 - 5000;
+            textMesh.position.z = Math.random() * 10000 - 5000;
+            textMesh.scale.z = Math.random() * 3 + 1;
+            textMesh.scale.y = textMesh.scale.z;
+            textMesh.scale.x = textMesh.scale.y;
+            scene.add(textMesh);
+            spheres.push(textMesh);
           });
-          const textMate = new THREE.MeshPhongMaterial(
-            { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-          );
-          const textMesh = new THREE.Mesh(textGeo, textMate);
-          textMesh.castShadow = true;
-          textMesh.position.x = Math.random() * 10000 - 5000;
-          textMesh.position.y = Math.random() * 10000 - 5000;
-          textMesh.position.z = Math.random() * 10000 - 5000;
-          textMesh.scale.z = Math.random() * 3 + 1;
-          textMesh.scale.y = textMesh.scale.z;
-          textMesh.scale.x = textMesh.scale.y;
-          scene.add(textMesh);
-          spheres.push(textMesh);
-        });
-        // let geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // let mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // let textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-        // geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-        // geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-        // geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-        // geometrys = new THREE.TextGeometry('data collection', {
-        //   font,
-        //   size: 300,
-        //   height: 5,
-        //   curveSegments: 12,
-        //   bevelEnabled: true,
-        //   bevelThickness: 10,
-        //   bevelSize: 8,
-        //   bevelSegments: 5,
-        // });
-        // mat = new THREE.MeshPhongMaterial(
-        //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
-        // );
-        // textObj = new THREE.Mesh(geometrys, mat);
-        // textObj.castShadow = true;
-        // textObj.position.x = Math.random() * 10000 - 5000;
-        // textObj.position.y = Math.random() * 10000 - 5000;
-        // textObj.position.z = Math.random() * 10000 - 5000;
-        // textObj.scale.z = Math.random() * 3 + 1;
-        // textObj.scale.y = textObj.scale.z;
-        // textObj.scale.x = textObj.scale.y;
-        // scene.add(textObj);
-        // spheres.push(textObj);
-      });
+          // let geometrys = new THREE.TextGeometry('data collection', {
+          //   font,
+          //   size: 300,
+          //   height: 5,
+          //   curveSegments: 12,
+          //   bevelEnabled: true,
+          //   bevelThickness: 10,
+          //   bevelSize: 8,
+          //   bevelSegments: 5,
+          // });
+          // let mat = new THREE.MeshPhongMaterial(
+          //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
+          // );
+          // let textObj = new THREE.Mesh(geometrys, mat);
+          // textObj.castShadow = true;
+          // textObj.position.x = Math.random() * 10000 - 5000;
+          // textObj.position.y = Math.random() * 10000 - 5000;
+          // textObj.position.z = Math.random() * 10000 - 5000;
+          // textObj.scale.z = Math.random() * 3 + 1;
+          // textObj.scale.y = textObj.scale.z;
+          // textObj.scale.x = textObj.scale.y;
+          // scene.add(textObj);
+          // spheres.push(textObj);
+          // geometrys = new THREE.TextGeometry('data collection', {
+          //   font,
+          //   size: 300,
+          //   height: 5,
+          //   curveSegments: 12,
+          //   bevelEnabled: true,
+          //   bevelThickness: 10,
+          //   bevelSize: 8,
+          //   bevelSegments: 5,
+          // });
+          // mat = new THREE.MeshPhongMaterial(
+          //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
+          // );
+          // textObj = new THREE.Mesh(geometrys, mat);
+          // textObj.castShadow = true;
+          // textObj.position.x = Math.random() * 10000 - 5000;
+          // textObj.position.y = Math.random() * 10000 - 5000;
+          // textObj.position.z = Math.random() * 10000 - 5000;
+          // textObj.scale.z = Math.random() * 3 + 1;
+          // textObj.scale.y = textObj.scale.z;
+          // textObj.scale.x = textObj.scale.y;
+          // scene.add(textObj);
+          // spheres.push(textObj);
+          // geometrys = new THREE.TextGeometry('data collection', {
+          //   font,
+          //   size: 300,
+          //   height: 5,
+          //   curveSegments: 12,
+          //   bevelEnabled: true,
+          //   bevelThickness: 10,
+          //   bevelSize: 8,
+          //   bevelSegments: 5,
+          // });
+          // mat = new THREE.MeshPhongMaterial(
+          //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
+          // );
+          // textObj = new THREE.Mesh(geometrys, mat);
+          // textObj.castShadow = true;
+          // textObj.position.x = Math.random() * 10000 - 5000;
+          // textObj.position.y = Math.random() * 10000 - 5000;
+          // textObj.position.z = Math.random() * 10000 - 5000;
+          // textObj.scale.z = Math.random() * 3 + 1;
+          // textObj.scale.y = textObj.scale.z;
+          // textObj.scale.x = textObj.scale.y;
+          // scene.add(textObj);
+          // spheres.push(textObj);
+          // geometrys = new THREE.TextGeometry('data collection', {
+          //   font,
+          //   size: 300,
+          //   height: 5,
+          //   curveSegments: 12,
+          //   bevelEnabled: true,
+          //   bevelThickness: 10,
+          //   bevelSize: 8,
+          //   bevelSegments: 5,
+          // });
+          // mat = new THREE.MeshPhongMaterial(
+          //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
+          // );
+          // textObj = new THREE.Mesh(geometrys, mat);
+          // textObj.castShadow = true;
+          // textObj.position.x = Math.random() * 10000 - 5000;
+          // textObj.position.y = Math.random() * 10000 - 5000;
+          // textObj.position.z = Math.random() * 10000 - 5000;
+          // textObj.scale.z = Math.random() * 3 + 1;
+          // textObj.scale.y = textObj.scale.z;
+          // textObj.scale.x = textObj.scale.y;
+          // scene.add(textObj);
+          // spheres.push(textObj);
+          // geometrys = new THREE.TextGeometry('data collection', {
+          //   font,
+          //   size: 300,
+          //   height: 5,
+          //   curveSegments: 12,
+          //   bevelEnabled: true,
+          //   bevelThickness: 10,
+          //   bevelSize: 8,
+          //   bevelSegments: 5,
+          // });
+          // mat = new THREE.MeshPhongMaterial(
+          //   { color: 0xff0000, envMap: scene.background, refractionRatio: 0.95 },
+          // );
+          // textObj = new THREE.Mesh(geometrys, mat);
+          // textObj.castShadow = true;
+          // textObj.position.x = Math.random() * 10000 - 5000;
+          // textObj.position.y = Math.random() * 10000 - 5000;
+          // textObj.position.z = Math.random() * 10000 - 5000;
+          // textObj.scale.z = Math.random() * 3 + 1;
+          // textObj.scale.y = textObj.scale.z;
+          // textObj.scale.x = textObj.scale.y;
+          // scene.add(textObj);
+          // spheres.push(textObj);
+        }
+      );
 
       for (let i = 0; i < 400; i++) {
         const mesh = new THREE.Mesh(geometry, material);
@@ -333,7 +317,6 @@ export default {
         mesh.scale.z = Math.random() * 3 + 1;
         mesh.scale.y = mesh.scale.z;
         mesh.scale.x = mesh.scale.y;
-
 
         scene.add(mesh);
         spheres.push(mesh);
@@ -345,9 +328,8 @@ export default {
       renderer.setSize(window.innerWidth, window.innerHeight);
       container.appendChild(renderer.domElement);
       //
-      window.addEventListener('resize', onWindowResize, false);
+      window.addEventListener("resize", onWindowResize, false);
     }
-
 
     //
 
@@ -372,37 +354,43 @@ export default {
     animate();
   },
   created() {
-    let isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+    let isFullscreen =
+      document.fullscreenElement ||
+      document.mozFullScreenElement ||
+      document.webkitFullscreenElement ||
+      document.fullScreen ||
+      document.mozFullScreen ||
+      document.webkitIsFullScreen;
     isFullscreen = !!isFullscreen;
-    document.addEventListener('fullscreenchange', () => {
-      this.$emit('input', !this.value);
-      this.$emit('on-change', !this.value);
+    document.addEventListener("fullscreenchange", () => {
+      this.$emit("input", !this.value);
+      this.$emit("on-change", !this.value);
       this.isfullscreenchange();
     });
-    document.addEventListener('mozfullscreenchange', () => {
-      this.$emit('input', !this.value);
-      this.$emit('on-change', !this.value);
+    document.addEventListener("mozfullscreenchange", () => {
+      this.$emit("input", !this.value);
+      this.$emit("on-change", !this.value);
       this.isfullscreenchange();
     });
-    document.addEventListener('webkitfullscreenchange', () => {
-      this.$emit('input', !this.value);
-      this.$emit('on-change', !this.value);
+    document.addEventListener("webkitfullscreenchange", () => {
+      this.$emit("input", !this.value);
+      this.$emit("on-change", !this.value);
       this.isfullscreenchange();
     });
-    document.addEventListener('msfullscreenchange', () => {
-      this.$emit('input', !this.value);
-      this.$emit('on-change', !this.value);
+    document.addEventListener("msfullscreenchange", () => {
+      this.$emit("input", !this.value);
+      this.$emit("on-change", !this.value);
       this.isfullscreenchange();
     });
 
-    this.$emit('input', isFullscreen);
+    this.$emit("input", isFullscreen);
   },
   methods: {
     isfullscreenchange() {
       this.showfull = !this.showfull;
     },
     gettingStart() {
-      this.$emit('gettingStart');
+      this.$emit("gettingStart");
     },
     full() {
       const main = document.body;
@@ -425,24 +413,24 @@ export default {
       } else if (main.msRequestFullscreen) {
         main.msRequestFullscreen();
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
-.full-navigation-header{
-    position:absolute;
-    left: 20px;
-    top:20px;
-    width: 100%;
+.full-navigation-header {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 100%;
 }
-.getting-start{
-     position:absolute;
-    left: 50%;
-    top:60%;
-    width: 200px;
-    height: 50px;
-    transform: translate(-60%,185%);
+.getting-start {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  width: 200px;
+  height: 50px;
+  transform: translate(-60%, 185%);
 }
 </style>
