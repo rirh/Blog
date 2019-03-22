@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Boll from './component/boll';
 import { observer, inject } from "mobx-react";
 import { withRouter } from 'react-router-dom'; // 或者 是import { withRouter } from 'react-router-dom';
-import PropTypes from "prop-types";
 import u from 'utils';
 import style from "./index.css"
 
@@ -34,6 +33,3 @@ class Navigation extends Component {
 }
 export default Navigation;
 
-Navigation.PropTypes = {
-    appState: PropTypes.object
-}
