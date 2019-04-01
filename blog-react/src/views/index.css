@@ -46,7 +46,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-@import '~antd/dist/antd.css';
 :root{
 	--blue:#2a3a4a
 }

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import style from './index.css'
-
+import style from './index.css';
 
 export default class Home extends Component {
   render() {
