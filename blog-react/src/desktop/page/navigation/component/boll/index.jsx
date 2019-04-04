@@ -40,7 +40,7 @@ class Boll extends Component {
       scene = new THREE.Scene();
       scene.background = new THREE.CubeTextureLoader()
         .setPath("static/image/")
-        .load(["px.jpg", "nx.jpg", "py.jpg", "ny.jpg", "pz.jpg", "nz.jpg"]);
+        .load(["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"]);
       const geometry = new THREE.SphereBufferGeometry(100, 32, 16);
       const material = new THREE.MeshBasicMaterial({
         color: 0xf4f4f4,
@@ -52,7 +52,7 @@ class Boll extends Component {
         "TigerZH",
         "HU ZHI HUI",
         "welcome",
-        "REACT APP" 
+        "REACT" 
       ];
       const loader = new THREE.FontLoader();
       loader.load(

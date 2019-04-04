@@ -1,18 +1,55 @@
 .wapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+  position: relative;
   width: 100%;
   overflow: hidden;
 }
 
-.videoWapper{
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+.videoWapper {
+  /* height: 100%;
+  width: 100%; */
   position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
+}
+
+.slogan {
+  margin: 13% 0 0 5%;
+  color: #fff;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.sloganTitle {
+  font-size: 7rem;
+  font-weight: bold;
+}
+
+.sloganSub {
+  font-size: 1.6rem;
+}
+
+.sloganDesc {
+  font-size: 5rem;
+  font-weight: bold;
+  text-align: right;
+  margin: 10% 15% 0 0;
+}
+
+.gov {
+  position: absolute;
+  bottom: .4rem;
+  width: 100%;
+  color: #fff;
+  text-align: center
+}
+
+.morph {
+  background: rgba(255, 255, 255, 0);
+  /*关键点*/
+  position: absolute;
+  z-index: 1;
+  /*确保在遮盖的元素的上方*/
+  top: 0px;
+  left: 0px;
 }

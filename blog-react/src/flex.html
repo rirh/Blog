@@ -107,7 +107,7 @@
     }
 
 
-    @keyframes rotate {
+    @keyframes rotateAY {
       from {
         transform: rotateY(0);
       }
@@ -117,14 +117,23 @@
       }
     }
 
+    @keyframes rotateAX {
+      from {
+        transform: rotateX(0);
+      }
+
+      to {
+        transform: rotateX(360deg);
+      }
+    }
+
     .di-3d {
       perspective: 300px;
     }
 
     .cube {
       transform-style: preserve-3d;
-      animation: rotate .5s infinite linear;
-
+      animation: rotateAY .5s infinite linear;
     }
 
     .dice {
