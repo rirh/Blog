@@ -5,13 +5,14 @@ import * as GLTFLoader from 'three-gltf-loader';
 import { tiger_action_arr, emotes, states } from "./data";
 
 
+let container, clock, mixer, actions, activeAction, previousAction;
+let camera, scene, renderer, model;
+let api = { state: 'Idle' };
 
 export default class morph extends Component {
   componentDidMount() {
     this.isWebGl()
-    let container, clock, mixer, actions, activeAction, previousAction;
-    let camera, scene, renderer, model;
-    let api = { state: 'Idle' };
+
     let height = window.innerHeight / 4;
     let width = window.innerWidth / 4;
     container = this.refs.container;
@@ -129,10 +130,25 @@ export default class morph extends Component {
       window.document.body.appendChild(u.getWebGLErrorMessage());
     }
   }
+  say_hi(name, duration) {
+
+    console.log(name, duration)
+    previousAction = activeAction;
+    activeAction = actions[name];
+    if (previousAction !== activeAction) {
+      previousAction.fadeOut(duration);
+    }
+    activeAction
+      .reset()
+      .setEffectiveTimeScale(1)
+      .setEffectiveWeight(1)
+      .fadeIn(duration)
+      .play();
+  }
   render() {
     return (
       <Fragment>
-        <div ref="container" ></div>
+        <div onClick={() => { this.say_hi.bind(this, 'Wave', .2) }} ref="container" ></div>
       </Fragment>
     )
   }

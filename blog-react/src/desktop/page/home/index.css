@@ -45,9 +45,10 @@
 }
 
 .morph {
-  background: rgba(255, 255, 255, 0);
-  /*关键点*/
   position: absolute;
+
+  /* background: rgba(255, 255, 255, 0); */
+  /*关键点*/
   z-index: 1;
   /*确保在遮盖的元素的上方*/
   top: 0px;
