@@ -3,6 +3,8 @@ import u from "@/utils";
 import * as THREE from "three";
 import * as GLTFLoader from 'three-gltf-loader';
 import { tiger_action_arr, emotes, states } from "./data";
+import styles from "../index.css";
+
 
 
 let container, clock, mixer, actions, activeAction, previousAction;
@@ -13,15 +15,16 @@ export default class morph extends Component {
   componentDidMount() {
     this.isWebGl()
 
-    let height = window.innerHeight / 4;
-    let width = window.innerWidth / 4;
+    let height = window.innerHeight / 3;
+    let width = window.innerWidth / 3;
     container = this.refs.container;
 
     init();
     animate();
     function init() {
-      camera = new THREE.PerspectiveCamera(25, width / height, 0.25, 100);
-      camera.position.set(8, 2, 10);
+      camera = new THREE.PerspectiveCamera(40, width / height, 0.25, 100);
+      camera.position.set(4, 2, 10);
+      
       camera.lookAt(new THREE.Vector3(0, 2, 0));
       scene = new THREE.Scene();
       // scene.background = new THREE.Color(0xe0e0e0);
@@ -131,7 +134,6 @@ export default class morph extends Component {
     }
   }
   say_hi(name, duration) {
-
     console.log(name, duration)
     previousAction = activeAction;
     activeAction = actions[name];
@@ -148,7 +150,7 @@ export default class morph extends Component {
   render() {
     return (
       <Fragment>
-        <div onClick={() => { this.say_hi.bind(this, 'Wave', .2) }} ref="container" ></div>
+        <div className={styles.morph} onClick={this.say_hi.bind(this, 'Wave', .2)} ref="container" ></div>
       </Fragment>
     )
   }
