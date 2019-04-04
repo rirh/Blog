@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import u from "@/utils";
 import * as THREE from "three";
 import * as GLTFLoader from 'three-gltf-loader';
+import { tiger_action_arr, emotes, states } from "./data";
+
 
 
 export default class morph extends Component {
@@ -9,17 +11,19 @@ export default class morph extends Component {
     this.isWebGl()
     let container, clock, mixer, actions, activeAction, previousAction;
     let camera, scene, renderer, model;
-    let api = { state: 'Running' };
+    let api = { state: 'Idle' };
+    let height = window.innerHeight / 4;
+    let width = window.innerWidth / 4;
     container = this.refs.container;
 
     init();
     animate();
     function init() {
-      camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 0.25, 100);
+      camera = new THREE.PerspectiveCamera(25, width / height, 0.25, 100);
       camera.position.set(8, 2, 10);
       camera.lookAt(new THREE.Vector3(0, 2, 0));
       scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xe0e0e0);
+      // scene.background = new THREE.Color(0xe0e0e0);
       scene.fog = new THREE.Fog(0xe0e0e0, 20, 100);
       clock = new THREE.Clock();
       // lights
@@ -29,21 +33,21 @@ export default class morph extends Component {
       light = new THREE.DirectionalLight(0xffffff);
       light.position.set(0, 20, 10);
       scene.add(light);
-      
+
 
       var loader = new GLTFLoader();
       loader.load('static/models/RobotExpressive.glb', function (gltf) {
         // loader.load('static/models/Soldier.glb', function (gltf) {
-          model = gltf.scene;
+        model = gltf.scene;
         scene.add(model);
         createGUI(model, gltf.animations);
       }, undefined, function (e) {
         console.error(e);
       });
-      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
       renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0xffffff, 0)
+      renderer.setSize(width, height);
+      renderer.setClearColor(0xEEEEEE, 0.0);
       renderer.gammaOutput = true;
       renderer.gammaFactor = 2.2;
       container.appendChild(renderer.domElement);
@@ -52,8 +56,8 @@ export default class morph extends Component {
     }
 
     function createGUI(model, animations) {
-      var states = ['Idle', 'Walking', 'Running', 'Dance', 'Death', 'Sitting', 'Standing'];
-      var emotes = ['Jump', 'Yes', 'No', 'Wave', 'Punch', 'ThumbsUp'];
+
+
       mixer = new THREE.AnimationMixer(model);
       actions = {};
       for (var i = 0; i < animations.length; i++) {
@@ -65,45 +69,32 @@ export default class morph extends Component {
           action.loop = THREE.LoopOnce;
         }
       }
-      // states
-      // var statesFolder = gui.addFolder('States');
-      // var clipCtrl = statesFolder.add(api, 'state').options(states);
-      // clipCtrl.onChange(function () {
-      //   console.log(api.state)
-      //   fadeToAction(api.state, 0.5);
-      // });
-      // statesFolder.open();
-      // emotes
-      // var emoteFolder = gui.addFolder('Emotes');
-      // function createEmoteCallback(name) {
-      //   api[name] = function () {
-      //     fadeToAction(name, 0.2);
-      //     mixer.addEventListener('finished', restoreState);
-      //   };
-      //   emoteFolder.add(api, name);
-      // }
+
+
       function restoreState() {
         mixer.removeEventListener('finished', restoreState);
         fadeToAction(api.state, 0.2);
       }
-      // for (let i = 0; i < emotes.length; i++) {
-      //   createEmoteCallback(emotes[i]);
-      // }
-      // emoteFolder.open();
-      // expressions
 
-      // face = model.getObjectByName('Head_2');
-      // var expressions = Object.keys(face.morphTargetDictionary);
 
-      // var expressionFolder = gui.addFolder('Expressions');
-      // for (let i = 0; i < expressions.length; i++) {
-      //   console.log(expressions[i],face)
-      //   expressionFolder.add(face.morphTargetInfluences, i, 0, 1, 0.01).name(expressions[i]);
-      // }
       activeAction = actions[api.state];
       activeAction.play();
-      setInterval(() => { fadeToAction(emotes[Math.floor(Math.random() * (emotes.length - 1))], .2); mixer.addEventListener('finished', restoreState); }, 5000);
-      // expressionFolder.open();
+
+      let cursor = 0;
+      const length = tiger_action_arr.length - 1;
+      const do_action = () => {
+        const { action, dura } = tiger_action_arr[cursor];
+        fadeToAction(action, dura)
+        setTimeout(() => {
+          if (cursor < length) {
+            cursor += 1;
+            do_action()
+          } else {
+            mixer.addEventListener('finished', restoreState);
+          }
+        }, dura * 10000 / 3)
+      }
+      do_action()
     }
     function fadeToAction(name, duration) {
       console.log(name, duration)
@@ -120,9 +111,9 @@ export default class morph extends Component {
         .play();
     }
     function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(width, height);
     }
     //
     function animate() {

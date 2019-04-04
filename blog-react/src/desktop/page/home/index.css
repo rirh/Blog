@@ -14,10 +14,10 @@
 }
 
 .slogan {
-  margin: 13% 0 0 5%;
   color: #fff;
   box-sizing: border-box;
   width: 100%;
+  position: absolute;
 }
 
 .sloganTitle {
@@ -51,5 +51,5 @@
   z-index: 1;
   /*确保在遮盖的元素的上方*/
   top: 0px;
-  left: 0px;
+  right: 0px;
 }

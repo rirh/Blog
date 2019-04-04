@@ -40,7 +40,8 @@ class Boll extends Component {
       scene = new THREE.Scene();
       scene.background = new THREE.CubeTextureLoader()
         .setPath("static/image/")
-        .load(["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"]);
+        // .load(["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"]);
+        .load(["px.jpg", "nx.jpg", "py.jpg", "ny.jpg", "pz.jpg", "nz.jpg"]);
       const geometry = new THREE.SphereBufferGeometry(100, 32, 16);
       const material = new THREE.MeshBasicMaterial({
         color: 0xf4f4f4,
