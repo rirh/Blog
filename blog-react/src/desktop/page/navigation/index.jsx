@@ -20,7 +20,7 @@ class Navigation extends Component {
     }
     handleGo() {
         console.log(this.props)
-        this.props.history.push("/home");
+        this.props.history.push("/main");
     }
     render() {
         return (

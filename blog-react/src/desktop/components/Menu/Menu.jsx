@@ -3,16 +3,19 @@ import style from './menu.css';
 import { Link } from "react-router-dom";
 
 export default class Menu extends Component {
+  componentDidMount(){
+
+  }
   render() {
     const menus = [{
       name: 'Vue',
-      path: ""
+      path: "/vue"
     }, {
       name: 'React',
-      path: ""
+      path: "/react"
     }, {
       name: 'Nginx',
-      path: ""
+      path: "/nginx"
     },{
       name: '小程序',
       path: ""
@@ -32,7 +35,7 @@ export default class Menu extends Component {
     },];
     return (
       <header className={style.menuWapper}>
-        <Link to="/" className={style.logo}>TigerZH</Link>
+        <Link to="/main" className={style.logo}>TigerZH</Link>
         <div className={style.nav}>
           <input className={style.search} type="text" />
           <ul className={style.contain} >

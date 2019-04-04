@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react'
 import style from './index.css';
-import Menu from "@/desktop/components/Menu";
 import Morph from "./components/morph"
 
 export default class Home extends Component {
@@ -8,11 +7,10 @@ export default class Home extends Component {
   render() {
 
     const doc_height = document.documentElement.clientHeight;
-
     return (
       <Fragment>
-        <div className={style.wapper} style={{ "height": `${doc_height}px` }}>
-          <Menu />
+        <div className={style.wapper} style={{ "height": `${doc_height - (3.6 * 16)}px` }}>
+
           <Morph style={style.morph} />
 
           <video className={style.videoWapper} autoPlay="autoplay" loop="loop">
