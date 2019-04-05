@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Menu from "@/desktop/components/Menu";
 import Home from "../home";
 import Vue from "../vue";
@@ -11,14 +11,10 @@ export default class index extends Component {
     return (
       <Fragment>
         <Menu></Menu>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/main" render={() => <Home />}></Route>
-            <Route path="/main/vue" render={() => <Vue />}></Route>
-            <Route path="/react" render={() => <Reacts />}></Route>
-            <Route path="/nginx" render={() => <Nginx />}></Route>
-          </Switch>
-        </BrowserRouter>
+          <Route path="/main" exact render={() => <Home />}></Route>
+          <Route path="/main/vue" render={() => <Vue />}></Route>
+          <Route path="/main/react" render={() => <Reacts />}></Route>
+          <Route path="/main/nginx" render={() => <Nginx />}></Route>
       </Fragment>
     )
   }

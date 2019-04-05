@@ -9,13 +9,13 @@ export default class Menu extends Component {
   render() {
     const menus = [{
       name: 'Vue',
-      path: "/vue"
+      path: "/main/vue"
     }, {
       name: 'React',
-      path: "/react"
+      path: "/main/react"
     }, {
       name: 'Nginx',
-      path: "/nginx"
+      path: "/main/nginx"
     },{
       name: '小程序',
       path: ""
