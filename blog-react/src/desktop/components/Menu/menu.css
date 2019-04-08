@@ -14,6 +14,22 @@
   border-bottom: 1px solid #333;
 }
 
+.unPreMenuWapper {
+  display: flex;
+  display: -webkit-flex;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  height: 3.6rem;
+  background-color: #fff;
+  color: #333;
+  padding: .7rem 1.5rem;
+  line-height: 2.2rem;
+  right: 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #efefef;
+}
+
 .contain {
   line-height: 2.2rem;
   font-size: .9rem;
@@ -29,6 +45,11 @@
 
 .navItem {
   color: #fff;
+  text-decoration: none;
+}
+
+.unPrenavItem {
+  color: #333;
   text-decoration: none;
 }
 
@@ -70,5 +91,11 @@
   position: relative;
   text-decoration: none;
 }
+.unPrelogo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  position: relative;
+  text-decoration: none;
+}
 
-.menuItem {}

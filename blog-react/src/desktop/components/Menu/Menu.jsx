@@ -1,48 +1,42 @@
 import React, { Component } from 'react';
 import style from './menu.css';
 import { Link } from "react-router-dom";
+import { observer, inject } from "mobx-react";
 
-export default class Menu extends Component {
-  componentDidMount(){
+@inject('appState') @observer
+class Menu extends Component {
+  componentDidMount() {
 
   }
+  handleColor(val) {
+    this.props.appState.home.change_preview(val)
+  }
   render() {
-    const menus = [{
-      name: 'Vue',
-      path: "/main/vue"
-    }, {
-      name: 'React',
-      path: "/main/react"
-    }, {
-      name: 'Nginx',
-      path: "/main/nginx"
-    },{
-      name: '小程序',
-      path: ""
-    }
-    // ,{
-    //   name: 'uni-app',
-    //   path: ""
-    // }
-    // ,{
-    //   name: 'project',
-    //   path: ""
-    // }
-    ,
-    {
-      name: 'github',
-      path: ""
-    },];
+    const { is_preview, menus } = this.props.appState.home;
     return (
-      <header className={style.menuWapper}>
-        <Link to="/main" className={style.logo}>TigerZH</Link>
+      <header className={
+        this.props.appState.home.is_preview
+          ? style.menuWapper
+          : style.unPreMenuWapper
+      } >
+        <Link
+          to="/main"
+          onClick={this.handleColor.bind(this, true)}
+          className={
+            this.props.appState.home.is_preview
+              ?style.logo
+              : style.unPrelogo}>TigerZH{is_preview}
+        </Link>
         <div className={style.nav}>
           <input className={style.search} type="text" />
           <ul className={style.contain} >
             {
               menus.map(e =>
-                <li key={e.name} className={style.containItem}>
-                  <Link className={style.navItem} to={e.path}>{e.name}</Link>
+                <li onClick={this.handleColor.bind(this, false)} key={e.name} className={style.containItem}>
+                  <Link className={
+                    this.props.appState.home.is_preview
+                      ? style.navItem
+                      : style.unPrenavItem} to={e.path}>{e.name}</Link>
                 </li>)
             }
           </ul>
@@ -52,3 +46,5 @@ export default class Menu extends Component {
     )
   }
 }
+
+export default Menu;
