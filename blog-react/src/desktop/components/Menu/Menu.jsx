@@ -31,7 +31,7 @@ class Menu extends Component {
           <input className={style.search} type="text" />
           <ul className={style.contain} >
             {
-              menus.map(e =>
+              menus.slice(1,menus.length).map(e =>
                 <li onClick={this.handleColor.bind(this, false)} key={e.name} className={style.containItem}>
                   <Link className={
                     this.props.appState.home.is_preview

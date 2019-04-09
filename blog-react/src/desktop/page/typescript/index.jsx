@@ -5,11 +5,11 @@ export default class index extends Component {
     const height = document.documentElement.clientHeight - (16 * 3.6);
     return (
       <Fragment>
-        <iframe id="koa2"
-          title="koa2"
+        <iframe id="typescript"
+          title="typescript"
           width="100%"
           height={`${height}px`}
-          src="https://chenshenhai.github.io/koa2-note/note/start/quick.html">
+          src="https://ts.xcatliu.com/basics/primitive-data-types.html">
         </iframe>
       </Fragment>
     )

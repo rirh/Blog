@@ -5,34 +5,56 @@ import {
   action
 } from "mobx";
 
+import Home from "@/desktop/page/home";
+import Vue from "@/desktop/page/vue";
+import Typescript from "@/desktop/page/typescript";
+// import Nginx from "@/desktop/page/nginx";
+
 class AppState {
   @observable is_preview = true;
-  @observable menus= [{
-    name: 'Vue',
-    path: "/main/vue"
-  }, {
-    name: 'React',
-    path: "/main/react"
-  }, {
-    name: 'Nginx',
-    path: "/main/nginx"
-  }, {
-    name: '小程序',
-    path: ""
-  }
-    // ,{
-    //   name: 'uni-app',
-    //   path: ""
-    // }
-    // ,{
-    //   name: 'project',
-    //   path: ""
-    // }
-    ,
+  @observable menus = [{
+    name: 'Koa2',
+    path: "/main",
+    component: Home
+  },
   {
-    name: 'github',
-    path: ""
-  },];
+    name: 'Koa2',
+    path: "/main/koa",
+    component: Vue
+  },
+  {
+    name: 'typescript',
+    path: "/main/typescript",
+    component: Typescript
+
+  },
+  // {
+  //   name: 'Nginx',
+  //   path: "/main/nginx",
+  //   component: Nginx
+
+  // },
+  // {
+  //   name: '小程序',
+  //   path: "",
+  //   component: null
+
+  // },
+  // ,{
+  //   name: 'uni-app',
+  //   path: ""
+  // }
+  // ,{
+  //   name: 'project',
+  //   path: ""
+  // },
+  // {
+  //   name: 'github',
+  //   path: "",
+  //   component: Vue
+
+  // }
+  ];
   // @observable count = 0;
   // @observable name = "charles";
   // @computed get msg() {
@@ -93,4 +115,4 @@ export default appState
 // autorun(() => {
 //   console.log('object', appState.msg)
 // })
-// export default appState
+// export default appState:
