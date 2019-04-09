@@ -1,66 +1,44 @@
-const express = require('express')
+const Koa = require('koa')
+const app = new Koa()
+const views = require('koa-views')
+const json = require('koa-json')
+const onerror = require('koa-onerror')
+const bodyparser = require('koa-bodyparser')
+const logger = require('koa-logger')
 
-const {
-  PORT,
-  MONGODBADRESS,
-  HOST
-} = require('./config.js')
+const index = require('./routes/index')
+const users = require('./routes/users')
 
-var bodyParser = require('body-parser')
-var session = require('express-session')
-var cookieParser = require('cookie-parser')
+// error handler
+onerror(app)
 
-const app = express()
-const Route = require('./router/index.js')
-var mongoose = require('mongoose')
+// middlewares
+app.use(bodyparser({
+  enableTypes:['json', 'form', 'text']
+}))
+app.use(json())
+app.use(logger())
+app.use(require('koa-static')(__dirname + '/public'))
 
-// 设置跨域访问
-app.all('*', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', HOST)
-  res.header('Access-Control-Allow-Credentials', true)
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS')
-  res.header('X-Powered-By', ' 3.2.1')
-  res.header('Content-Type', 'application/json;charset=utf-8')
-  next()
-})
-// 设置静态资源路径
-app.use(express.static('./static'))
-
-// 解析 application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-
-// 解析 application/json
-app.use(bodyParser.json())
-
-// 设置session和cookie
-app.use(cookieParser())
-app.use(session({
-  secret: '12345',
-  name: 'testapp',
-  resave: false,
-  saveUninitialized: true
+app.use(views(__dirname + '/views', {
+  extension: 'pug'
 }))
 
-// 连接mongodb数据库
-// mongoose.Promise = global.Promise; //不加这句会报错
-mongoose.connect(MONGODBADRESS)
-  .then(() => {
-    console.log('Connected to blogDB Mongoose')
-  })
-  .catch(err => {
-    console.error(`error:${err}`)
-  })
-// require('./models/idea.js')
-
-// const idea = mongoose.model('ideas')
-
-// 路由守卫
-let routes = new Route({app})
-
-routes.goHome()
-routes.getImage()
-
-app.listen(PORT, () => {
-  console.log(`server on ${PORT}`)
+// logger
+app.use(async (ctx, next) => {
+  const start = new Date()
+  await next()
+  const ms = new Date() - start
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
+
+// routes
+app.use(index.routes(), index.allowedMethods())
+app.use(users.routes(), users.allowedMethods())
+
+// error-handling
+app.on('error', (err, ctx) => {
+  console.error('server error', err, ctx)
+});
+
+module.exports = app
