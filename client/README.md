@@ -1,21 +1,8 @@
-# client_v2
+private project @2019
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+个人网站页面
 
-### Compiles and minifies for production
-```
-npm run build
-```
+##npm start 
 
-### Lints and fixes files
-```
-npm run lint
-```
+
