@@ -1,5 +1,5 @@
-var THREE = require('three');
-var assert = require("assert");
+var THREE = require('../node_modules/three/build/three');
+var assert = require("../node_modules/assert/assert");
 
 describe('The THREE object', function() {
   it('should have a defined BasicShadowMap constant', function() {
