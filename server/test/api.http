@@ -1,0 +1,15 @@
+POST  http://localhost:3001/news HTTP/1.0
+Content-Type: application/json
+
+{
+  "page": "12",
+  "count": "1"
+}
+###
+GET  http://localhost:3001/ HTTP/1.0
+Content-Type: application/json
+
+{
+  "page": "12",
+  "count": "1"
+}
