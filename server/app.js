@@ -13,11 +13,15 @@ app
 
 router.get('/showtable', async ctx => {
   const sql = 'SHOW TABLES';
-  const result = await query(sql);
   console.log(result.RowDataPacket)
   ctx.body = result;
 })
-
+//获取网易的新闻
+router.post('/sql', async ctx => {
+  const { sql } = ctx.request.body;
+  const result = await query(sql);
+  ctx.body = result
+})
 //获取网易的新闻
 router.post('/news', async ctx => {
   const { page, count } = ctx.request.body;
