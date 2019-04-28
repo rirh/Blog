@@ -6,7 +6,7 @@ Content-Type: application/json
   "count": "1"
 }
 ###
-POST  http://api.huzhihui.org.cn/sql HTTP/1.0
+POST  https://api.huzhihui.org.cn/sql HTTP/1.0
 Content-Type: application/json
 
 {
@@ -20,10 +20,10 @@ Content-Type: application/json
   "sql": "SHOW TABLES"
 }
 ###
-POST  http://localhost:3001/send HTTP/1.0
+POST  https://api.huzhihui.org.cn/send HTTP/1.0
 Content-Type: application/json
 
 {
   "text": "hello",
-  "desp": "为啥不能中文!"
+  "desp": "为啥能文!"
 }

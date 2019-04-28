@@ -1,5 +1,11 @@
  #! /bin/bash
-git status;
 git add .;
 git commit -m "await";
-git push
+git push;
+set timeout 60;
+ssh -i "cert/ssh.huzhihui.org.cn.pem" root@101.201.234.154> /dev/null 2>&1 << eeooff
+./deplory.sh 
+exit;
+eeooff
+echo done!
+
