@@ -11,6 +11,11 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 
+router.get('/', async ctx => {
+  ctx.body = {
+    name: 123
+  };
+})
 
 router.get('/showtable', async ctx => {
   const sql = 'SHOW TABLES';
