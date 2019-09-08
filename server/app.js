@@ -3,7 +3,15 @@ const router = require('koa-router')();
 const axios = require('axios');
 const bodyParser = require('koa-bodyparser')
 const { query } = require('./data')
+const fs = require('fs');
+const serve = require('koa-static');
+const path = require('path');
+
+
 const app = new koa();
+const staticPath = '../client/build';
+const main = serve(path.join(__dirname,staticPath));
+app.use(main);
 
 // 使用ctx.body解析中间件
 app.use(bodyParser())
@@ -11,12 +19,11 @@ app
   .use(router.routes())
   .use(router.allowedMethods());
 
-router.get('/', async ctx => {
-  ctx.body = {
-    name: 123
-  };
-})
 
+router.get('/', async ctx => {
+  ctx.response.type = 'html';
+  ctx.response.body = await fs.createReadStream('../build/index.html', 'utf8');
+})
 router.get('/showtable', async ctx => {
   const sql = 'SHOW TABLES';
   console.log(result.RowDataPacket)
@@ -48,4 +55,6 @@ router.post('/send', async ctx => {
   const { data } = await axios.get(encodeURI(url))
   ctx.body = data
 })
+
+app.on('error', (err, ctx) => console.error('server error', err));
 app.listen(3001)
