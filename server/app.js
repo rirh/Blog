@@ -9,7 +9,7 @@ const path = require('path');
 
 
 const app = new koa();
-const staticPath = '../client/build';
+const staticPath = '../dist';
 const main = serve(path.join(__dirname,staticPath));
 app.use(main);
 
@@ -22,7 +22,7 @@ app
 
 router.get('/', async ctx => {
   ctx.response.type = 'html';
-  ctx.response.body = await fs.createReadStream('../build/index.html', 'utf8');
+  ctx.response.body = await fs.createReadStream('../dist/index.html', 'utf8');
 })
 router.get('/showtable', async ctx => {
   const sql = 'SHOW TABLES';
