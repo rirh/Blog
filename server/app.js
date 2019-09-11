@@ -6,11 +6,13 @@ const { query } = require('./data')
 const fs = require('fs');
 const serve = require('koa-static');
 const path = require('path');
+const send = require('koa-send');
 
 
 const app = new koa();
 const staticPath = '../dist';
-const main = serve(path.join(__dirname,staticPath));
+const stPath = path.join(__dirname, staticPath)
+const main = serve(stPath);
 app.use(main);
 
 // 使用ctx.body解析中间件
@@ -24,6 +26,16 @@ router.get('/', async ctx => {
   ctx.response.type = 'html';
   ctx.response.body = await fs.createReadStream('../dist/index.html', 'utf8');
 })
+
+
+router.get('/ios13', async ctx => {
+  var fileName = 'iOS_iPadOS_13_Beta_Profile.mobileconfig';
+  // ctx.attachment(path);
+  ctx.set('Content-disposition','attachment;filename='+'iOS_iPadOS_13_Beta_Profile.mobileconfig');
+  await send(ctx, fileName, { root: stPath });
+
+})
+
 router.get('/showtable', async ctx => {
   const sql = 'SHOW TABLES';
   console.log(result.RowDataPacket)
