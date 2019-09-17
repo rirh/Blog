@@ -1,0 +1,17 @@
+.context {
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #f4f4f4;
+    font-size: 1.2vw;
+    padding: 2vw;;
+    margin-top: 10vh;
+}
+
+
+.image {
+    height: 39.2vw;
+    width:70vw;
+}

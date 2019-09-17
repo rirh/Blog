@@ -1,0 +1,141 @@
+.header {
+    height: 10vh;
+    /* background: rgba(45, 45, 45, .98); */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: -webkit-linear-gradient(90deg, rgba(45, 45, 45, .98), rgba(45, 45, 44, 1));
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(90deg, rgba(45, 45, 45, .98), rgba(45, 45, 44, 1));
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(90deg, rgba(45, 45, 45, .98), rgba(45, 45, 44, 1));
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(90deg, rgba(45, 45, 45, .98), rgba(45, 45, 44, 1));
+    /* 标准的语法 */
+    box-shadow: 0px .4vw .4vw black;
+    -webkit-box-shadow: 0px .4vw .4vw black;
+    -moz-box-shadow: 0px .4vw .4vw black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.header-contain {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.phone-left {
+    flex: 1;
+    text-align: left;
+    margin: 0 0 0 4vw;
+    font-size: 6vw;
+    font-weight: 500;
+}
+
+.phone-name {
+    font-size: 6vw;
+}
+
+.phone-right {
+    margin: 0 4vw 0 0;
+    font-size: 8vw;
+    flex: 0 0 30%;
+    text-align: right;
+}
+
+.phone-panel {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    top: 10vh;
+    left: 0;
+    width: 100vw;
+    height: 25vh;
+    background-color: rgba(45, 45, 45, .98);
+    transition: visibility 0s, opacity .5s linear;
+}
+
+.panel-item {
+    flex: 1;
+    list-style-type: none;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 4vw;
+    font-size: 5vw;
+    font-weight: 400;
+    color: #f4f4f4;
+    cursor: pointer;
+}
+
+.pc-left {
+    text-align: left;
+    font-size: 2vw;
+    font-weight: 500;
+    flex: 0 0 70%;
+}
+
+.pc-header {
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    flex: 0 0 30%;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    font-size: 1.3vw;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.pc {
+    display: none;
+    justify-content: center;
+}
+
+.phone {
+    display: none;
+    position: relative;
+}
+
+@media screen and (max-width: 750px) {
+    .phone {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .pc {
+        display: flex;
+    }
+}
