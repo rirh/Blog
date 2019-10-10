@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom';
 import { observer, inject } from "mobx-react";
-
 import Menu from "@/desktop/components/Menu";
+import './index.css';
 
 @inject('appState') @observer
 class index extends Component {
   render() {
     const { menus } = this.props.appState.home;
     return (
-      <Fragment>
+      <Fragment className="flex" >
         <Menu></Menu>
         {/* <Route path="/main" exact render={() => <Home />}></Route>
         <Route path="/main/vue" render={() => <Vue />}></Route>

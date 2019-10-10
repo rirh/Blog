@@ -1,0 +1,64 @@
+.wapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.videoWapper {
+  /* height: 100%;
+  width: 100%; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.slogan {
+  color: #fff;
+  box-sizing: border-box;
+  width: 100%;
+  position: absolute;
+  margin: 15% 0 0 10%;
+}
+
+.sloganTitle {
+  font-size: 7rem;
+  font-weight: bold;
+}
+
+.sloganSub {
+  font-size: 1.6rem;
+}
+
+.sloganDesc {
+  font-size: 5rem;
+  font-weight: bold;
+  text-align: right;
+  margin: 10% 15% 0 0;
+}
+
+.gov {
+  position: absolute;
+  bottom: .4rem;
+  width: 100%;
+  color: #fff;
+  text-align: center
+}
+
+.morph {
+  position: absolute;
+  /* background: rgba(255, 255, 255, 0); */
+  /*关键点*/
+  z-index: 2;
+  /*确保在遮盖的元素的上方*/
+  top: 15%;
+  right: 0px;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}

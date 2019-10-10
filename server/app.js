@@ -10,7 +10,7 @@ const send = require('koa-send');
 
 
 const app = new koa();
-const staticPath = '../dist';
+const staticPath = '/static';
 const stPath = path.join(__dirname, staticPath)
 const main = serve(stPath);
 app.use(main);
@@ -24,14 +24,46 @@ app
 
 router.get('/', async ctx => {
   ctx.response.type = 'html';
-  ctx.response.body = await fs.createReadStream('../dist/index.html', 'utf8');
+  ctx.response.body = await fs.createReadStream('/static/index.html', 'utf8');
 })
 
+let rs = []
+/****
+ * 增加
+ */
+router.get('/add', async ctx => {
+  const len = rs.length;
+  rs.push({
+    key: ctx.request.query
+  })
+  const lens = rs.length;
+
+  if (lens === len) {
+    ctx.body = 'error';
+  } else {
+    ctx.body = 'success';
+  }
+})
+
+router.get('/delete', async ctx => {
+  const len = rs.length;
+  rs.splice(index, 1);
+  const lens = rs.length;
+  console.log(rs);
+  if (lens === len) {
+    ctx.body = 'error';
+  } else {
+    ctx.body = 'success';
+  }
+})
+router.get('/list', async ctx => {
+  ctx.body = rs;
+})
 
 router.get('/ios13', async ctx => {
   var fileName = 'iOS_iPadOS_13_Beta_Profile.mobileconfig';
   // ctx.attachment(path);
-  ctx.set('Content-disposition','attachment;filename='+'iOS_iPadOS_13_Beta_Profile.mobileconfig');
+  ctx.set('Content-disposition', 'attachment;filename=' + 'iOS_iPadOS_13_Beta_Profile.mobileconfig');
   await send(ctx, fileName, { root: stPath });
 
 })
@@ -50,8 +82,8 @@ router.post('/sql', async ctx => {
 
 //获取网易的新闻
 
-router.post('/news', async ctx => {
-  const { page, count } = ctx.request.body;
+router.get('/news', async ctx => {
+  const { page = 1, count = 20 } = ctx.request.body;
   const { data } = await axios.post('https://api.apiopen.top/getWangYiNews', {
     page,
     count

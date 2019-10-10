@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>温城说API</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lin {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="margin: 40px 0 60px 0;font-size: 34px;">温城说API</h1>
+    <div class="cons">
+        <strong>设备信息</strong>
+        <div class="con"></div>
+        <span class="tim">
+
+        </span>
+    </div>
+</body>
+<script>
+    function baseInfo() {
+        const dom = document.querySelector('.con');
+        const navigator = window.navigator;
+        let navs = ''
+        for (const key in navigator) {
+            const isCanHow = typeof navigator[key] !== 'object'
+                && typeof navigator[key] !== 'function'
+                && navigator[key]
+            if (isCanHow)
+                navs = navs + `<div class="lin" > <label for="">${key}</label>：<strong>${navigator[key]}</strong></div>`
+        }
+        dom.innerHTML = navs;
+    }
+    function tim() {
+        const dom = document.querySelector('.tim');
+        var now = ""
+        var t = function () {
+            now = new Date()
+            dom.innerHTML = `<div class="lin" > <label for="">time</label>：<strong>${now}</strong></div>`
+            setTimeout(function () {
+                t()
+            }, 1000)
+        }
+        t()
+    }
+
+    baseInfo();
+    tim();
+
+
+
+</script>
+
+</html>

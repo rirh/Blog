@@ -1,0 +1,16 @@
+.wapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, .8)
+}
+
+.image {
+  height: 80vh;
+  width: 65vw;
+  margin: 3vw 17.5vw;
+  box-shadow: 3px 3px 12px gray;
+  /* -webkit-box-shadow: 0 0 30px blue inset;
+  -moz-box-shadow: 0 0 30px blue inset;
+  -o-box-shadow: 0 0 30px blue inset; */
+}

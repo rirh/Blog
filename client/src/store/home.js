@@ -6,6 +6,8 @@ import {
 } from "mobx";
 
 import Home from "@/desktop/page/home";
+import Master from "@/desktop/page/master";
+import Mine from "@/desktop/page/mine";
 import Vue from "@/desktop/page/vue";
 import Typescript from "@/desktop/page/typescript";
 // import Nginx from "@/desktop/page/nginx";
@@ -18,6 +20,11 @@ class AppState {
     component: Home
   },
   {
+    name: '代表作',
+    path: "/main/master",
+    component: Master
+  },
+  {
     name: 'Koa2',
     path: "/main/koa",
     component: Vue
@@ -28,32 +35,37 @@ class AppState {
     component: Typescript
 
   },
-  // {
-  //   name: 'Nginx',
-  //   path: "/main/nginx",
-  //   component: Nginx
+  {
+    name: '我',
+    path: "/main/mine",
+    component: Mine
+  },
+    // {
+    //   name: 'Nginx',
+    //   path: "/main/nginx",
+    //   component: Nginx
 
-  // },
-  // {
-  //   name: '小程序',
-  //   path: "",
-  //   component: null
+    // },
+    // {
+    //   name: '小程序',
+    //   path: "",
+    //   component: null
 
-  // },
-  // ,{
-  //   name: 'uni-app',
-  //   path: ""
-  // }
-  // ,{
-  //   name: 'project',
-  //   path: ""
-  // },
-  // {
-  //   name: 'github',
-  //   path: "",
-  //   component: Vue
+    // },
+    // ,{
+    //   name: 'uni-app',
+    //   path: ""
+    // }
+    // ,{
+    //   name: 'project',
+    //   path: ""
+    // },
+    // {
+    //   name: 'github',
+    //   path: "",
+    //   component: Vue
 
-  // }
+    // }
   ];
   // @observable count = 0;
   // @observable name = "charles";

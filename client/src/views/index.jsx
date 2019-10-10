@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from "mobx-react"
 import u from 'utils'
 import Navigation from 'desktop'
-import Mobile from 'mobile'
+// import Mobile from 'mobile'
 import appState from "store"
 import "./index.css"
 
@@ -14,8 +14,10 @@ class App extends Component {
         if (isPc) {
             component = Navigation;
         } else {
-            component = Mobile;
-        }
+            // component = Mobile;
+            component = Navigation;
+
+                    }
         return component;
     }
     render() {

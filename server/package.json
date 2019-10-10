@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "nodemon app.js"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "koa-bodyparser": "^4.2.1",
